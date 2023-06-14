@@ -1,9 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
 
-const perfilamiento4 = () => {
+
+const perfilamiento5 = () => {
+
+  const [opcion, setOpcion] = useState('')
+
+  const handleCambioOpcion = (event) => {
+    setOpcion(event.target.value)
+  }
+  console.log(opcion);
+
+  const nombre = localStorage.nombre
+
   return (
-    <div>perfilamiento4</div>
+    <div className='perfilamiento'>
+
+<form>
+  
+  <p>¡{nombre}, cuéntanos un poco sobre tí!</p>
+  <h2>¿Haz usado la automatización de Linkedin antes?</h2>
+
+  <select value={opcion} onChange={handleCambioOpcion}>
+    <option value="">Elige una opción</option>
+    <option value="opcion1">Opción 1</option>
+    <option value="opcion2">Opción 2</option>
+    <option value="opcion3">Opción 3</option>
+    <option value="opcion4">Opción 4</option>
+
+  </select>
+
+    <Link to='/perfilamiento6'>
+        <button className='botonContinuar'>Continuar</button>
+    </Link>
+  </form>
+
+    </div>
   )
 }
 
-export default perfilamiento4
+export default perfilamiento5

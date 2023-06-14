@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Perfilamiento from './Perfilamiento'
 import Perfilamiento2 from '../components/Perfilamientos/perfilamiento2'
-import styles from '../styles/home.css'
+import Styles from '/src/styles/stylesglobales.css'
 // import rutas from '../Routes/routes'
 
 const Home = () => {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
-import Styles from '/src/styles/perfilamiento.css'
 
 const perfilamiento2 = () => {
 

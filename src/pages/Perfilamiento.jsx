@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Link, BrowserRouter, Route } from "react-router-dom";
 import Perfilamiento2 from '../components/Perfilamientos/perfilamiento2';
-import perfilamientoStyles from '../styles/perfilamiento.css'
-
+import Styles from '/src/styles/stylesglobales.css'
 
 const Perfilamiento = () => {
 
