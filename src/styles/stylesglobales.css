@@ -94,6 +94,19 @@ input {
     margin: 20px;
 }
 
+.botonclarito {
+    font-family: Inter;
+    height: 50px;
+    width: 250px;
+    border-radius: 70px;
+    /* background: #7D7DFF; */
+    box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.786);
+    /* color: white; */
+    border: solid 1px #7D7DFF;
+    margin: 20px;
+    color: #3030f0;
+}
+
 
 /* ESTILOS PARA LOS PERFILAMIENTOS */
 /*  */
