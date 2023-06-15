@@ -1,17 +1,43 @@
 
+@font-face {
+    font-family: 'PlexRegular';
+    src: url('./ibmPlexSans/IBMPlexSans-Regular.ttf') format('truetype');
+    
+  }
+@font-face {
+    font-family: 'PlexItalic';
+    src: url('./ibmPlexSans/IBMPlexSans-Italic.ttf') format('truetype');
+    
+  }
+  
+@font-face {
+    font-family: 'PlexMedium';
+    src: url('./ibmPlexSans/IBMPlexSans-Medium.ttf') format('truetype');
+    
+  }
+
+@font-face {
+    font-family: 'PlexThin';
+    src: url('./ibmPlexSans/IBMPlexSans-Thin.ttf') format('truetype');
+    
+  }
+
 /* ESTILOS DEL HOME */
 /*  */
 /*  */
 #home form {
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-left: 500px;
+    top: 5%;
+    right: 15%;
 }
 
 #fondoimgmenu {
-    position: relative;
+    position: absolute;
     height: 90vh;
     width: 34vw;
     
@@ -24,9 +50,10 @@
     justify-content: center;
 
     margin-right: 10%;
-    position: absolute;
+    
     left: 2.5vw;
     top: 5%;
+    overflow:visible;
 }
 
 #peces {
@@ -35,16 +62,25 @@
     scale: 0.95;
 }
 
+#home h1 {
+    position: relative;
+    /* right: 9.5vw; */
+    right: 30%;
+    top: 7vh;
+}
 h1 {
     font-size: 60px;
 }
 
 #home p{
-    font-family: Futura PT;
+    position: relative;
+    font-family: PlexRegular;
     font-size: 30px;
-    width: 800px;
+    width: 600px;
     color: black;
     font-style: normal;
+    /* left: 6vw; */
+    left: 3%;
 }
 
 #logo {
@@ -142,7 +178,7 @@ html {
 
 .perfilamiento form h1 {
     color: white;
-    font-family: Futura;
+    font-family: PlexRegular;
     font-size: 64px;
     font-weight: 700;
     line-height: 64px;
@@ -152,7 +188,7 @@ html {
 
 .perfilamiento form h2 {
     color: white;
-    font-family: Futura PT;
+    font-family: PlexRegular;
     font-size: 40px;
     font-weight: 400;
     line-height: 62px;
@@ -173,7 +209,7 @@ html {
 }
 
 #inputInvisible {
-    font-family: Futura PT;
+    font-family: PlexRegular;
     font-size: 40px;
     font-weight: 300;
     line-height: 62px;
@@ -196,7 +232,7 @@ select {
     border-radius: 13px;
     background: #797AFC5E;
     color: rgba(255, 255, 255, 0.668);
-    font-family: Futura PT;
+    font-family: PlexRegular;
     font-size: 32px;
     font-weight: 450;
     line-height: 41px;
@@ -207,7 +243,7 @@ select {
 }
 
 .perfilamiento p {
-    font-family: Futura PT Book Italic;
+    font-family: PlexItalic;
     font-size: 24px;
     font-style: italic;
     font-weight: 400;
