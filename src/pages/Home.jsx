@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-import Perfilamiento from './Perfilamiento'
-import Perfilamiento2 from '../components/Perfilamientos/perfilamiento2'
+import Perfilamiento from '../components/Perfilamientos/Perfilamiento'
+import Perfilamiento2 from '../components/Perfilamientos/Perfilamiento2'
 import Styles from '/src/styles/stylesglobales.css'
 // import rutas from '../Routes/routes'
 
@@ -32,15 +32,13 @@ const Home = () => {
         </div>
 
         <div>
-          <Link to="/perfilamiento">
+          <Link to="/perfilamiento/1">
             <button id='button1'>Verificar y crear cuenta</button>
           </Link>
         <button id='button2'>Ya tengo cuenta</button>
 
         </div>
-        {/* <Routes>
-          <Route path='/perfilamiento' element={<Perfilamiento/>}/>
-        </Routes> */}
+        
       </form>
       </div>
       

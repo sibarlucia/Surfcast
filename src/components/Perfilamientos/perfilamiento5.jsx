@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
+
 
 
 const perfilamiento6 = () => {
+  const {step} = useParams()
   return (
     <div className='perfilamiento'>
       <form>
