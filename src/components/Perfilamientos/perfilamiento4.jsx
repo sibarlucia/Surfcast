@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 
 
 const perfilamiento5 = () => {
-
+  
+  const {step} = useParams()
   const [opcion, setOpcion] = useState('')
+
+
 
   const handleCambioOpcion = (event) => {
     setOpcion(event.target.value)
@@ -30,7 +33,7 @@ const perfilamiento5 = () => {
 
   </select>
 
-    <Link to='/perfilamiento6'>
+    <Link to='/perfilamiento/5'>
         <button className='botonContinuar'>Continuar</button>
     </Link>
   </form>
