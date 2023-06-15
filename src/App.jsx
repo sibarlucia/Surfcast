@@ -16,8 +16,8 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/perfilamiento' element={<Perfilamiento/>}/>
-          <Route path='/*' element={<NotFound/>}/>
           <Route path='/perfilamiento/:step' element={<Perfilamiento/>}/>
+          <Route path='/*' element={<NotFound/>}/>
         </Routes>
       </Suspense>
     </Layout>
