@@ -1,3 +1,27 @@
-.main {
-  text-align: center;
+
+
+.logoContainer {
+  background: linear-gradient(180deg, #7D7DFF 0%, #001B8D 100%);
+  padding: 3em;
+  border-radius: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: 3s infinite linear beat;
+}
+
+@keyframes beat {
+  0% {
+    padding: 1.5em;
+  }
+
+  50% {
+    padding: 2em;
+  }
+
+  100% {
+    padding: 1.5em;
+
+  }
 }

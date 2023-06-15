@@ -9,6 +9,7 @@ import Perfilamiento4 from './components/Perfilamientos/perfilamiento4'
 import Perfilamiento5 from './components/Perfilamientos/perfilamiento5'
 const Home = lazy(() => import('./pages/Home/'))
 const Login = lazy(() => import('./pages/Login'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path='/perfilamiento3' element={<Perfilamiento3/>}/>
           <Route path='/perfilamiento4' element={<Perfilamiento4/>}/>
           <Route path='/perfilamiento5' element={<Perfilamiento5/>}/>
-
+          <Route path='/*' element={<NotFound/>}/>
         </Routes>
       </Suspense>
     </Layout>
