@@ -7,6 +7,7 @@ const Perfilamiento = lazy(() => import('./pages/PerfilamientoRender'))
 const Home = lazy(() => import('./pages/Home/'))
 const Login = lazy(() => import('./pages/Login'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const Producto = lazy(() => import('./pages/ProductoRender'))
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route path='/perfilamiento' element={<Perfilamiento/>}/>
           <Route path='/perfilamiento/:step' element={<Perfilamiento/>}/>
           <Route path='/*' element={<NotFound/>}/>
+          <Route path='/producto' element={<Producto/>} />
+          <Route path='/producto/:step' element={<Producto/>} />
         </Routes>
       </Suspense>
     </Layout>
