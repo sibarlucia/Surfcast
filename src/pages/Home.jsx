@@ -33,9 +33,9 @@ const Home = () => {
 
         <div>
           <Link to="/perfilamiento/1">
-            <button id='button1'>Verificar y crear cuenta</button>
+            <button className='button1'>Verificar y crear cuenta</button>
           </Link>
-        <button id='button2'>Ya tengo cuenta</button>
+        <button className='button2'>Ya tengo cuenta</button>
 
         </div>
         

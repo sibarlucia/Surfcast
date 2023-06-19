@@ -3,34 +3,42 @@
     font-family: 'PlexRegular';
     src: url('./ibmPlexSans/IBMPlexSans-Regular.ttf') format('truetype');
     
-  }
+}
 @font-face {
     font-family: 'PlexItalic';
     src: url('./ibmPlexSans/IBMPlexSans-Italic.ttf') format('truetype');
     
-  }
-  
+}
+
 @font-face {
     font-family: 'PlexMedium';
     src: url('./ibmPlexSans/IBMPlexSans-Medium.ttf') format('truetype');
     
-  }
+}
 
 @font-face {
     font-family: 'PlexThin';
     src: url('./ibmPlexSans/IBMPlexSans-Thin.ttf') format('truetype');
     
-  }
+}
 
 @font-face {
     font-family: 'PlexBold';
     src: url('./ibmPlexSans/IBMPlexSans-Bold.ttf') format('truetype');
     
-  }
+}
 
 /* ESTILOS DEL HOME */
 /*  */
 /*  */
+html {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+   
+    margin: 0;
+    padding: 0;
+}
 #home form {
     position: absolute;
     display: flex;
@@ -112,7 +120,7 @@ h1 {
     border: solid 1px;
 }
 
-#button1 {
+.button1 {
     font-family: Inter;
     height: 50px;
     width: 250px;
@@ -125,7 +133,7 @@ h1 {
     color: #3030f0;
 }
 
-#button2 {
+.button2 {
     font-family: Inter;
     height: 50px;
     width: 250px;
@@ -134,6 +142,20 @@ h1 {
     box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.786);
     color: white;
     margin: 20px;
+}
+
+.button3 {
+    height: 50px;
+    width: 220px;
+    border: none;
+    border-radius: 77px;
+    padding: 15px;
+    background: #F4F4F4;
+    color: #2B2B2B;
+    box-shadow:  0px 4px 4px rgba(124, 119, 119, 0.786);
+
+
+
 }
 
 .botonclarito {
@@ -154,12 +176,6 @@ h1 {
 /*  */
 /*  */
 
-html {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
 .perfilamiento {
     height: 95vh;
     width: 95vw;
@@ -295,7 +311,7 @@ select {
     font-weight: 300;
     line-height: 62px;
     letter-spacing: 0em;
-    text-align: center;
+    text-align: left;
     width: 50%;
     color: black;
     background-color: rgba(0, 0, 0, 0);
@@ -376,3 +392,13 @@ select {
     text-align: center;
 
 }
+
+/* ESTILOS PARA EL FORM DE IMPORTACION DE LEADS */
+/* 
+*/
+
+
+
+
+
+

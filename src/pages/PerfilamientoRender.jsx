@@ -12,7 +12,7 @@ const PerfilamientoRender = () => {
   const params = useParams()
   const step = params.step
 
-  if (step === '1') {
+  if (step === null || step === '1') {
     return (
       <Perfilamiento></Perfilamiento>
     )
