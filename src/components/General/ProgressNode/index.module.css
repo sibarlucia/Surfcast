@@ -1,0 +1,41 @@
+.node {
+  width: fit-content;
+  position: relative;
+}
+
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 5em; 
+  height: 5em;
+}
+
+.checkLogo {
+  width: 2em;
+}
+
+.number {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 2.6em;
+}
+
+.text {
+  text-align: center;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: #CECECE;
+  font-weight: 700;
+  font-size: 2em;
+  /* white-space: nowrap; */
+}
+
+.textActive {
+  color: black;
+}

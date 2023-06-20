@@ -1,4 +1,11 @@
 
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90vh;
+}
 
 .logoContainer {
   background: linear-gradient(180deg, #7D7DFF 0%, #001B8D 100%);
