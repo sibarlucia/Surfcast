@@ -1,10 +1,46 @@
-import React, { useState , useEffect} from 'react'
-import {Link, useParams} from 'react-router-dom'
-import Styles from '/src/styles/importacion.css' 
+import { useState , useEffect} from 'react'
+import {Link} from 'react-router-dom'
+import { ProgressBar } from '../components/General/ProgressBar'
+import '/src/styles/importacion.css' 
 
+// controla como se ve la barra de progreso
+const progressData = [
+    {
+        node: {
+            text: 'Leads', 
+            color: '#7D7DFE', 
+            active: true  
+        },
+        line: {
+            progress: 35, // porcentaje de la barra con color
+            beginColor: '#7D7DFE',
+            // endColor: '#000000' // hace un degradado entre los dos colores si se activa 
+        }
+    },
+    {
+        node: {
+            text: 'Personalización',
+            color: '#CECECE',
+            active: false 
+        }
+    },
+    {
+        node: {
+            text: 'Ejemplos',
+            color: '#CECECE',
+            active: false
+        }
+    },
+    {
+        node: {
+            text: 'Últimos ajustes',
+            color: '#CECECE',
+            active: false
+        }
+    }
+]
 
 const Importacion = () => {
-
     const [boton, setBoton] = useState('')
     const [submit, setSubmit] = useState(false)
 
@@ -15,7 +51,6 @@ const Importacion = () => {
 
    const handleSubmit = (event) => {
     event.preventDefault()
-    // setSubmit(true)
    }
    
 
@@ -26,51 +61,13 @@ const Importacion = () => {
   return (
     <div className='importacion' >
 
-        
-
 
             <form onSubmit={handleSubmit}>
-            <section>
-                <article className='fase'>
-                    <img className='circulo' src='/src/assets/tick.png' />
-                    <p>Leads</p>
-                </article>  
-
-                <article>
-
-                    <img className='barrita' src='/src/assets/1a2.png' /><img className='circulito' src='/src/assets/circulito.png' />
-                </article>
-
-
-                <article className='fase'>
-                    <img className='circulo' src='/src/assets/2.png' />
-                    <p>Personalización</p>
-                </article>  
-
-                <article>
-
-                    <img className='barrita' src='/src/assets/barrita.png' />
-                </article>
-
-
-                <article className='fase'>
-                    <img className='circulo' src='/src/assets/3.png' />
-                    <p>Ejemplos</p>
-                </article>  
-
-                <article>
-
-                    <img className='barrita' src='/src/assets/barrita.png' />
-                </article>
-
-                <article className='fase'>
-                    <img className='circulo' src='/src/assets/4.png' />
-                    <p>Últimos ajustes</p>
-                </article>  
-
-               
-            </section>
-
+            <div className='progressBar__container'>
+                <ProgressBar
+                    data={progressData}
+                />
+            </div>
             <div>
 
                 <h1>Escoge el método para importar tus leads</h1>

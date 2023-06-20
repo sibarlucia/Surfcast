@@ -1,0 +1,33 @@
+
+.lineContainer {
+  height: 0.5em;
+  width: 100%;
+  flex-grow: 1; 
+}
+
+
+.line {
+  border-radius: 1em;
+  background-color: #CECECE;
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.progress {
+  height: 100%;
+  position: relative;
+}
+
+.progress::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+  height: 220%;
+  aspect-ratio: 1 / 1;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  background: inherit;
+}
+
