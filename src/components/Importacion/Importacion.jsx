@@ -1,9 +1,13 @@
 import React, { useState , useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import Styles from '/src/styles/importacion.css' 
+import Importacion2 from './Importacion2'
 
 
 const Importacion = () => {
+
+  const {step} = useParams()
+
 
     const [boton, setBoton] = useState('')
     const [submit, setSubmit] = useState(false)
@@ -99,12 +103,12 @@ const Importacion = () => {
                 {boton === 'cargar' && (
                     <div>
                         <label htmlFor='fileInput'>Subir archivos</label>,
-                        <input type='file' name='cargar'/ >
+                        <input type='file' name='cargar'/>
 
                     </div>
                 )}
 
-                <Link to='/producto/1'>
+                <Link to='/importacion/2'>
                     <button className='button2' type='submit' disabled={!submit}>Importar Leads</button> 
                 </Link>
 

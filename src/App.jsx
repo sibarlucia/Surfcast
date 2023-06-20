@@ -8,7 +8,7 @@ const Home = lazy(() => import('./pages/Home/'))
 const Login = lazy(() => import('./pages/Login'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const Producto = lazy(() => import('./pages/ProductoRender'))
-const Importacion = lazy(() => import('./pages/Importacion'))
+const Importacion = lazy(() => import('./pages/ImportacionRender'))
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path='/*' element={<NotFound/>}/>
           <Route path='/producto' element={<Producto/>} />
           <Route path='/producto/:step' element={<Producto/>} />
-          <Route path='/importacion' element={<Importacion/>} />
+          <Route path='/importacion/:step' element={<Importacion/>} />
         </Routes>
       </Suspense>
     </Layout>

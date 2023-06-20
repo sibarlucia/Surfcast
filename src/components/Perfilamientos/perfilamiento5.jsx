@@ -16,7 +16,7 @@ const perfilamiento6 = () => {
             <button className='botonclarito'>Dejarlo para después</button>
         </Link>
 
-        <Link to='/importacion'>
+        <Link to='/importacion/1'>
             <button className='botonContinuar'>Continuar</button>
         </Link>
         </div>
