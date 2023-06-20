@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import Styles from '/src/styles/importacion.css' 
+import styles from './importacion.module.css' 
 import Importacion3 from './Importacion3'
 
 
@@ -28,19 +28,19 @@ const Importacion2 = () => {
         <h1>¿Qué quieres lograr con tu campaña?</h1>
         <h2>Definamos tus objetivos de prospección y los resultados que quieres obtener con tu campaña.</h2>
 
-        <div className='botonera'>
-          <button type='button' className='button4' onClick={() => handleButtonClick('/reunion')}>Lograr reunirme con clientes potenciales</button>
-          <button type='button' className='button4' onClick={() => handleButtonClick('/webinar')}>Invitar a un webinar o evento corporativo</button>
-          <button type='button' className='button4' onClick={() => handleButtonClick('/aumentarred')}>Aumentar mi red de contactos</button>
+        <div className={styles.botonera}>
+          <button type='button' className={styles.button4} onClick={() => handleButtonClick('/reunion/1')}>Lograr reunirme con clientes potenciales</button>
+          <button type='button' className={styles.button4} onClick={() => handleButtonClick('/webinar/1')}>Invitar a un webinar o evento corporativo</button>
+          <button type='button' className={styles.button4} onClick={() => handleButtonClick('/aumentarred/1')}>Aumentar mi red de contactos</button>
           
         </div>
-        <div className='botonera'>
-        <button type='button' className='button4'   onClick={() => handleButtonClick('/newsletter')}>Invitar a inscribirse a un newsletter</button>
-          <button type='button' className='button4' onClick={() => handleButtonClick('/producto/1')}>Promocionar un producto</button>
-          <button type='button' className='button4' >Otros</button>
+        <div className={styles.botonera}>
+        <button type='button' className={styles.button4}   onClick={() => handleButtonClick('/newsletter/1')}>Invitar a inscribirse a un newsletter</button>
+          <button type='button' className={styles.button4} onClick={() => handleButtonClick('/producto/1')}>Promocionar un producto</button>
+          <button type='button' className={styles.button4} >Otros</button>
         </div>
           <Link to={route}>
-          <button type='submit' className='botonSiguiente'>Elegir</button>
+          <button type='submit' className={styles.botonSiguiente}>Elegir</button>
           </Link>
       </form>
 

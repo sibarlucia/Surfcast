@@ -10,7 +10,7 @@ const ProductoRender = () => {
     const params = useParams()
     const step = params.step
   
-    if (step === null || step === '1') {
+    if (step == null || step === '1') {
       return (
         <Producto></Producto>
       )

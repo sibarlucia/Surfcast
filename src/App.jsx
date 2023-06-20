@@ -9,6 +9,11 @@ const Login = lazy(() => import('./pages/Login'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const Producto = lazy(() => import('./pages/ProductoRender'))
 const Importacion = lazy(() => import('./pages/ImportacionRender'))
+const Webinar = lazy(() => import('./pages/WebinarRender'))
+const Reunion = lazy(() => import('./pages/ReunionRender'))
+const Newsletter = lazy(() => import('./pages/NewsletterRender'))
+const AumentarRed = lazy(() => import('./pages/AumentarRedRender'))
+
 
 function App() {
   return (
@@ -23,6 +28,15 @@ function App() {
           <Route path='/producto' element={<Producto/>} />
           <Route path='/producto/:step' element={<Producto/>} />
           <Route path='/importacion/:step' element={<Importacion/>} />
+          <Route path='/webinar' element={<Webinar/>}/>
+          <Route path='/webinar/:step' element={<Webinar/>}/>
+          <Route path='/reunion' element={<Reunion/>}/>
+          <Route path='/reunion/:step' element={<Reunion/>}/>
+          <Route path='/newsletter' element={<Newsletter/>}/>
+          <Route path='/newsletter/:step' element={<Newsletter/>}/>
+          <Route path='/aumentarred' element={<AumentarRed/>}/>
+          <Route path='/aumentarred/:step' element={<AumentarRed/>}/>
+
         </Routes>
       </Suspense>
     </Layout>

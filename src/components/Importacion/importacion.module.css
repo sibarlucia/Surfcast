@@ -2,30 +2,30 @@
 
 @font-face {
     font-family: 'PlexRegular';
-    src: url('./ibmPlexSans/IBMPlexSans-Regular.ttf') format('truetype');
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Regular.ttf') format('truetype');
     
 }
 @font-face {
     font-family: 'PlexItalic';
-    src: url('./ibmPlexSans/IBMPlexSans-Italic.ttf') format('truetype');
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Italic.ttf') format('truetype');
     
 }
 
 @font-face {
     font-family: 'PlexMedium';
-    src: url('./ibmPlexSans/IBMPlexSans-Medium.ttf') format('truetype');
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Medium.ttf') format('truetype');
     
 }
 
 @font-face {
     font-family: 'PlexThin';
-    src: url('./ibmPlexSans/IBMPlexSans-Thin.ttf') format('truetype');
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Thin.ttf') format('truetype');
     
 }
 
 @font-face {
     font-family: 'PlexBold';
-    src: url('./ibmPlexSans/IBMPlexSans-Bold.ttf') format('truetype');
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Bold.ttf') format('truetype');
     
 }
 
@@ -103,8 +103,8 @@ a {
 }
 
 
-
- /* div {
+/* 
+ div {
     margin-top: 50px;
 } */
 
@@ -205,11 +205,12 @@ section article p {
     /* box-shadow:  0px 4px 4px rgba(124, 119, 119, 0.786); */
     margin-left: 35px;
     margin-right: 35px;
+    margin-bottom: 80px;
     /* margin: 50px; */
 }
 
 .botonera {
     display: flex;
-    border: 2px, solid, red;
+    /* border: 2px, solid, red; */
     
 }

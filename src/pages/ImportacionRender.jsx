@@ -13,7 +13,7 @@ const ImportacionRender = () => {
 
 
 
- if (step === null || step === '1') {
+ if (step == null || step === '1') {
       return (
         <Importacion></Importacion>
       )

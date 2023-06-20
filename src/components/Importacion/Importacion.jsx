@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import { ProgressBar } from '../components/General/ProgressBar'
-import '/src/styles/importacion.css' 
+import { ProgressBar } from '../General/ProgressBar'
+import styles from './importacion.module.css' 
 
 // controla como se ve la barra de progreso
 const progressData = [
@@ -63,11 +63,11 @@ const Importacion = () => {
     },[boton])
 
   return (
-    <div className='importacion' >
+    <div className={styles.Importacion} >
 
 
             <form onSubmit={handleSubmit}>
-            <div className='progressBar__container'>
+            <div className={styles.progressBar__container}>
                 <ProgressBar
                     data={progressData}
                 />
@@ -88,9 +88,9 @@ const Importacion = () => {
 
                 <div>
                 <p>¿Cómo te gustaría importarlos?</p>
-                <button className='button3' onClick={() => handleButtonClick('buscar')}>Búsqueda de Linkedin</button>
-                <button className='button3' onClick={() => handleButtonClick('cargar')}>Cargar Archivo CSV</button>
-                <button className='button3' onClick={() => handleButtonClick('usar')}>Usando AI</button>
+                <button className={styles.button3} onClick={() => handleButtonClick('buscar')}>Búsqueda de Linkedin</button>
+                <button className={styles.button3} onClick={() => handleButtonClick('cargar')}>Cargar Archivo CSV</button>
+                <button className={styles.button3} onClick={() => handleButtonClick('usar')}>Usando AI</button>
                 </div>
 
                 {boton === 'buscar' && (
@@ -106,7 +106,7 @@ const Importacion = () => {
                 )}
 
                 <Link to='/importacion/2'>
-                    <button className='button2' type='submit' disabled={!submit}>Importar Leads</button> 
+                    <button className={styles.button2} type='submit' disabled={!submit}>Importar Leads</button> 
                 </Link>
 
             </form>
