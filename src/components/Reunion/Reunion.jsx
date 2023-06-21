@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './reunion.modules.css'
+import styles from './reunion.module.css'
 import { Link } from 'react-router-dom'
 
 const Reunion = () => {

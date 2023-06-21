@@ -1,12 +1,15 @@
-import React from 'react'
-import styles from './webinar.modules.css'
+ import React from 'react'
+import styles from './webinar.module.css'
 import { Link } from 'react-router-dom'
 
 
 const Webinar = () => {
   return (
     <div>
-  <div className={styles.etapa}>1/6</div>
+
+      <form>
+
+      <div className={styles.etapa}>1/6</div>
       
       <div>
         <h1>¡Invitemos a un webinar!</h1>
@@ -21,6 +24,7 @@ const Webinar = () => {
       <Link to='/webinar/2'>
         <button className={styles.botonSiguiente}>Siguiente</button>
       </Link>
+      </form>
 
     </div>
   )

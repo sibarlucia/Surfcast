@@ -1,10 +1,12 @@
 import React from 'react'
-import styles from './reunion.modules.css'
+import styles from './reunion.module.css'
 import { Link } from 'react-router-dom'
 
 const Reunion4 = () => {
   return (
     <div>
+
+      <form>
       <div className={styles.etapa}>4/6</div>
       
       <div>
@@ -22,6 +24,8 @@ const Reunion4 = () => {
       <Link to='/reunion/5'>
         <button className={styles.botonSiguiente}>Siguiente</button> 
       </Link>
+
+      </form>
 
     </div>
   )
