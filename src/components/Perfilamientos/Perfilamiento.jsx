@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, BrowserRouter, Route, useParams } from "react-router-dom";
 import Perfilamiento2 from './Perfilamiento2';
-import Styles from '/src/styles/stylesglobales.css'
+import styles from './perfilamiento.module.css'
 
 const Perfilamiento = () => {
 
@@ -18,7 +18,7 @@ const Perfilamiento = () => {
   }
 
   return (
-    <div className='perfilamiento'>
+    <div className={styles.perfilamiento}>
     <form >
         <h1>¡YOU ARE IN!</h1>
         <h2>Bríndanos tu nombre para poder empezar</h2>

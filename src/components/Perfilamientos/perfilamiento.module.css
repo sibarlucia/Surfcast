@@ -1,0 +1,124 @@
+@font-face {
+    font-family: 'PlexRegular';
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Regular.ttf') format('truetype');
+    
+}
+@font-face {
+    font-family: 'PlexItalic';
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Italic.ttf') format('truetype');
+    
+}
+
+@font-face {
+    font-family: 'PlexMedium';
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Medium.ttf') format('truetype');
+    
+}
+
+@font-face {
+    font-family: 'PlexThin';
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Thin.ttf') format('truetype');
+    
+}
+
+@font-face {
+    font-family: 'PlexBold';
+    src: url('../../styles/ibmPlexSans/IBMPlexSans-Bold.ttf') format('truetype');
+    
+}
+
+html{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfilamiento form {
+    background: linear-gradient(180deg, #7D7DFF 0%, #001B8D 100%);
+    width: 90vw;
+    height: clamp(800px,900px,1100px);
+    border-radius: 51px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfilamiento form h1 {
+    color: white;
+    font-family: PlexRegular;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.perfilamiento form h2 {
+    color: white;
+    font-family: PlexRegular;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 62px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+.botonContinuar {
+    font-family: Inter;
+    height: 50px;
+    width: 250px;
+    border-radius: 70px;
+    background: #7D7DFF;
+    box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.786);
+    color: white;
+    margin: 75px;
+}
+
+#inputInvisible {
+    font-family: PlexRegular;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 62px;
+    letter-spacing: 0em;
+    text-align: center;
+    
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.46);
+    padding-top: 10px;
+
+}
+
+select {
+    height: 58px;
+    width: 995px;
+    left: 366px;
+    top: 558px;
+    border-radius: 13px;
+    background: #797AFC5E;
+    color: rgba(255, 255, 255, 0.668);
+    font-family: PlexRegular;
+    font-size: 32px;
+    font-weight: 450;
+    line-height: 41px;
+    letter-spacing: 0em;
+    text-align: center;
+
+
+}
+
+.perfilamiento p{
+    font-family: PlexItalic;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: white;
+
+}

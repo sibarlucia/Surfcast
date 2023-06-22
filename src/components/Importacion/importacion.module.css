@@ -31,7 +31,9 @@
 
 html{
     background: linear-gradient(180deg, #7D7DFF 0%, rgba(125, 125, 255, 0) 100%);
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .botonSiguiente {
@@ -110,10 +112,9 @@ a {
 
  form {
     background-color: white;
-    /* height: 130vh; */
-    overflow: hidden;
+    height: clamp(900px,1200px,1300px);
+    width: 95vw;
     border-radius: 51px;
-    margin: 2.5%;
     box-shadow: -14px 12px 31px 0px #00000040 inset;
     display: flex;
     justify-content: space-between;
@@ -188,6 +189,20 @@ a {
     /* margin: 50px; */
 }
 
+.seleccionado{
+    height: 70px;
+    width: 220px;
+    border: none;
+    border-radius: 77px;
+    padding: 15px;
+    background: #F4F4F4;
+    color: #2B2B2B;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 80px;
+    box-shadow: 0px 4px 33px 0px #00000040;
+
+}
 .botonera {
     display: flex;
     /* border: 2px, solid, red; */

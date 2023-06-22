@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './webinar.module.css'
 import { Link } from 'react-router-dom'
 
 const Webinar6 = () => {
+
+  const [popUp, setPopUp] = useState(false)
+  const [effect, setEffect] = useState()
+
+  const blur = styles.blur 
+
+
+  const handleFinalizar = () => {
+    setPopUp(true)
+    setEffect(blur)
+  }
+
+  useEffect(() => {
+
+  },[popUp])
+
   return (
     <div>
-      <form>
+      <form className={effect}>
+
+          {popUp == true && (<div className={styles.fondoImg}><img className={styles.imagenFinalizar} src='/src/assets/popUp.png'/></div>)}
 
        <div className={styles.etapa}>6/6</div>
       
@@ -20,7 +38,7 @@ const Webinar6 = () => {
       </div>
       
       <Link to='/webinar/6'>
-        <button className={styles.botonSiguiente}>Finalizar</button>
+        <button className={styles.botonSiguiente} onClick={() => handleFinalizar()}>Finalizar</button>
       </Link>
       </form>
 
