@@ -5,44 +5,44 @@ import { ProgressBar } from '../General/ProgressBar'
 
 
 const progressData = [
-    {
-        node: {
-            text: 'Leads', 
-            color: '#7D7DFE', 
-            active: true 
-        },
-        line: {
-            progress: 100, // porcentaje de la barra con color
-            beginColor: '#7D7DFE',
-            endColor: '#000000' // hace un degradado entre los dos colores si se activa 
-        }
+  {
+    node: {
+      text: 'Leads', 
+      color: '#7D7DFE', 
+      active: true 
     },
-    {
-        node: {
-            text: 'Personalización',
-            color: '#001B8D',
-            active: true 
-        },
-        line: {
-          progress: 35, // porcentaje de la barra con color
-          beginColor: '#001B8D',
-          // endColor: '#000000' // hace un degradado entre los dos colores si se activa 
-      }
-    },
-    {
-        node: {
-            text: 'Ejemplos',
-            color: '#CECECE',
-            active: false
-        }
-    },
-    {
-        node: {
-            text: 'Últimos ajustes',
-            color: '#CECECE',
-            active: false
-        }
+    line: {
+      progress: 100, // porcentaje de la barra con color
+      beginColor: '#7D7DFE',
+      endColor: '#000000' // hace un degradado entre los dos colores si se activa 
     }
+  },
+  {
+    node: {
+      text: 'Personalización',
+      color: '#001B8D',
+      active: true 
+    },
+    line: {
+      progress: 35, // porcentaje de la barra con color
+      beginColor: '#001B8D',
+      // endColor: '#000000' // hace un degradado entre los dos colores si se activa 
+    }
+  },
+  {
+    node: {
+      text: 'Ejemplos',
+      color: '#CECECE',
+      active: false
+    }
+  },
+  {
+    node: {
+      text: 'Últimos ajustes',
+      color: '#CECECE',
+      active: false
+    }
+  }
 ]
 
 const Importacion2 = () => {
@@ -113,9 +113,9 @@ const Importacion2 = () => {
     setButtonClass4(estiloBoton)
     setButtonClass5(botonSeleccionado)
     setButtonClass6(estiloBoton)
-    }
+  }
 
-const handleButtonClass6 = () => {
+  const handleButtonClass6 = () => {
     setButtonClass1(estiloBoton)
     setButtonClass2(estiloBoton)
     setButtonClass3(estiloBoton)
@@ -128,10 +128,10 @@ const handleButtonClass6 = () => {
 
       <form>
         <div className={styles.progressBar__container}>
-                <ProgressBar
-                    data={progressData}
-                />
-            </div>
+          <ProgressBar
+            data={progressData}
+          />
+        </div>
         <h1>¿Qué quieres lograr con tu campaña?</h1>
         <h2>Definamos tus objetivos de prospección y los resultados que quieres obtener con tu campaña.</h2>
 
@@ -142,13 +142,13 @@ const handleButtonClass6 = () => {
           
         </div>
         <div className={styles.botonera}>
-        <button type='button' className={buttonClass4}   onClick={() => [handleButtonClick('/newsletter/1'),handleButtonClass4()]}>Invitar a inscribirse a un newsletter</button>
+          <button type='button' className={buttonClass4}   onClick={() => [handleButtonClick('/newsletter/1'),handleButtonClass4()]}>Invitar a inscribirse a un newsletter</button>
           <button type='button' className={buttonClass5} onClick={() => [handleButtonClick('/producto/1'),handleButtonClass5()]}>Promocionar un producto</button>
           <button type='button' className={buttonClass6} onClick={() => [handleButtonClick('/importacion/1'),handleButtonClass6()]}>Otros</button>
         </div>
-          <Link to={route}>
+        <Link to={route}>
           <button type='submit' className={styles.botonSiguiente}>Elegir</button>
-          </Link>
+        </Link>
       </form>
 
     </div>

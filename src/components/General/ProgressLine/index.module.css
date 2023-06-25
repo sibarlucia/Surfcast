@@ -15,11 +15,12 @@
 }
 
 .progress {
+  border-radius: 1em;
   height: 100%;
   position: relative;
 }
 
-.progress::after {
+.lineDot::after {
   position: absolute;
   content: "";
   border-radius: 50%;
