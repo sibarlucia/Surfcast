@@ -36,8 +36,8 @@ export const ProgressBar = ({ data = [], size }) => {
                     endColor={line?.endColor}
                     active={node.active}
                   />
-                  )
-                }
+                )
+              }
             </Fragment>
           )
         })
