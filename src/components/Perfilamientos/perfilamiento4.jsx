@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {Link, useParams} from 'react-router-dom'
+import styles from './perfilamiento.module.css'
 
 
 const perfilamiento5 = () => {
@@ -17,7 +18,7 @@ const perfilamiento5 = () => {
   const nombre = localStorage.nombre
 
   return (
-    <div className='perfilamiento'>
+    <div className={styles.perfilamiento}>
 
 <form>
   
@@ -36,6 +37,10 @@ const perfilamiento5 = () => {
     <Link to='/perfilamiento/5'>
         <button className='botonContinuar'>Continuar</button>
     </Link>
+
+    <Link className={styles.volver} to='/perfilamiento/3'>
+        <img src='/src/assets/volverblanco.png'/>
+        </Link>
   </form>
 
     </div>

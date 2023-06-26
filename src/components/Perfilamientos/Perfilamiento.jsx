@@ -27,7 +27,12 @@ const Perfilamiento = () => {
             <button className='botonContinuar' onClick={handleGuardarNombre}>Continuar</button>
         </Link>
         
-
+      
+        <Link className={styles.volver} to='/'>
+        <img src='/src/assets/volverblanco.png'/>
+        </Link>
+        
+      
         
     </form>
 

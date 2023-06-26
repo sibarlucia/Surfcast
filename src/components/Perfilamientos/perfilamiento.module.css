@@ -34,6 +34,7 @@ html{
 }
 
 .perfilamiento form {
+    position: relative;
     background: linear-gradient(180deg, #7D7DFF 0%, #001B8D 100%);
     width: 90vw;
     height: clamp(800px,900px,1100px);
@@ -121,4 +122,21 @@ select {
     text-align: center;
     color: white;
 
+}
+
+
+.volver{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 1%;
+    
+    
+    /* border: solid 5px red; */
+}
+.continuar{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 1%;
 }

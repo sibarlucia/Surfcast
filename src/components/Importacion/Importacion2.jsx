@@ -149,6 +149,13 @@ const handleButtonClass6 = () => {
           <Link to={route}>
           <button type='submit' className={styles.botonSiguiente}>Elegir</button>
           </Link>
+
+          <Link className={styles.volver} to='/perfilamiento/3'>
+                <img src='/src/assets/volvernegro.png'/>
+                </Link>
+                <Link className={styles.continuar} to='/perfilamiento/3'>
+                <img src='/src/assets/crearcampañadespues.png'/>
+                </Link>
       </form>
 
     </div>

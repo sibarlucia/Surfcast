@@ -63,7 +63,7 @@ const Importacion = () => {
     },[boton])
 
   return (
-    <div className={styles.Importacion} >
+    < div >
 
 
             <form onSubmit={handleSubmit}>
@@ -105,9 +105,20 @@ const Importacion = () => {
                     </div>
                 )}
 
-                <Link to='/importacion/2'>
+                <Link to='/importacion/2' className={styles.link}>
                     <button className={styles.button2} type='submit' disabled={!submit}>Importar Leads</button> 
                 </Link>
+        
+            
+
+                <Link className={styles.volver} to='/perfilamiento/3'>
+                <img src='/src/assets/volvernegro.png'/>
+                </Link>
+                <Link className={styles.continuar} to='/perfilamiento/3'>
+                <img src='/src/assets/crearcampañadespues.png'/>
+                </Link>
+            
+        
 
             </form>
 
