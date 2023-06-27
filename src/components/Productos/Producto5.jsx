@@ -1,31 +1,35 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import { Link, BrowserRouter, Route, useParams } from "react-router-dom";
-import Styles from '/src/styles/stylesglobales.css' 
-// import Producto5 from './Producto5';
-
+import styles from "./producto.module.css";
 
 const Producto5 = () => {
-
-  const {step} = useParams()
+  const { step } = useParams();
 
   return (
-    <div className='forms'>
-      <div>
-        <form>
-          <div className='etapa'>5/5</div>
+    <div>
+      <form>
+        <div className={styles.etapa}>5/5</div>
+
+        <div>
           <h1>¡Promocionemos tu producto o servicio!</h1>
-        <h2>Es hora de personalizar tu campaña</h2>
+          <p>Es hora de personalizar tu campaña</p>
+        </div>
 
-        <p>Adjunta algún documento que desees compartir</p>
+        <div>
+          <p>Adjunta algún documento que desees compartir</p>
+          <input className={styles.input2} type="file"></input>
+        </div>
 
-        <Link to='/producto/5'>
-          <button className='botonSiguiente'>Finalizar</button>
+        <Link to="/producto/5">
+          <button className="botonSiguiente">Finalizar</button>
         </Link>
-        </form>
-      </div>
 
+        <Link className={styles.volver} to="/producto/4">
+          <img src="/src/assets/volvernegro.png" />
+        </Link>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Producto5
+export default Producto5;

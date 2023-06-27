@@ -1,39 +1,41 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import { Link, BrowserRouter, Route, useParams } from "react-router-dom";
-import Styles from '/src/styles/stylesglobales.css' 
-import Producto3 from './Producto3';
-
+import styles from "./producto.module.css";
+import Producto3 from "./Producto3";
 
 const Producto2 = () => {
-
-  const {step} = useParams()
+  const { step } = useParams();
 
   return (
-    <div className='forms'>
+    <div>
+      <form>
+        <div className={styles.etapa}>2/5</div>
 
-      <div>
-        <form>
-          <div className='etapa'>2/5</div>
+        <div>
           <h1>¡Promocionemos tu producto o servicio!</h1>
-          <h2>Es hora de personalizar tu campaña</h2>
+          <p>Es hora de personalizar tu campaña</p>
+        </div>
 
-          <p>
-            3 beneficios clave que brindarás
-          </p>
-          <input type='text' placeholder='1.'></input>
-          <input type='text' placeholder='2.'></input>
-          <input type='text' placeholder='3.'></input>
+        <div>
+          <h2>3 beneficios clave que brindarás</h2>
+          <input className={styles.input3} type="text" placeholder="1."></input>
+          <input className={styles.input3} type="text" placeholder="2."></input>
+          <input className={styles.input3} type="text" placeholder="3."></input>
+        </div>
 
-          <Link to='/producto/3'>
-            <button className='botonSiguiente'>Siguiente</button>
-          </Link>
-        </form>
-      </div>
+        <Link to="/producto/3">
+          <button className="botonSiguiente">Siguiente</button>
+        </Link>
 
-
-
+        <Link className={styles.volver} to="/producto/1">
+          <img src="/src/assets/volvernegro.png" />
+        </Link>
+        <Link className={styles.continuar} to="/producto/3">
+          <img src="/src/assets/crearcampañadespues.png" />
+        </Link>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Producto2
+export default Producto2;

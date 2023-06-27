@@ -1,49 +1,63 @@
-import React, { useEffect, useState } from 'react'
-import styles from './reunion.module.css'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import styles from "./reunion.module.css";
+import { Link } from "react-router-dom";
 
 const Reunion6 = () => {
+  const [popUp, setPopUp] = useState(false);
+  const [effect, setEffect] = useState();
 
-  const [popUp, setPopUp] = useState(false)
-  const [effect, setEffect] = useState()
-
-  const blur = styles.blur 
-
+  const blur = styles.blur;
 
   const handleFinalizar = () => {
-    setPopUp(true)
-    setEffect(blur)
-  }
+    setPopUp(true);
+    setEffect(blur);
+  };
 
-  useEffect(() => {
-
-  },[popUp])
+  useEffect(() => {}, [popUp]);
 
   return (
     <div>
-
       <form className={effect}>
-      {popUp == true && (<div className={styles.fondoImg}><img className={styles.imagenFinalizar} src='/src/assets/popUp.png'/></div>)}
+        {popUp == true && (
+          <div className={styles.fondoImg}>
+            <img
+              className={styles.imagenFinalizar}
+              src="/src/assets/popUp.png"
+            />
+          </div>
+        )}
 
+        <div className={styles.etapa}>6/6</div>
 
-      <div className={styles.etapa}>6/6</div>
-      
-      <div>
-        <h1>¡Concretemos una reunión!</h1>
-        <p>Es hora de personalizar tu campaña</p>
-      </div>
+        <div>
+          <h1>¡Concretemos una reunión!</h1>
+          <p>Es hora de personalizar tu campaña</p>
+        </div>
 
-      <div>
-        <h2>Adjunta algún documento que desees compartir</h2>
-        <input type='file' placeholder='Subir archivos' className={styles.input2}></input>
-      </div>
-      
-      <Link to='/reunion/6'>
-        <button className={styles.botonSiguiente} onClick={() => handleFinalizar()}>Finalizar</button>
-      </Link>
+        <div>
+          <h2>Adjunta algún documento que desees compartir</h2>
+          <input
+            type="file"
+            placeholder="Subir archivos"
+            className={styles.input2}
+          ></input>
+        </div>
+
+        <Link to="/reunion/6">
+          <button
+            className={styles.botonSiguiente}
+            onClick={() => handleFinalizar()}
+          >
+            Finalizar
+          </button>
+        </Link>
+
+        <Link className={styles.volver} to="/reunion/5">
+          <img src="/src/assets/volvernegro.png" />
+        </Link>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Reunion6
+export default Reunion6;
