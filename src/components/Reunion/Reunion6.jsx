@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styles from "./reunion.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Reunion6 = () => {
   const [popUp, setPopUp] = useState(false);
   const [effect, setEffect] = useState();
+
+  const navigate = useNavigate();
 
   const blur = styles.blur;
 
   const handleFinalizar = () => {
     setPopUp(true);
     setEffect(blur);
+    setTimeout(() => {
+      navigate("/importacion/3");
+    }, 3000);
   };
 
   useEffect(() => {}, [popUp]);

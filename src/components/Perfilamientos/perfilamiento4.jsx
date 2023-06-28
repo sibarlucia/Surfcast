@@ -27,7 +27,7 @@ const perfilamiento5 = () => {
         </select>
 
         <Link to="/perfilamiento/5">
-          <button className="botonContinuar">Continuar</button>
+          <button className={styles.button2}>Continuar</button>
         </Link>
 
         <Link className={styles.volver} to="/perfilamiento/3">

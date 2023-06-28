@@ -1,13 +1,35 @@
 import React, { useState } from "react";
-import { Link, BrowserRouter, Route, useParams } from "react-router-dom";
+import { Link, BrowserRouter, Route, useParams, useNavigate } from "react-router-dom";
 import styles from "./producto.module.css";
 
 const Producto5 = () => {
   const { step } = useParams();
 
+  const [popUp, setPopUp] = useState(false);
+  const [effect, setEffect] = useState();
+
+  const navigate = useNavigate();
+
+  const handleFinalizar = () => {
+    setPopUp(true);
+    setEffect(blur);
+    setTimeout(() => {
+      navigate("/importacion/3");
+    }, 3000);
+  };
+
   return (
     <div>
       <form>
+        {popUp == true && (
+          <div className={styles.fondoImg}>
+            <img
+              className={styles.imagenFinalizar}
+              src="/src/assets/popUp.png"
+            />
+          </div>
+        )}
+
         <div className={styles.etapa}>5/5</div>
 
         <div>
@@ -21,7 +43,12 @@ const Producto5 = () => {
         </div>
 
         <Link to="/producto/5">
-          <button className="botonSiguiente">Finalizar</button>
+          <button
+            className={styles.botonSiguiente}
+            onClick={() => handleFinalizar()}
+          >
+            Finalizar
+          </button>
         </Link>
 
         <Link className={styles.volver} to="/producto/4">

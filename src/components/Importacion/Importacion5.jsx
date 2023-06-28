@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import styles from "./importacion.module.css";
+import styles from "./importacion4y5.module.css";
 import { ProgressBar } from "../General/ProgressBar";
 
 const progressData = [

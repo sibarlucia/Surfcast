@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import styles from './importacion.module.css' 
+import styles from './importacion2.module.css' 
 import { ProgressBar } from '../General/ProgressBar'
 
 

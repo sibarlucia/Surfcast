@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styles from "./webinar.module.css";
 import { Link } from "react-router-dom";
 import TimePicker from 'react-time-picker'
+import 'react-clock/dist/Clock.css';
+import 'react-time-picker/dist/TimePicker.css';
+
 
 const Webinar2 = () => {
 
