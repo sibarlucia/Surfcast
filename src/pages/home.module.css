@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'PlexRegular';
     src: url('./ibmPlexSans/IBMPlexSans-Regular.ttf') format('truetype');
@@ -39,7 +38,7 @@ html {
     margin: 0;
     padding: 0;
 }
-#home {
+.home {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -50,7 +49,7 @@ html {
 
 
 
-#fondoimgmenu {
+.fondoimgmenu {
     position: relative;
     height: 90vh;
     width: 34vw;
@@ -67,7 +66,7 @@ html {
     overflow:visible;
 }
 
-#peces {
+.peces {
     position: absolute;
     bottom: 0;
     width: 115%;
@@ -75,14 +74,14 @@ html {
     transform: translate(-48%);
 }
 
-#logo {
+.logo {
     position: absolute;
     top: 1em;
     left:  1em;
     width: 30%;
 }
 
-#home form {
+.home form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,7 +90,7 @@ html {
     right: 15%;
 }
 
-#home h1 {
+.home h1 {
     position: relative;
     /* right: 9.5vw; */
     right: 30%;
@@ -101,7 +100,7 @@ h1 {
     font-size: 60px;
 }
 
-#home p{
+.home p{
     position: relative;
     font-family: PlexRegular;
     font-size: 30px;
@@ -113,7 +112,7 @@ h1 {
 }
 
 
-#home input {
+.home input {
     height: 50px;
     width: 500px;
     border-radius: 20px;
@@ -126,11 +125,11 @@ h1 {
     border: 0;
 }
 
-#home .login__option {
+.home .login__option {
     width: 100%;
 }
 
-#home .login__option label {
+.home .login__option label {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -138,23 +137,23 @@ h1 {
     padding-left: 1em;
 }
 
-#home .login__option label img {
+.home .login__option label img {
     background-color: white;
     border-radius: 1em;
     padding: 0.5em;
 }
 
-#home .login__option label:hover  img {
+.home .login__option label:hover  img {
     scale: 1.05;
 }
 
-#home .login__option:hover {
+.home .login__option:hover {
     border-radius: 1em;
     box-shadow: 0px 0px 5px 1px #001B8D;
     color: white;
 }
 
-#home .loginButton {
+.home .loginButton {
     background-color: transparent;
     height: 50px;
     width: 500px;
@@ -223,12 +222,3 @@ h1 {
     margin: 20px;
     color: #3030f0;
 }
-
-
-
-
-
-
-
-
-

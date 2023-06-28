@@ -176,3 +176,19 @@ h2{
   display: flex;
   justify-content: center;
 }
+.volver{
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    padding: 1%;
+ 
+    /* border: solid 5px red; */
+}
+.continuar{
+    position: absolute;
+    right: 0 ;
+    bottom: 10px;
+    padding: 1%;
+    /* border: solid 5px red; */
+
+}

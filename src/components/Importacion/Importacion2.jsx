@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import styles from './importacion.module.css' 
+import styles from './importacion2.module.css' 
 import { ProgressBar } from '../General/ProgressBar'
 
 
@@ -148,7 +148,14 @@ const Importacion2 = () => {
         </div>
         <Link to={route}>
           <button type='submit' className={styles.botonSiguiente}>Elegir</button>
-        </Link>
+          </Link>
+
+          <Link className={styles.volver} to='/perfilamiento/3'>
+                <img src='/src/assets/volvernegro.png'/>
+                </Link>
+                <Link className={styles.continuar} to='/perfilamiento/3'>
+                <img src='/src/assets/crearcampañadespues.png'/>
+                </Link>
       </form>
 
     </div>

@@ -1,50 +1,64 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import { Link, BrowserRouter, Route, useParams } from "react-router-dom";
-import Styles from '/src/styles/stylesglobales.css' 
-import Producto5 from './Producto5';
+import styles from "./producto.module.css";
+import Producto5 from "./Producto5";
 
 const Producto4 = () => {
+  const { step } = useParams();
 
-  const {step} = useParams()
-
-
-  const [opcion, setOpcion] = useState('')
+  const [opcion, setOpcion] = useState("");
 
   const handleCambioOpcion = (event) => {
-    setOpcion(event.target.value)
-  }
+    setOpcion(event.target.value);
+  };
   console.log(opcion);
-  
+
   return (
-    <div className='forms'>
+    <div>
+      
+        <form>
+          <div className={styles.etapa}>4/5</div>
+
+          <div>
+
+          <h1>¡Promocionemos tu producto o servicio!</h1>
+          <p>Es hora de personalizar tu campaña</p>
+          </div>
 
       <div>
-        <form>
-          <div className='etapa'>4/5</div>
-          <h1>¡Promocionemos tu producto o servicio!</h1>
-        <h2>Es hora de personalizar tu campaña</h2>
+          <h2>
+            ¿Qué incentivo te gustaría usar para que compren tu producto o
+            servicio?
+          </h2>
 
-        <p>¿Qué incentivo te gustaría usar para que compren tu producto o servicio?</p>
-        
-        <select value={opcion} onChange={handleCambioOpcion}>
-          <option value="">Elige una opción</option>
-          <option value="opcion1">Opción 1</option>
-          <option value="opcion2">Opción 2</option>
-          <option value="opcion3">Opción 3</option>
-          <option value="opcion4">Opción 4</option>
+          <select value={opcion} onChange={handleCambioOpcion}>
+            <option value="">Elige una opción</option>
+            <option value="opcion1">Descuentos</option>
+            <option value="opcion2">Regalos con la compra</option>
+            <option value="opcion3">Cupones</option>
+            <option value="opcion4">Programas de lealtad</option>
+            <option value="opcion4">Ninguno</option>
+            <option value="opcion4">Otro (por favor especifica)</option>
+          </select>
 
-        </select>
+          <button>Agregar otro incentivo*</button>
 
-        <button>Agregar otro incentivo*</button>
-
-        <Link to='/producto/5'>
-          <button className='botonSiguiente'>Siguiente</button>
-        </Link>
-        </form>
       </div>
 
-    </div>
-  )
-}
+          <Link to="/producto/5">
+            <button className="botonSiguiente">Siguiente</button>
+          </Link>
 
-export default Producto4
+          <Link className={styles.volver} to="/producto/3">
+          <img src="/src/assets/volvernegro.png" />
+        </Link>
+        <Link className={styles.continuar} to="/producto/5">
+          <img src="/src/assets/crearcampañadespues.png" />
+        </Link>
+        </form>
+      
+    </div>
+  );
+};
+
+export default Producto4;
