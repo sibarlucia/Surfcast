@@ -20,11 +20,14 @@ function App() {
     <Layout>
       <Suspense fallback={< PageLoading />}>
         <Routes>
-          <Route path='/' element={<Home />}/>
+          <Route path='/' element={<Login />}/>
           <Route path='/login' element={<Login />}/>
+          <Route path='/home' element={<Home />}/>
+          <Route path='/campaign' element={<Home />}/> 
+          <Route path='/team' element={<Home />}/> 
+          <Route path='/billing' element={<Home />}/> 
           <Route path='/perfilamiento' element={<Perfilamiento/>}/>
           <Route path='/perfilamiento/:step' element={<Perfilamiento/>}/>
-          <Route path='/*' element={<NotFound/>}/>
           <Route path='/producto' element={<Producto/>} />
           <Route path='/producto/:step' element={<Producto/>} />
           <Route path='/importacion/:step' element={<Importacion/>} />
@@ -36,7 +39,7 @@ function App() {
           <Route path='/newsletter/:step' element={<Newsletter/>}/>
           <Route path='/aumentarred' element={<AumentarRed/>}/>
           <Route path='/aumentarred/:step' element={<AumentarRed/>}/>
-
+          <Route path='/*' element={<NotFound/>}/>
         </Routes>
       </Suspense>
     </Layout>
