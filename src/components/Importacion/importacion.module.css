@@ -29,11 +29,19 @@
     
 }
 
-html{
-    background: linear-gradient(180deg, #7D7DFF 0%, rgba(125, 125, 255, 0) 100%);
+body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.mainDiv{
+    background: linear-gradient(180deg, #7D7DFF 0%, rgba(125, 125, 255, 0) 100%);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5%;
 }
 
 .botonSiguiente {

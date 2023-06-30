@@ -7,7 +7,7 @@ const Producto = () => {
   const { step } = useParams();
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form>
         <div className={styles.etapa}>1/5</div>
 
@@ -32,7 +32,7 @@ const Producto = () => {
           <img src="/src/assets/volvernegro.png" />
         </Link>
         <Link className={styles.continuar} to="/producto/2">
-          <img src="/src/assets/crearcampañadespues.png" />
+          <img src="/src/assets/continuardespues.png" />
         </Link>
       </form>
     </div>

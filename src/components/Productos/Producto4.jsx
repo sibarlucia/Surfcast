@@ -14,18 +14,16 @@ const Producto4 = () => {
   console.log(opcion);
 
   return (
-    <div>
-      
-        <form>
-          <div className={styles.etapa}>4/5</div>
+    <div className={styles.mainDiv}>
+      <form>
+        <div className={styles.etapa}>4/5</div>
 
-          <div>
-
+        <div>
           <h1>¡Promocionemos tu producto o servicio!</h1>
           <p>Es hora de personalizar tu campaña</p>
-          </div>
+        </div>
 
-      <div>
+        <div>
           <h2>
             ¿Qué incentivo te gustaría usar para que compren tu producto o
             servicio?
@@ -42,21 +40,19 @@ const Producto4 = () => {
           </select>
 
           <button>Agregar otro incentivo*</button>
+        </div>
 
-      </div>
+        <Link to="/producto/5">
+          <button className="botonSiguiente">Siguiente</button>
+        </Link>
 
-          <Link to="/producto/5">
-            <button className="botonSiguiente">Siguiente</button>
-          </Link>
-
-          <Link className={styles.volver} to="/producto/3">
+        <Link className={styles.volver} to="/producto/3">
           <img src="/src/assets/volvernegro.png" />
         </Link>
         <Link className={styles.continuar} to="/producto/5">
-          <img src="/src/assets/crearcampañadespues.png" />
+          <img src="/src/assets/continuardespues.png" />
         </Link>
-        </form>
-      
+      </form>
     </div>
   );
 };

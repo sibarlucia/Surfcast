@@ -27,15 +27,20 @@
     
 }
 
-html{
-    background: linear-gradient(180deg, #E14192 0%, rgba(225, 65, 146, 0) 100%);
-
-
+body{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.mainDiv{
+    background: linear-gradient(180deg, #E14192 0%, rgba(225, 65, 146, 0) 100%);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5%;
+}
 .botonSiguiente {
     font-family: Inter;
     height: 50px;

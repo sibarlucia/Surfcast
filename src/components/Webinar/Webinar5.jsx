@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Webinar5 = () => {
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form>
 
       <div className={styles.etapa}>5/6</div>
@@ -22,6 +22,12 @@ const Webinar5 = () => {
       <Link to='/webinar/6'>
         <button className={styles.botonSiguiente}>Siguiente</button>
       </Link>
+      <Link className={styles.volver} to="/webinar/4">
+          <img src="/src/assets/volvernegro.png" />
+        </Link>
+        <Link className={styles.continuar} to="/webinar/6">
+          <img src="/src/assets/continuardespues.png" />
+        </Link>
       </form>
 
 

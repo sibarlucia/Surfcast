@@ -11,7 +11,7 @@ const Webinar2 = () => {
   const [hora, setHora] = useState('10:00')
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form>
         <div className={styles.etapa}>2/6</div>
 
@@ -73,6 +73,12 @@ const Webinar2 = () => {
 
         <Link to="/webinar/3">
           <button className={styles.botonSiguiente}>Siguiente</button>
+        </Link>
+        <Link className={styles.volver} to="/webinar/1">
+          <img src="/src/assets/volvernegro.png" />
+        </Link>
+        <Link className={styles.continuar} to="/webinar/3">
+          <img src="/src/assets/continuardespues.png" />
         </Link>
       </form>
     </div>

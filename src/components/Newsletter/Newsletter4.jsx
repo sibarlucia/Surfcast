@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Newsletter4 = () => {
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form>
         <div className={styles.etapa}>4/5</div>
 
@@ -41,7 +41,7 @@ const Newsletter4 = () => {
           <img src="/src/assets/volvernegro.png" />
         </Link>
         <Link className={styles.continuar} to="/newsletter/5">
-          <img src="/src/assets/crearcampañadespues.png" />
+          <img src="/src/assets/continuardespues.png" />
         </Link>
       </form>
     </div>

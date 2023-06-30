@@ -21,7 +21,7 @@ const Webinar6 = () => {
   useEffect(() => {}, [popUp]);
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form className={effect}>
         {popUp == true && (
           <div className={styles.fondoImg}>
@@ -56,6 +56,10 @@ const Webinar6 = () => {
             Finalizar
           </button>
         </Link>
+        <Link className={styles.volver} to="/webinar/5">
+          <img src="/src/assets/volvernegro.png" />
+        </Link>
+        
       </form>
     </div>
   );
