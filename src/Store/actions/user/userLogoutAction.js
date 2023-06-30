@@ -1,6 +1,6 @@
-export const userLogout = () => {
+export const userLogoutAction = () => {
 
-  window.localStorage.removeItem('auth-token')
+  window.localStorage.removeItem('sc-auth-token')
 
   return {
     type: '@user/logout',

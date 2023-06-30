@@ -1,7 +1,9 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { PageLoading } from './components/Pages/PageLoading'
 import { Layout } from './components/Pages/Layout'
+import { useSelector } from 'react-redux'
+import { PrivateRoute } from './components/Pages/PrivateRoute'
 
 const Perfilamiento = lazy(() => import('./pages/PerfilamientoRender'))
 const Home = lazy(() => import('./pages/Home/'))
@@ -13,15 +15,30 @@ const Webinar = lazy(() => import('./pages/WebinarRender'))
 const Reunion = lazy(() => import('./pages/ReunionRender'))
 const Newsletter = lazy(() => import('./pages/NewsletterRender'))
 const AumentarRed = lazy(() => import('./pages/AumentarRedRender'))
-
+const LoginToken = lazy(() => import('./pages/LoginToken'))
 
 function App() {
+  const userData = useSelector(state => state.user)
+
+  const isLogged = useMemo(() => {
+    return userData.token ? true : false
+  }, [userData])
+
   return (
     <Layout>
       <Suspense fallback={< PageLoading />}>
         <Routes>
+          <Route
+            path='/test'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Home />
+              </PrivateRoute>
+            }
+          />
           <Route path='/' element={<Login />}/>
           <Route path='/login' element={<Login />}/>
+          <Route path='/login/auth' element={<LoginToken />}/>
           <Route path='/home' element={<Home />}/>
           <Route path='/campaign' element={<Home />}/> 
           <Route path='/team' element={<Home />}/> 
