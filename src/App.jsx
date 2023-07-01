@@ -21,6 +21,9 @@ function App() {
   const userData = useSelector(state => state.user)
 
   const isLogged = useMemo(() => {
+
+    return true // para desarrollo, comentar cuando sea necesario
+
     return userData.token ? true : false
   }, [userData])
 
@@ -29,34 +32,157 @@ function App() {
       <Suspense fallback={< PageLoading />}>
         <Routes>
           <Route
-            path='/test'
+            path='/'
+            element={<Login />}
+          />
+          <Route
+            path='/login'
+            element={<Login />}
+          />
+          <Route
+            path='/login/auth'
+            element={<LoginToken />}
+          />
+          <Route
+            path='/home'
             element={
               <PrivateRoute isLogged={isLogged}>
                 <Home />
               </PrivateRoute>
             }
           />
-          <Route path='/' element={<Login />}/>
-          <Route path='/login' element={<Login />}/>
-          <Route path='/login/auth' element={<LoginToken />}/>
-          <Route path='/home' element={<Home />}/>
-          <Route path='/campaign' element={<Home />}/> 
-          <Route path='/team' element={<Home />}/> 
-          <Route path='/billing' element={<Home />}/> 
-          <Route path='/perfilamiento' element={<Perfilamiento/>}/>
-          <Route path='/perfilamiento/:step' element={<Perfilamiento/>}/>
-          <Route path='/producto' element={<Producto/>} />
-          <Route path='/producto/:step' element={<Producto/>} />
-          <Route path='/importacion/:step' element={<Importacion/>} />
-          <Route path='/webinar' element={<Webinar/>}/>
-          <Route path='/webinar/:step' element={<Webinar/>}/>
-          <Route path='/reunion' element={<Reunion/>}/>
-          <Route path='/reunion/:step' element={<Reunion/>}/>
-          <Route path='/newsletter' element={<Newsletter/>}/>
-          <Route path='/newsletter/:step' element={<Newsletter/>}/>
-          <Route path='/aumentarred' element={<AumentarRed/>}/>
-          <Route path='/aumentarred/:step' element={<AumentarRed/>}/>
-          <Route path='/*' element={<NotFound/>}/>
+          <Route
+            path='/campaign'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Home />
+              </PrivateRoute>
+            }
+          /> 
+          <Route
+            path='/team'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Home />
+              </PrivateRoute>
+            }
+          /> 
+          <Route
+            path='/billing'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Home />
+              </PrivateRoute>
+            }
+          /> 
+          <Route
+            path='/perfilamiento'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Perfilamiento />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/perfilamiento/:step'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Perfilamiento />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/producto'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Producto />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/producto/:step'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Producto />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/importacion/:step'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Importacion />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/webinar'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Webinar />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/webinar/:step'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Webinar />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/reunion'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Reunion />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/reunion/:step'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Reunion />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/newsletter'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Newsletter />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/newsletter/:step'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <Newsletter />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/aumentarred'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <AumentarRed />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/aumentarred/:step'
+            element={
+              <PrivateRoute isLogged={isLogged}>
+                <AumentarRed />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/*'
+            element={<NotFound/>}
+          />
         </Routes>
       </Suspense>
     </Layout>
