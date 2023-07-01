@@ -21,7 +21,7 @@ const AumentarRed3 = () => {
   useEffect(() => {}, [popUp]);
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form className={effect}>
         {popUp == true && (
           <div className={styles.fondoImg}>
@@ -56,6 +56,11 @@ const AumentarRed3 = () => {
             Finalizar
           </button>
         </Link>
+        <Link className={styles.volver} to="/aumentarred/2">
+          <img src="/src/assets/volvernegro.png" />
+        </Link>
+        
+        
       </form>
     </div>
   );

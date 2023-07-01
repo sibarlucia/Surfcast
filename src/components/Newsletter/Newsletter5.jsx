@@ -23,7 +23,7 @@ const Newsletter5 = () => {
   useEffect(() => {}, [popUp]);
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form className={effect}>
         {popUp == true && (
           <div className={styles.fondoImg}>

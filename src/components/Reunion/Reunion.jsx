@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Reunion = () => {
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form>
         <div className={styles.etapa}>1/6</div>
 
@@ -74,7 +74,7 @@ const Reunion = () => {
           <img src="/src/assets/volvernegro.png" />
         </Link>
         <Link className={styles.continuar} to="/reunion/2">
-          <img src="/src/assets/crearcampañadespues.png" />
+          <img src="/src/assets/continuardespues.png" />
         </Link>
       </form>
     </div>

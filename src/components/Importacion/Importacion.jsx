@@ -58,7 +58,7 @@ const Importacion = () => {
   useEffect(() => {}, [boton]);
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form onSubmit={handleSubmit}>
         <div className={styles.progressBar__container}>
           <ProgressBar data={progressData} />

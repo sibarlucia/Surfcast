@@ -19,7 +19,7 @@ const Producto5 = () => {
   };
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form>
         {popUp == true && (
           <div className={styles.fondoImg}>

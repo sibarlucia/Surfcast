@@ -53,7 +53,7 @@ const Importacion3 = () => {
   const { step } = useParams();
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form>
         <div className={styles.progressBar__container}>
           <ProgressBar data={progressData} />
@@ -86,7 +86,7 @@ const Importacion3 = () => {
           <img src="/src/assets/volvernegro.png" />
         </Link>
         <Link className={styles.continuar} to="/perfilamiento/3">
-          <img src="/src/assets/crearcampañadespues.png" />
+          <img src="/src/assets/continuardespues.png" />
         </Link>
       </form>
     </div>

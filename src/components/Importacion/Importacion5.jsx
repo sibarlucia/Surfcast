@@ -51,7 +51,7 @@ const progressData = [
 
 const Importacion5 = () => {
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form>
         <div className={styles.progressBar__container}>
           <ProgressBar data={progressData} />
