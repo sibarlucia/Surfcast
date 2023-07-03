@@ -1,0 +1,72 @@
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1em
+}
+
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.headerItem {
+  background-color: var(--color-grey);
+  padding: 1em 0;
+  padding-bottom: 0.5em;
+  text-align: left;
+  font-size: 1.1em;
+  font-weight: 800;
+}
+
+.bodyRow {
+  background-color: var(--color-white);
+  border-radius: 2.1em;
+  border-radius: 1em;
+}
+
+.bodyItem {
+  padding: 1.3em 0;
+  padding-left: 1.2em;
+
+  /* border-radius: 1em; */
+  position: relative;
+  
+}
+
+.bodyItem:first-child {
+  font-size: 1em;
+  font-weight: 800;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+.bodyItem:last-child {
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+.bodyItem:not(:first-child)::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  width: 0.2em;
+  background-color: var(--color-grey);
+  border-radius: 0.4em;
+}
+
+.deleteButton {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  scale: 1.1; 
+}
+

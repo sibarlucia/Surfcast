@@ -1,0 +1,43 @@
+.mainSection {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  padding-bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.teamHeader h1 {
+  font-size: 2em;
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2em;
+}
+
+.headerInfo p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.headerInfo button {
+  font-size: 0.8em;
+}
+
+.tableSection {
+  flex-grow: 1;
+  overflow-y: auto;
+  height: 0;
+  margin-top: 1em;
+}
+
+.tableContainer {
+  padding: 1em;
+  padding-top: 0;
+}
