@@ -6,7 +6,7 @@ import { GenericModal } from "../components/Modals/GenericModal"
 import addIcon from '../assets/menu/userPlus.svg'
 import trahsIcon from '../assets/trash_icon.svg'
  
-const DEFAULD_DATA = [
+const DEFAULD_DATA = [ // cambiar por consumo de api
   {
     id: 1,
     name: 'test1',

@@ -10,26 +10,6 @@ export const TeamTable = ({ data = [] }) => {
 
   return (
     <table className={styles.table}>
-      <thead className={styles.header}>
-        <tr>
-          <th className={styles.headerItem}>
-            Nombre completo
-          </th>
-          <th className={styles.headerItem}>
-            Puesto
-          </th>
-          <th className={styles.headerItem}>
-            Correo
-          </th>
-          <th className={styles.headerItem}>
-            Ubicación
-          </th>
-          <th
-            className={styles.headerItem}
-          >
-          </th>
-        </tr>
-      </thead>
       <tbody className={styles.body}>
         {
           data.map(item => {

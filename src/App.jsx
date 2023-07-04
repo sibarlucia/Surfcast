@@ -17,6 +17,7 @@ const Newsletter = lazy(() => import('./pages/NewsletterRender'))
 const AumentarRed = lazy(() => import('./pages/AumentarRedRender'))
 const LoginToken = lazy(() => import('./pages/LoginToken'))
 const Team = lazy(() => import('./pages/Team'))
+const Campaign = lazy(() => import('./pages/Campaign'))
 
 function App() {
   const userData = useSelector(state => state.user)
@@ -56,7 +57,7 @@ function App() {
             path='/campaign'
             element={
               <PrivateRoute isLogged={isLogged}>
-                <Home />
+                <Campaign />
               </PrivateRoute>
             }
           /> 
