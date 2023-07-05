@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { PageLayout } from "../components/General/PageLayout"
 import { getCampaign } from "../services/campaign/getCampaign"
 import { CampaignTable } from "../components/campaign/CampaignTable"
+import { CampaingGeneralInformation } from "../components/campaign/CampaingGeneralInformacion"
+import { CampaignStatistics } from "../components/campaign/CampaignStatistics"
 import styles from '../styles/pages/campaign.module.css'
 
 const Campaign = () => {
@@ -22,6 +24,12 @@ const Campaign = () => {
   return (
     <PageLayout>
       <section className={styles.mainSection}>
+        <CampaingGeneralInformation
+          invitations={200}
+          unreadMessages={8}
+          views={20}
+        />
+        <CampaignStatistics/>
         <div className={styles.campaignList}>
           <header className={styles.campaignListHeader}>
             <div>

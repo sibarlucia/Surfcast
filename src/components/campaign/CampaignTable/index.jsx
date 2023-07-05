@@ -1,6 +1,12 @@
+import { useState } from 'react'
+import { SliceButton } from '../../General/SliceButton'
 import styles from './index.module.css'
 
 export const CampaignTable = ({ data = [] }) => {
+  const [active, setActive] = useState(false)
+
+  console.log(active)
+
   return (
     <table className={styles.table}>
       <tbody className={styles.body}>
@@ -45,7 +51,18 @@ export const CampaignTable = ({ data = [] }) => {
                   </div>
                 </td>
                 <td className={styles.bodyItem}>
-                  active
+                  <div className={styles.activeContainer}>
+                    <p className={active ? styles.active : styles.disable }>
+                      {
+                        active ? 'Activa' :  'Desactivada'
+                      }
+                    </p>
+                    <SliceButton
+                      onClick={() => {setActive(!active)}}
+                      active={active}
+                      size={13}
+                    />
+                  </div>
                 </td>
               </tr>
             )

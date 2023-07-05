@@ -57,3 +57,22 @@
   font-size: 1.3em;
   margin: 0;
 }
+
+.activeContainer {
+  padding-right: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.activeContainer .active {
+  font-weight: 800;
+  color: #554DDE;
+  margin: 0;
+}
+
+.activeContainer .disable {
+  font-weight: 800;
+  color: #706F6F;
+  margin: 0;
+}

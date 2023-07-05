@@ -1,0 +1,46 @@
+
+ .label {
+  position: relative;
+  display: block;
+  width: 4em;
+  height: 2em;
+}
+
+.input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #E1E1E1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 1.2em;
+  transition: background-color ease-in-out 0.5s;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10%;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: var(--color-grey);
+  border-radius: 50%;
+  transition: left ease-in-out 0.5s;
+}
+
+.selectedLabel .back {
+  background-color: #554DDE;
+}
+
+.selectedLabel .dot {
+  background-color: white;
+  left: calc(90% - 1.5em);
+}

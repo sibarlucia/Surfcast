@@ -8,6 +8,7 @@
   --color-grey: #F4F4F4;
   --color-black: #2B2B2B;
   --color-white: #ffffff;
+  --color-purpel: #7D7DFF;
 }
 
 
@@ -51,3 +52,24 @@ body {
 }
              
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #e14192 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #e14192;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+  }
