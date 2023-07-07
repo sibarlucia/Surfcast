@@ -10,12 +10,6 @@ import userPlusSelected from '../../../assets/menu/userPlus_selected.svg'
 import fileIcon from '../../../assets/menu/file.svg' 
 import fileIconSelected from '../../../assets/menu/file_selected.svg' 
 import userProfile from '../../../assets/menu/userProfile.svg'
-
-// TODO: eliminar archivos
-// import { PieChartIcon } from '../svgs/PieChartIcon'
-// import { FlagIcon } from '../svgs/FlagIcon'
-// import { PlusUserIcon } from '../svgs/plusUserIcon'
-// import { FileIcon } from '../svgs/FileIcon'
 import styles from './index.module.css'
 
 const MENUS_DATA = [

@@ -1,4 +1,9 @@
-export const userLogin = (token) => ({
-  type: '@user/login',
-  token
-}) 
+export const userLoginAction = (token) => {
+  
+  window.localStorage.setItem('sc-auth-token', token)
+
+  return {
+    type: '@user/login',
+    token
+  }
+}

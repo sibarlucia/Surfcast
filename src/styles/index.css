@@ -3,6 +3,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
 
 
+:root {
+  --color-pink: #E14192;
+  --color-grey: #F4F4F4;
+  --color-black: #2B2B2B;
+  --color-white: #ffffff;
+  --color-purpel: #7D7DFF;
+}
+
+
+
 html {
   font-family: 'futura', sans-serif;
   /* font-family: 'Futura PT', sans-serif; */
@@ -14,6 +24,52 @@ body {
   padding: 0;
 }
 
-/* :root {
-  
-} */
+.pageSection {
+  border-radius: 2.1em;
+  background-color: #F4F4F4;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  /* padding: 2.2em; */
+} 
+
+.pageButton {
+  border-radius: 4em;
+  background-color: var(--color-pink);
+  color: var(--color-white);
+  cursor: pointer;
+  border: 0;
+  padding: 0.7em 2em;
+}
+
+.pageButton--empty {
+  border-radius: 4em;
+  color: var(--color-pink);
+  background-color: var(--color-white);
+  border: 0.02em solid var(--color-pink);
+}
+
+.pageButton--hover:hover {
+  scale: 1.1;
+}
+             
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #e14192 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #e14192;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+  }

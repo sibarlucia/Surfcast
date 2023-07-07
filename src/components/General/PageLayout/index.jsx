@@ -19,6 +19,7 @@ export const PageLayout = ({ useMenu = true, children }) => {
         {
           children
         }
+        <div className={styles.separator} />
       </section>
     </main>
   )
