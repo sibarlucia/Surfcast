@@ -3,6 +3,17 @@ import { Routes, Route } from 'react-router-dom'
 import { PageLoading } from './components/Pages/PageLoading'
 import { Layout } from './components/Pages/Layout'
 
+// import Perfilamiento from './pages/PerfilamientoRender'
+// import Home from './pages/Home/'
+// import Login from './pages/Login'
+// import NotFound from './pages/NotFound'
+// import Producto from './pages/ProductoRender'
+// import Importacion from './pages/ImportacionRender'
+// import Webinar from './pages/WebinarRender'
+// import Newsletter from './pages/NewsletterRender'
+// import AumentarRed from './pages/AumentarRedRender'
+// import Reunion from './pages/ReunionRender'
+
 const Perfilamiento = lazy(() => import('./pages/PerfilamientoRender'))
 const Home = lazy(() => import('./pages/Home/'))
 const Login = lazy(() => import('./pages/Login'))
@@ -13,6 +24,8 @@ const Webinar = lazy(() => import('./pages/WebinarRender'))
 const Reunion = lazy(() => import('./pages/ReunionRender'))
 const Newsletter = lazy(() => import('./pages/NewsletterRender'))
 const AumentarRed = lazy(() => import('./pages/AumentarRedRender'))
+
+
 
 
 function App() {

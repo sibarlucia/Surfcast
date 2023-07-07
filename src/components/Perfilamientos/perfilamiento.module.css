@@ -27,13 +27,41 @@
     
 }
 
-html{
+body{
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.perfilamiento form {
+.mainArticle section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(237, 226, 226);
+    margin: 50px;
+
+}
+
+.mainArticle section p{
+    font-family: PlexItalic;
+} 
+
+#botones {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainDiv{
+    /* background: linear-gradient(180deg, #001B8D 0%, rgba(0, 27, 141, 0) 100%); */
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5%;
+}
+
+.formPerfilamiento {
     position: relative;
     background: linear-gradient(180deg, #7D7DFF 0%, #001B8D 100%);
     width: 90vw;
@@ -46,7 +74,7 @@ html{
     align-items: center;
 }
 
-.perfilamiento form h1 {
+.mainDiv form h1 {
     color: white;
     font-family: PlexRegular;
     font-size: 64px;
@@ -56,7 +84,13 @@ html{
     text-align: center;
 }
 
-.perfilamiento form h2 {
+.mainArticle section {
+    color: white;
+}
+
+
+
+.mainDiv form h2 {
     color: white;
     font-family: PlexRegular;
     font-size: 40px;
@@ -67,6 +101,17 @@ html{
 
 }
 
+.botonClarito{
+    font-family: Inter;
+    height: 50px;
+    width: 250px;
+    border-radius: 70px;
+    background: #7d7dff00;
+    box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.786);
+    color: white;
+    /* margin: 75px; */
+    border: 2px solid white;
+}
 .botonContinuar {
     font-family: Inter;
     height: 50px;
@@ -100,7 +145,7 @@ select {
     left: 366px;
     top: 558px;
     border-radius: 13px;
-    background: #797AFC5E;
+    background: #3c3c725e;
     color: rgba(255, 255, 255, 0.668);
     font-family: PlexRegular;
     font-size: 32px;
@@ -112,7 +157,7 @@ select {
 
 }
 
-.perfilamiento p{
+.mainDiv p{
     font-family: PlexItalic;
     font-size: 24px;
     font-style: italic;
@@ -151,6 +196,7 @@ select {
     background-color: #a8a8a800;
     font-family: PlexRegular;
     font-size: 20px;
+    color: white;
 }
 
 .button2 {
@@ -164,3 +210,4 @@ select {
     margin: 20px;
     z-index: 99;
 }
+

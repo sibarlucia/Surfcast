@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import styles from "./importacion4y5.module.css";
 import { ProgressBar } from "../General/ProgressBar";
+import TimePicker from "react-time-picker";
+import "react-clock/dist/Clock.css";
+import "react-time-picker/dist/TimePicker.css";
 
 const progressData = [
   {
@@ -52,6 +55,8 @@ const progressData = [
 const Importacion4 = () => {
   const [isChecked, setIsChecked] = useState(false);
 
+  const [hora, setHora] = useState("10:00");
+
   return (
     <div className={styles.mainDiv}>
       <form>
@@ -59,61 +64,69 @@ const Importacion4 = () => {
           <ProgressBar data={progressData} />
         </div>
 
-        <div>
-          <h1>¿Cuándo estará activa tu campaña?</h1>
-          <h2>
-            Como último paso, sólo queremos saber el horario en el que deseas
-            que se mueva la campaña.
-          </h2>
-          <h2>
-            Descuida si no estás muy seguro, más adelante podrás editarlo.
-          </h2>
-        </div>
-
-        <div className={styles.horarios}>
-          <div>
-            Zona horaria:
-            <select>
+        <article>
+          <section>
+            <h1>¿Cuándo estará activa tu campaña?</h1>
+            <h2>
+              Como último paso, sólo queremos saber el horario en el que deseas
+              que se mueva la campaña.
+            </h2>
+            <h2>
+              Descuida si no estás muy seguro, más adelante podrás editarlo.
+            </h2>
+          </section>
+          <section>
+            
+            <select className={styles.selectPaises}>
               <option>Horario de Chile</option>
               <option></option>
               <option></option>
             </select>
-          </div>
-
-          <label>
-            <input type="checkbox"></input>
-            Lunes
-          </label>
-          <label>
-            <input type="checkbox"></input>
-            Martes
-          </label>
-          <label>
-            <input type="checkbox"></input>
-            Miércoles
-          </label>
-          <label>
-            <input type="checkbox"></input>
-            Jueves
-          </label>
-          <label>
-            <input type="checkbox"></input>
-            Viernes
-          </label>
-          <label>
-            <input type="checkbox"></input>
-            Sábado
-          </label>
-          <label>
-            <input type="checkbox"></input>
-            Domingo
-          </label>
-        </div>
-        <Link to="/importacion/5 ">
-          <button type="submit" className={styles.programar}>
-            Programar
-          </button>
-        </Link>
+          </section>
+          <section className={styles.horarios}>
+            <label className={styles.hora}>
+              <input type="checkbox" className={styles.checkbox}></input>
+              Lunes: desde <input type="time" className={styles.time}></input> hasta  <input type="time" className={styles.time}></input>
+            </label>
+            <label className={styles.hora}>
+              <input type="checkbox" className={styles.checkbox}></input>
+              Martes: desde: <input type="time" className={styles.time}></input>
+              hasta: <input type="time" className={styles.time}></input>
+            </label>
+            <label className={styles.hora}>
+              <input type="checkbox" className={styles.checkbox}></input>
+              Miércoles: desde: <input type="time" className={styles.time}></input>
+              hasta: <input type="time" className={styles.time}></input>
+            </label>
+            <label className={styles.hora}>
+              <input type="checkbox" className={styles.checkbox}></input>
+              Jueves: desde: <input type="time" className={styles.time}></input>
+              hasta: <input type="time" className={styles.time}></input>
+            </label>
+            <label className={styles.hora}>
+              <input type="checkbox" className={styles.checkbox}></input>
+              Viernes: desde: <input type="time" className={styles.time}></input>
+              hasta: <input type="time" className={styles.time}></input>
+            </label>
+            <label className={styles.hora}>
+              <input type="checkbox" className={styles.checkbox}></input>
+              Sábado: desde: <input type="time" className={styles.time}></input>
+              hasta: <input type="time" className={styles.time}></input>
+            </label>
+            <label className={styles.hora}>
+              <input type="checkbox" className={styles.checkbox}></input>
+              Domingo: desde: <input type="time" className={styles.time}></input>
+              hasta: <input type="time" className={styles.time}></input>
+            </label>
+          </section>
+          <section>
+            <Link to="/importacion/5 ">
+              <button type="submit" className={styles.programar}>
+                Programar
+              </button>
+            </Link>
+          </section>
+        </article>
 
         <Link className={styles.volver} to="/perfilamiento/3">
           <img src="/src/assets/volvernegro.png" />

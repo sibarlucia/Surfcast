@@ -65,84 +65,86 @@ const Importacion2 = () => {
   return (
     <div className={styles.mainDiv}>
       <form>
+
         <div className={styles.progressBar__container}>
           <ProgressBar data={progressData} />
         </div>
-        <h1>¿Qué quieres lograr con tu campaña?</h1>
-        <h2>
-          Definamos tus objetivos de prospección y los resultados que quieres
-          obtener con tu campaña.
-        </h2>
 
-        <div className={styles.botonera}>
-          <button
-            type="button"
-            className={route === '/reunion/1' ? botonSeleccionado : estiloBoton}
-            onClick={() => [
-              handleButtonClick("/reunion/1"),
-              
-            ]}
-          >
-            Lograr reunirme con clientes potenciales
-          </button>
-          <button
-            type="button"
-            className={route === '/webinar/1' ? botonSeleccionado : estiloBoton}
-            onClick={() => [
-              handleButtonClick("/webinar/1"),
-              
-            ]}
-          >
-            Invitar a un webinar o evento corporativo
-          </button>
-          <button
-            type="button"
-            className={route === '/aumentarred/1' ? botonSeleccionado : estiloBoton}
-            onClick={() => [
-              handleButtonClick("/aumentarred/1"),
-              
-            ]}
-          >
-            Aumentar mi red de contactos
-          </button>
-        </div>
-        <div className={styles.botonera}>
-          <button
-            type="button"
-            className={route === '/newsletter/1' ? botonSeleccionado : estiloBoton}
-            onClick={() => [
-              handleButtonClick("/newsletter/1"),
-              
-            ]}
-          >
-            Invitar a inscribirse a un newsletter
-          </button>
-          <button
-            type="button"
-            className={route === '/producto/1' ? botonSeleccionado : estiloBoton}
-            onClick={() => [
-              handleButtonClick("/producto/1"),
-              
-            ]}
-          >
-            Promocionar un producto
-          </button>
-          <button
-            type="button"
-            className={route === '/importacion/1' ? botonSeleccionado : estiloBoton}
-            onClick={() => [
-              handleButtonClick("/importacion/1"),
-              
-            ]}
-          >
-            Otros
-          </button>
-        </div>
-        <Link to={route}>
-          <button type="submit" className={styles.botonSiguiente}>
-            Elegir
-          </button>
-        </Link>
+        <article className={styles.mainArticle}>
+          <section>
+            <h1>¿Qué quieres lograr con tu campaña?</h1>
+            <h2>
+              Definamos tus objetivos de prospección y los resultados que
+              quieres obtener con tu campaña.
+            </h2>
+          </section>
+          <section className={styles.botonera}>
+            <button
+              type="button"
+              className={
+                route === "/reunion/1" ? botonSeleccionado : estiloBoton
+              }
+              onClick={() => [handleButtonClick("/reunion/1")]}
+            >
+              Lograr reunirme con clientes potenciales
+            </button>
+            <button
+              type="button"
+              className={
+                route === "/webinar/1" ? botonSeleccionado : estiloBoton
+              }
+              onClick={() => [handleButtonClick("/webinar/1")]}
+            >
+              Invitar a un webinar o evento corporativo
+            </button>
+            <button
+              type="button"
+              className={
+                route === "/aumentarred/1" ? botonSeleccionado : estiloBoton
+              }
+              onClick={() => [handleButtonClick("/aumentarred/1")]}
+            >
+              Aumentar mi red de contactos
+            </button>
+          </section>
+          <section className={styles.botonera}>
+            <button
+              type="button"
+              className={
+                route === "/newsletter/1" ? botonSeleccionado : estiloBoton
+              }
+              onClick={() => [handleButtonClick("/newsletter/1")]}
+            >
+              Invitar a inscribirse a un newsletter
+            </button>
+            <button
+              type="button"
+              className={
+                route === "/producto/1" ? botonSeleccionado : estiloBoton
+              }
+              onClick={() => [handleButtonClick("/producto/1")]}
+            >
+              Promocionar un producto
+            </button>
+            <button
+              type="button"
+              className={
+                route === "/importacion/1" ? botonSeleccionado : estiloBoton
+              }
+              onClick={() => [handleButtonClick("/importacion/1")]}
+            >
+              Otros
+            </button>
+          </section>
+          <section>
+            <Link to={route}>
+              <button type="submit" className={styles.botonSiguiente}>
+                Elegir
+              </button>
+            </Link>
+          </section>
+        </article>
+    
 
         <Link className={styles.volver} to="/perfilamiento/3">
           <img src="/src/assets/volvernegro.png" />

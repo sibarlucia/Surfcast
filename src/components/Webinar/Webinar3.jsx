@@ -6,38 +6,42 @@ const Webinar3 = () => {
   return (
     <div className={styles.mainDiv}>
       <form>
-        <div className={styles.etapa}>3/6</div>
+        <article className={styles.mainArticle}>
+          <section>
+            <div className={styles.etapa}>3/6</div>
+          </section>
+          <section>
+            <h1>¡Invitemos a un webinar!</h1>
+            <p>Es hora de personalizar tu campaña</p>
+          </section>
+          <section>
+            <h2>¿Con qué tipo de cliente deseas reunirte?</h2>
+            <select>
+              <option>Elige un tipo de cliente</option>
+              <option>Pequeñas empresas</option>
+              <option>Medianas empresas</option>
+              <option>Grandes corporaciones</option>
+              <option>Start-ups</option>
+              <option>Clientes individuales</option>
+              <option>Indiferente</option>
+            </select>
+          </section>
 
-        <div>
-          <h1>¡Invitemos a un webinar!</h1>
-          <p>Es hora de personalizar tu campaña</p>
-        </div>
+          <section>
+            <h2>Pega el link aquí:</h2>
+            <input
+              type="text"
+              placeholder="https://workspace.com/webinar/"
+              className={styles.input}
+            ></input>
+          </section>
+          <section>
+            <Link to="/webinar/4">
+              <button className={styles.botonSiguiente}>Siguiente</button>
+            </Link>
+          </section>
+        </article>
 
-        <div>
-          <h2>¿Con qué tipo de cliente deseas reunirte?</h2>
-          <select>
-            <option>Elige un tipo de cliente</option>
-            <option>Pequeñas empresas</option>
-            <option>Medianas empresas</option>
-            <option>Grandes corporaciones</option>
-            <option>Start-ups</option>
-            <option>Clientes individuales</option>
-            <option>Indiferente</option>
-          </select>
-        </div>
-
-        <div>
-          <h2>Pega el link aquí:</h2>
-          <input
-            type="text"
-            placeholder="https://workspace.com/webinar/"
-            className={styles.input}
-          ></input>
-        </div>
-
-        <Link to="/webinar/4">
-          <button className={styles.botonSiguiente}>Siguiente</button>
-        </Link>
         <Link className={styles.volver} to="/webinar/2">
           <img src="/src/assets/volvernegro.png" />
         </Link>
