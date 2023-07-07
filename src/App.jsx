@@ -5,6 +5,17 @@ import { Layout } from './components/Pages/Layout'
 import { useSelector } from 'react-redux'
 import { PrivateRoute } from './components/Pages/PrivateRoute'
 
+// import Perfilamiento from './pages/PerfilamientoRender'
+// import Home from './pages/Home/'
+// import Login from './pages/Login'
+// import NotFound from './pages/NotFound'
+// import Producto from './pages/ProductoRender'
+// import Importacion from './pages/ImportacionRender'
+// import Webinar from './pages/WebinarRender'
+// import Newsletter from './pages/NewsletterRender'
+// import AumentarRed from './pages/AumentarRedRender'
+// import Reunion from './pages/ReunionRender'
+
 const Perfilamiento = lazy(() => import('./pages/PerfilamientoRender'))
 const Home = lazy(() => import('./pages/Home/'))
 const Login = lazy(() => import('./pages/Login'))
@@ -19,6 +30,8 @@ const LoginToken = lazy(() => import('./pages/LoginToken'))
 const Team = lazy(() => import('./pages/Team'))
 const Campaign = lazy(() => import('./pages/Campaign'))
 const CampaignInfo = lazy(() => import('./pages/CampaignInfo'))
+
+
 
 function App() {
   const userData = useSelector(state => state.user)

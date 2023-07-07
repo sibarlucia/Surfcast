@@ -45,7 +45,7 @@ body{
 }
 
 
-form{
+.mainDiv form{
     position: relative;
     height: clamp(900px,1100px,1500px);
     width: 90vw;
@@ -60,7 +60,7 @@ form{
     justify-content: center;
     align-items: center;    
 }
-div, select, option{
+.mainDiv div, select, option{
     align-items: center;
     text-align: center;
 }
@@ -75,7 +75,7 @@ div, select, option{
     color: #7D7DFF;   
 }
 
-select {
+.mainDiv select {
     height: 58px;
     width: 995px;
     left: 366px;
@@ -102,7 +102,7 @@ select {
     margin: 75px;
 }
 
-p{
+.mainDiv p{
     font-family: PlexItalic;
     font-size: 15px;
     color: black;
@@ -111,18 +111,18 @@ p{
 
 
 
-select {
+.mainDiv select {
     margin-bottom: 30px;
 }
-div{
+.mainDiv div{
     margin-bottom: 70px;
 }
 
-h1{
+.mainDiv h1{
     font-family: PlexBold;
 }
 
-h2{
+.mainDiv h2{
     font-family: PlexRegular;
 }
 
@@ -186,4 +186,22 @@ h2{
   border-radius: 71px;
   display: flex;
   justify-content: center;
+}
+
+.volver{
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    padding: 1%;
+ 
+    /* border: solid 5px red; */
+}
+.continuar{
+    position: absolute;
+    right: 20px ;
+    bottom: 10px;
+    padding: 1%;
+    background-color: #00000000;
+    /* border: solid 5px red; */
+
 }

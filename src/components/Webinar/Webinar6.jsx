@@ -24,42 +24,48 @@ const Webinar6 = () => {
     <div className={styles.mainDiv}>
       <form className={effect}>
         {popUp == true && (
-          <div className={styles.fondoImg}>
+          <section className={styles.fondoImg}>
             <img
               className={styles.imagenFinalizar}
               src="/src/assets/popUp.png"
             />
-          </div>
+          </section>
         )}
+        <article className={styles.mainArticle}>
+          <section className={styles.etapa}>6/6</section>
 
-        <div className={styles.etapa}>6/6</div>
+          <section>
+            <h1>¡Concretemos una reunión!</h1>
+            <p>Es hora de personalizar tu campaña</p>
+          </section>
+          <section className={styles.files}>
+            <h2>Adjunta algún documento que desees compartir</h2>
+            <input className={styles.input2} id="file" type="file"></input>
+            <label htmlFor="file">
+              <img src="/src/assets/flecha.png"></img>
+            </label>
+          </section>
+          <section>
+            <Link to="/webinar/6">
+              <button
+                className={styles.botonSiguiente}
+                onClick={() => handleFinalizar()}
+              >
+                Finalizar
+              </button>
+            </Link>
+          </section>
+        </article>
 
-        <div>
-          <h1>¡Concretemos una reunión!</h1>
-          <p>Es hora de personalizar tu campaña</p>
-        </div>
+        <div className={styles.etapa}></div>
 
-        <div>
-          <h2>Adjunta algún documento que desees compartir</h2>
-          <input
-            type="file"
-            placeholder="Subir archivos"
-            className={styles.input2}
-          ></input>
-        </div>
+        <div></div>
 
-        <Link to="/webinar/6">
-          <button
-            className={styles.botonSiguiente}
-            onClick={() => handleFinalizar()}
-          >
-            Finalizar
-          </button>
-        </Link>
+        <div></div>
+
         <Link className={styles.volver} to="/webinar/5">
           <img src="/src/assets/volvernegro.png" />
         </Link>
-        
       </form>
     </div>
   );

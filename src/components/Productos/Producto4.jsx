@@ -43,7 +43,7 @@ const Producto4 = () => {
         </div>
 
         <Link to="/producto/5">
-          <button className="botonSiguiente">Siguiente</button>
+          <button className={styles.botonSiguiente}>Siguiente</button>
         </Link>
 
         <Link className={styles.volver} to="/producto/3">

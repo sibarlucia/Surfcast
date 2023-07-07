@@ -6,26 +6,27 @@ const Webinar = () => {
   return (
     <div className={styles.mainDiv}>
       <form>
-        <div className={styles.etapa}>1/6</div>
-
-        <div>
-          <h1>¡Invitemos a un webinar!</h1>
-          <p>Es hora de personalizar tu campaña</p>
-        </div>
-
-        <div>
-          <h2>¿De qué se hablará?</h2>
-          <input
-            type="text"
-            placeholder="¿De qué rubro, tema, etc.?"
-            className={styles.input2}
-          ></input>
-        </div>
-
-        <Link to="/webinar/2">
-          <button className={styles.botonSiguiente}>Siguiente</button>
-        </Link>
-
+        <article className={styles.mainArticle}>
+          <section className={styles.etapa}>1/6</section>
+          <section>
+            <h1>¡Invitemos a un webinar!</h1>
+            <p>Es hora de personalizar tu campaña</p>
+          </section>
+          <section>
+            <h2>¿De qué se hablará?</h2>
+            <input
+              type="text"
+              placeholder="¿De qué rubro, tema, etc.?"
+              className={styles.input2}
+            ></input>
+          </section>
+          <section>
+            <Link to="/webinar/2">
+              <button className={styles.botonSiguiente}>Siguiente</button>
+            </Link>
+          </section>
+        </article>
+        
         <Link className={styles.volver} to="/importacion/2">
           <img src="/src/assets/volvernegro.png" />
         </Link>

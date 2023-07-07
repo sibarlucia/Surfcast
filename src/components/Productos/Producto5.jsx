@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Link, BrowserRouter, Route, useParams, useNavigate } from "react-router-dom";
+import {
+  Link,
+  BrowserRouter,
+  Route,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
 import styles from "./producto.module.css";
 
 const Producto5 = () => {
@@ -37,9 +43,13 @@ const Producto5 = () => {
           <p>Es hora de personalizar tu campaña</p>
         </div>
 
-        <div>
-          <p>Adjunta algún documento que desees compartir</p>
-          <input className={styles.input2} type="file"></input>
+        <div className={styles.files}>
+          <h2>Adjunta algún documento que desees compartir</h2>
+
+          <input className={styles.input2} id="file" type="file"></input>
+          <label htmlFor="file">
+            <img src="/src/assets/flecha.png"></img>
+          </label>
         </div>
 
         <Link to="/producto/5">

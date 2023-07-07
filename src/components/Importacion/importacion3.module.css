@@ -63,7 +63,7 @@ body{
     margin: 75px;
 } */
 
- h2 {
+.mainArticle h2 {
     position: relative;
     bottom: 35px;
     font-family: PlexItalic;
@@ -92,7 +92,7 @@ body{
 }
 
 
- h1 {
+.mainArticle h1 {
     color: black;
     font-family: PlexBold;
     font-size: 40px;
@@ -109,7 +109,7 @@ body{
     margin-top: 50px;
 } */
 
- form {
+.mainDiv form {
     position: relative;
     
     align-items: center;
@@ -124,12 +124,11 @@ body{
     text-align: center;
 }
 
- form p{
+ .mainArticle p{
     position: relative;
     font-family: PlexMedium;
     font-size: 24px;
-    font-weight: 400;
-    line-height: 31px;
+   
     letter-spacing: 0em;
     text-align: center;
     color: black;
@@ -215,7 +214,7 @@ body{
 
 .volver{
     position: absolute;
-    left: 0;
+    left: 20px;
     bottom: 10px;
     padding: 1%;
  
@@ -223,7 +222,7 @@ body{
 }
 .continuar{
     position: absolute;
-    right: 0 ;
+    right: 20px ;
     bottom: 10px;
     padding: 1%;
     /* border: solid 5px red; */
