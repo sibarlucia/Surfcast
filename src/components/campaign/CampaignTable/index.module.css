@@ -39,6 +39,11 @@
   border-radius: 0.4em;
 }
 
+.bodyItem > a {
+  color: var(--color-black);
+}
+
+
 .bodyItem > div {
   color: #706F6F;
 }

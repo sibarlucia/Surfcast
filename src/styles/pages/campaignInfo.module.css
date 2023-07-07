@@ -1,0 +1,45 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 1em;
+  box-sizing: border-box;
+}
+
+.header h1 {
+  color: var(--color-black);
+  margin: 0;
+  font-size: 2em;
+} 
+
+.headerInfoContainer .dateContaner{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.dateButtonContainer {
+  margin: 0.7em 1em;
+}
+
+.dateButtonContainer button {
+  color: var(--color-black);
+  border: 0.04em solid var(--color-black);
+  background-color: transparent;
+  border-radius: 0.4em;
+  font-size: 1.2em;
+  padding: 0.2em 0.5em;
+  font-weight: 600;
+}
+
+.dateButtonContainer button:hover {
+  background-color: var(--color-purpel);
+  color: white;
+}
+
+.dateContaner p {
+  color: var(--color-black);
+  margin: 0;
+  font-weight: 500;
+}

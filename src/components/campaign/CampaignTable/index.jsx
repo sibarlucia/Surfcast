@@ -5,8 +5,6 @@ import styles from './index.module.css'
 export const CampaignTable = ({ data = [] }) => {
   const [active, setActive] = useState(false)
 
-  console.log(active)
-
   return (
     <table className={styles.table}>
       <tbody className={styles.body}>
@@ -18,7 +16,9 @@ export const CampaignTable = ({ data = [] }) => {
                 key={`campaign-${item.id}`}
               >
                 <td className={styles.bodyItem}>
-                  {item.name}
+                  <a href={`/campaign/${item.id}/info`}>
+                    {item.name}
+                  </a>
                 </td>
                 <td className={styles.bodyItem}>
                   <div className={styles.dataInfo}>
