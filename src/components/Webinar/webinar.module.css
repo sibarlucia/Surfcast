@@ -55,7 +55,7 @@ body{
 
 .mainDiv form{
     position: relative;
-    height: clamp(900px,1100px,1500px);
+    height: clamp(900px,2000px,1500px);
     width: 90vw;
     /* left: 60px;
     top: 66px; */
@@ -73,7 +73,7 @@ body{
     text-align: center;
 }
 
- .etapa {
+ .mainDiv .etapa {
     font-family: PlexMedium;
     font-size: 34px;
     font-weight: 800;
@@ -217,18 +217,6 @@ body{
 
 
 
-.horarios {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-gap: 10px;
-    
-}
-
-.hora{
-    background-color: #f2f2f2;
-    padding: 20px;
-    text-align: center;
-}
 
 .input2 {
     border: none;
@@ -264,4 +252,39 @@ input[type="file"] {
 }
 .files label img {
     scale: 0.05;
+}
+
+.hora{
+    padding: 10px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0);
+
+}
+
+.time {
+    width: 150px;
+    height: 35px;
+}
+.checkbox {
+    
+    width: 30px;
+    height: 30px;
+}
+
+.horarios {
+    background: linear-gradient(180deg, #001a8d00 0%, rgba(0, 27, 141, 0) 100%);
+    border-radius: 50px;
+
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 20px;
+
+/* border: 1px solid red; */
+}
+
+.hora * {
+    margin-left: 20px;
+    margin-right: 20px;
+
 }

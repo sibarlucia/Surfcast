@@ -58,7 +58,7 @@ const Importacion5 = () => {
         </div>
         <div>
           <h1>¡YA CASI ESTAMOS LISTOS!</h1>
-          <p>solo falta conctar tus cuentas para crear la campaña</p>
+          <p>Solo falta conectar tus cuentas para crear la campaña</p>
 
           <Link to="/importacion/logingmail">
             <button type="button" className={styles.button3}>
@@ -66,11 +66,11 @@ const Importacion5 = () => {
             </button>
           </Link>
 
-          <Link to="/importacion/loginlinkedin">
+          {/* <Link to="/importacion/loginlinkedin">
             <button type="button" className={styles.button3}>
               <img src="/src/assets/linkedin.png" />
             </button>
-          </Link>
+          </Link> */}
         </div>
 
         <Link to="/importacion/5 ">
