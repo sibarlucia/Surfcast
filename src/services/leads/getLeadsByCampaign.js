@@ -7,7 +7,7 @@ const baseUrl = routeGenerator('/leads/campaigns/')
 export const getLeadsByCampaign = async (campaignId) => {
   const url = `${baseUrl}/${campaignId}/leads/`
 
-  return {
+  return { // para test, borrar en prod
     data: defaultData
   }
 
@@ -20,7 +20,7 @@ export const getLeadsByCampaign = async (campaignId) => {
   return response
 
 }
-
+// datos de prueba
 var defaultData = [
   {
     "profile_url": "string",
@@ -43,7 +43,7 @@ var defaultData = [
   },
   {
     "profile_url": "string",
-    "full_name": "nombre 2",
+    "full_name": "aanombre 2",
     "first_name": "nombre",
     "last_name": "2",
     "additional_info": "string",

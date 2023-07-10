@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from 'react'
 import { getLeadsByCampaign } from '../../../services/leads/getLeadsByCampaign'
+import menuDotsIcon from '../../../assets/campaing/menu_dots.svg'
 import styles from './index.module.css'
 
 const LEADS_TYPES = [
@@ -28,10 +29,15 @@ const LEADS_TYPES = [
 export const LeadsTable = ({ filter = '', campaingId = null }) => {
   const [LeadsList, setLeadsList] = useState([])
   const [selectedLeadType, setSelectedLeadType] = useState(LEADS_TYPES[0])
+  const [sortField, setSortField] = useState(null)
 
   const handleSelectLeadsType = (selectedIndex) => () => {
     const selectedData = LEADS_TYPES[selectedIndex]
     setSelectedLeadType(selectedData)
+  }
+
+  const handleSortButton = (selectedField) => () => {
+    setSortField(selectedField)
   }
 
   useEffect(() => {
@@ -42,11 +48,31 @@ export const LeadsTable = ({ filter = '', campaingId = null }) => {
       })
   }, [campaingId])
 
-
+  // maneja el filtro en de texto
   const filteredLeads = useMemo(() => {
-    // TODO: filtar lista de leads
-    return LeadsList
-  }, [LeadsList])
+    if (!filter) return LeadsList
+    const filterLeads = LeadsList.filter(lead => {
+      let leadDataString = JSON.stringify(Object.values(lead))
+      leadDataString = leadDataString.replaceAll(/"|\[|\]/g, '').replaceAll(',', ' ')
+      return leadDataString.toLowerCase().includes(filter.toLowerCase())
+    })
+    return filterLeads
+  }, [LeadsList, filter])
+
+  // ordena la lista dependiendo del campo seleccionado
+  const sortedLeads = useMemo(() => {
+    if (!sortField) return filteredLeads
+    const sorted = filteredLeads.sort((a, b) => {
+      if (a[sortField] < b[sortField]) {
+        return -1;
+      }
+      if (b[sortField] > a[sortField]) {
+        return 1;
+      }
+      return 0;
+    })
+    return sorted 
+  }, [filteredLeads, sortField])
 
   return (
     <section className="pageSection">
@@ -72,16 +98,41 @@ export const LeadsTable = ({ filter = '', campaingId = null }) => {
               <th>
                 <input type="checkbox" />
               </th>
-              <th>Nombre completo</th>
-              <th>Puesto</th>
-              <th>Correo</th>
-              <th>Ubicación</th>
-              <th>Actualización</th>
+              <th>
+                Nombre completo
+                <button onClick={handleSortButton('full_name')}>
+                  {'>'}
+                </button>
+              </th>
+              <th>
+                Puesto
+                <button onClick={handleSortButton('job')}>
+                  {'>'}
+                </button>
+              </th>
+              <th>
+                Correo
+                <button onClick={handleSortButton('email')}>
+                  {'>'}
+                </button>
+              </th>
+              <th>
+                Ubicación
+                <button onClick={handleSortButton('location')}>
+                  {'>'}
+                </button>
+              </th>
+              <th>
+                Actualización
+                <button onClick={handleSortButton('timestamp')}>
+                  {'>'}
+                </button>
+              </th>
             </tr>
           </thead>
           <tbody className={styles.tableBody}>
             {
-              filteredLeads.map(item => {
+              sortedLeads.map(item => {
                 return (
                   <tr
                     className={styles.bodyRow}
@@ -116,7 +167,12 @@ export const LeadsTable = ({ filter = '', campaingId = null }) => {
                       </p>
                     </td>
                     <td>
-                      menu
+                      <button className={styles.tableMenuButton}>
+                        <img
+                          src={menuDotsIcon}
+                          alt="menu"
+                        />
+                      </button>
                     </td>
                   </tr>
                 )
