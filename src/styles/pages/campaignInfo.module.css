@@ -3,8 +3,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1em 1em;
+  padding: 1em 0;
   box-sizing: border-box;
+}
+
+.headerButtons button {
+  margin: 0 0.5em;
 }
 
 .header h1 {
@@ -42,4 +46,41 @@
   color: var(--color-black);
   margin: 0;
   font-weight: 500;
+}
+
+ .leadsTableContainer { 
+  margin: 1.5em 0;
+}
+
+.leadsTableContainerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.leadsTableContainerHeader h1 {
+  color: var(--color-black);
+  font-size: 1.6em;
+  margin: 0;
+}
+
+.searchLabel {
+  position: relative;
+}
+
+.searchLabel input {
+  font-size: 0.9em;
+  padding: 0.7em 2em;
+  border-radius: 1em;
+  color: var(--color-black);
+  border: 0.2em solid var(--color-black);
+}
+
+
+.searchLabel img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0.06em;
 }

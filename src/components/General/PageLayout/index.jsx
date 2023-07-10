@@ -15,7 +15,7 @@ export const PageLayout = ({ useMenu = true, children }) => {
   return (
     <main className={styles.main}>
       <PageMenu />
-      <section className={styles.mainSection}>
+      <section className={`${styles.mainSection} pageScrollbar`}>
         {
           children
         }
