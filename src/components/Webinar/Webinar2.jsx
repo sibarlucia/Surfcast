@@ -12,7 +12,9 @@ const Webinar2 = () => {
     <div className={styles.mainDiv}>
       <form>
         <article className={styles.mainArticle}>
-          <section className={styles.etapa}>2/6</section>
+          <section>
+            <p className={styles.etapa}>2/6</p>
+          </section>
           <section>
             <h1>¡Invitemos a un webinar!</h1>
             <p>Es hora de personalizar tu campaña</p>
@@ -28,39 +30,53 @@ const Webinar2 = () => {
           </section>
           <section className={styles.horarios}>
             <label className={styles.hora}>
-              <input type="checkbox"></input>
-              Lunes: desde <TimePicker onChange={setHora} value={hora} /> -
-              hasta: <TimePicker onChange={setHora} value={hora} />
+              <input type="checkbox" className={styles.checkbox}></input>
+              Lunes: <input
+                type="time"
+                className={styles.time}
+              ></input> --- <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
-              <input type="checkbox"></input>
-              Martes: desde: <TimePicker onChange={setHora} value={hora} /> -
-              hasta: <TimePicker onChange={setHora} value={hora} />
+              <input type="checkbox" className={styles.checkbox}></input>
+              Martes:<input
+                type="time"
+                className={styles.time}
+              ></input> --- <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
-              <input type="checkbox"></input>
-              Miércoles: desde: <TimePicker onChange={setHora} value={hora} /> -
-              hasta: <TimePicker onChange={setHora} value={hora} />
+              <input type="checkbox" className={styles.checkbox}></input>
+              Miércoles:<input
+                type="time"
+                className={styles.time}
+              ></input> --- <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
-              <input type="checkbox"></input>
-              Jueves: desde: <TimePicker onChange={setHora} value={hora} /> -
-              hasta: <TimePicker onChange={setHora} value={hora} />
+              <input type="checkbox" className={styles.checkbox}></input>
+              Jueves:<input
+                type="time"
+                className={styles.time}
+              ></input> --- <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
-              <input type="checkbox"></input>
-              Viernes: desde: <TimePicker onChange={setHora} value={hora} /> -
-              hasta: <TimePicker onChange={setHora} value={hora} />
+              <input type="checkbox" className={styles.checkbox}></input>
+              Viernes:<input
+                type="time"
+                className={styles.time}
+              ></input> --- <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
-              <input type="checkbox"></input>
-              Sábado: desde: <TimePicker onChange={setHora} value={hora} /> -
-              hasta: <TimePicker onChange={setHora} value={hora} />
+              <input type="checkbox" className={styles.checkbox}></input>
+              Sábado:<input
+                type="time"
+                className={styles.time}
+              ></input> --- <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
-              <input type="checkbox"></input>
-              Domingo: desde: <TimePicker onChange={setHora} value={hora} /> -
-              hasta: <TimePicker onChange={setHora} value={hora} />
+              <input type="checkbox" className={styles.checkbox}></input>
+              Domingo:<input
+                type="time"
+                className={styles.time}
+              ></input> --- <input type="time" className={styles.time}></input>
             </label>
           </section>
 

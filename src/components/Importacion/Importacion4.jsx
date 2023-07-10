@@ -90,33 +90,33 @@ const Importacion4 = () => {
             </label>
             <label className={styles.hora}>
               <input type="checkbox" className={styles.checkbox}></input>
-              Martes: desde: <input type="time" className={styles.time}></input>
-              hasta: <input type="time" className={styles.time}></input>
+              Martes: desde <input type="time" className={styles.time}></input>
+              hasta <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
               <input type="checkbox" className={styles.checkbox}></input>
-              Miércoles: desde: <input type="time" className={styles.time}></input>
-              hasta: <input type="time" className={styles.time}></input>
+              Miércoles: desde <input type="time" className={styles.time}></input>
+              hasta <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
               <input type="checkbox" className={styles.checkbox}></input>
-              Jueves: desde: <input type="time" className={styles.time}></input>
-              hasta: <input type="time" className={styles.time}></input>
+              Jueves: desde <input type="time" className={styles.time}></input>
+              hasta <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
               <input type="checkbox" className={styles.checkbox}></input>
-              Viernes: desde: <input type="time" className={styles.time}></input>
-              hasta: <input type="time" className={styles.time}></input>
+              Viernes: desde <input type="time" className={styles.time}></input>
+              hasta <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
               <input type="checkbox" className={styles.checkbox}></input>
-              Sábado: desde: <input type="time" className={styles.time}></input>
-              hasta: <input type="time" className={styles.time}></input>
+              Sábado: desde <input type="time" className={styles.time}></input>
+              hasta <input type="time" className={styles.time}></input>
             </label>
             <label className={styles.hora}>
               <input type="checkbox" className={styles.checkbox}></input>
-              Domingo: desde: <input type="time" className={styles.time}></input>
-              hasta: <input type="time" className={styles.time}></input>
+              Domingo: desde <input type="time" className={styles.time}></input>
+              hasta <input type="time" className={styles.time}></input>
             </label>
           </section>
           <section>
