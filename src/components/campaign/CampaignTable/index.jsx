@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SliceButton } from '../../General/SliceButton'
 import styles from './index.module.css'
+import { Link } from 'react-router-dom'
 
 export const CampaignTable = ({ data = [] }) => {
   const [active, setActive] = useState(false)
@@ -16,9 +17,9 @@ export const CampaignTable = ({ data = [] }) => {
                 key={`campaign-${item.id}`}
               >
                 <td className={styles.bodyItem}>
-                  <a href={`/campaign/${item.id}/info`}>
+                  <Link to={`/campaign/${item.id}/info`}>
                     {item.name}
-                  </a>
+                  </Link>
                 </td>
                 <td className={styles.bodyItem}>
                   <div className={styles.dataInfo}>
