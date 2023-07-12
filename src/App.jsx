@@ -34,183 +34,183 @@ const CampaignInfo = lazy(() => import('./pages/CampaignInfo'))
 
 
 function App() {
-  const userData = useSelector(state => state.user)
+    const userData = useSelector(state => state.user)
 
-  const isLogged = useMemo(() => {
+    const isLogged = useMemo(() => {
 
-    return true // para desarrollo, comentar cuando sea necesario
+        return true // para desarrollo, comentar cuando sea necesario
 
-    return userData.token ? true : false
-  }, [userData])
+        return userData.token ? true : false
+    }, [userData])
 
-  return (
-    <Layout>
-      <Suspense fallback={< PageLoading />}>
-        <Routes>
-          <Route
-            path='/'
-            element={<Login />}
-          />
-          <Route
-            path='/login'
-            element={<Login />}
-          />
-          <Route
-            path='/login/auth'
-            element={<LoginToken />}
-          />
-          <Route
-            path='/home'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Home />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/campaign'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Campaign />
-              </PrivateRoute>
-            }
-          /> 
-          <Route
-            path='/campaign/:id/info'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <CampaignInfo />
-              </PrivateRoute>
-            }
-          /> 
-          <Route
-            path='/team'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Team />
-              </PrivateRoute>
-            }
-          /> 
-          <Route
-            path='/billing'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Home />
-              </PrivateRoute>
-            }
-          /> 
-          <Route
-            path='/perfilamiento'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Perfilamiento />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/perfilamiento/:step'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Perfilamiento />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/producto'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Producto />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/producto/:step'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Producto />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/importacion/:step'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Importacion />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/webinar'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Webinar />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/webinar/:step'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Webinar />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/reunion'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Reunion />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/reunion/:step'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Reunion />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/newsletter'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Newsletter />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/newsletter/:step'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <Newsletter />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/aumentarred'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <AumentarRed />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/aumentarred/:step'
-            element={
-              <PrivateRoute isLogged={isLogged}>
-                <AumentarRed />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/*'
-            element={<NotFound/>}
-          />
-        </Routes>
-      </Suspense>
-    </Layout>
-  )
+    return (
+        <Layout>
+            <Suspense fallback={< PageLoading />}>
+                <Routes>
+                    <Route
+                        path='/'
+                        element={<Login />}
+                    />
+                    <Route
+                        path='/login'
+                        element={<Login />}
+                    />
+                    <Route
+                        path='/login/auth'
+                        element={<LoginToken />}
+                    />
+                    <Route
+                        path='/home'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Home />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/campaign'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Campaign />
+                            </PrivateRoute>
+                        }
+                    /> 
+                    <Route
+                        path='/campaign/:id/info'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <CampaignInfo />
+                            </PrivateRoute>
+                        }
+                    /> 
+                    <Route
+                        path='/team'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Team />
+                            </PrivateRoute>
+                        }
+                    /> 
+                    <Route
+                        path='/billing'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Home />
+                            </PrivateRoute>
+                        }
+                    /> 
+                    <Route
+                        path='/perfilamiento'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Perfilamiento />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/perfilamiento/:step'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Perfilamiento />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/producto'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Producto />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/producto/:step'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Producto />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/campaign/:campaingId/importacion/:step'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Importacion />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/webinar'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Webinar />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/webinar/:step'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Webinar />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/reunion'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Reunion />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/reunion/:step'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Reunion />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/newsletter'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Newsletter />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/newsletter/:step'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Newsletter />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/aumentarred'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <AumentarRed />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/aumentarred/:step'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <AumentarRed />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path='/*'
+                        element={<NotFound/>}
+                    />
+                </Routes>
+            </Suspense>
+        </Layout>
+    )
 }
 
 export default App
