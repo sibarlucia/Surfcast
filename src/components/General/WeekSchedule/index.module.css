@@ -1,0 +1,53 @@
+.scheduleList {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.scheduleList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.dayButton {
+  width: 80px;
+  height: 40px;
+  border-radius: 15px;
+  border: none;
+  margin: 5px;
+  color: #a8a8a8;
+  cursor: pointer;
+}
+
+.dayButton:hover {
+  background-color: #7D7DFF55;
+}
+
+.buttonActive {
+  background-color: #7D7DFF;
+  color: white;
+}
+
+.selectHoursContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 0 !important;
+}
+
+.selectHoursContainer select {
+  margin-bottom: 0 !important;
+  width: 50%;
+  font-size: 1em;
+  padding: 1em;
+}
+
+
+.selectDivider {
+  font-size: 2em;
+  color: #A8A8A8;
+  margin: 0;
+}

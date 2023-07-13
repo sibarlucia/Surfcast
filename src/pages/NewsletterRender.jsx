@@ -19,7 +19,7 @@ const NewsletterRender = () => {
     }
     if (step === '2') {
         return (
-            <Newsletter2></Newsletter2>
+            <Newsletter2 defaultResponse={responses} campaingId={campaingId} ></Newsletter2>
         )
     }
     if (step === '3') {
