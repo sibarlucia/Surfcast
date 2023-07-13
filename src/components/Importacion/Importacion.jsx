@@ -44,7 +44,7 @@ const progressData = [
 const DEFAULT_DATA_FORM = {
     listName: '',
     importType: '',
-    importValue: null
+    importValue: ''
 }
 
 const RESPONSE_NAMES = {
@@ -53,7 +53,7 @@ const RESPONSE_NAMES = {
     importValue: 'importacion/1/importValue'
 }
 
-const Importacion = ({ defaultResponse = [], campaingId}) => {
+const Importacion = ({ defaultResponse = [], campaignId}) => {
     const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
     const [boton, setBoton] = useState("");
     const navigate = useNavigate()
@@ -75,7 +75,7 @@ const Importacion = ({ defaultResponse = [], campaingId}) => {
 
     const handleButtonClick = (accion) => {
         setBoton(accion);
-        const defaultValue = accion === 'buscar' ? '' : null
+        const defaultValue = accion === 'buscar' ? '' : ''
         setDataForm({ ...dataForm, importType: accion, importValue: defaultValue })
     };
 
@@ -86,10 +86,10 @@ const Importacion = ({ defaultResponse = [], campaingId}) => {
                 question_name: RESPONSE_NAMES[inputName],
                 type: 'string',
                 answer: dataForm[inputName],
-                campaign_id: campaingId
+                campaign_id: campaignId
             })
         })
-        navigate(`/campaign/${campaingId}/importacion/2/`)
+        navigate(`/campaign/${campaignId}/importacion/2/`)
     };
 
     const handleChangeInput = (event) => {

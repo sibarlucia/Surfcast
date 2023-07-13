@@ -4,7 +4,7 @@ import Newsletter2 from '../components/Newsletter/Newsletter2'
 import Newsletter3 from '../components/Newsletter/Newsletter3'
 import Newsletter4 from '../components/Newsletter/Newsletter4'
 import Newsletter5 from '../components/Newsletter/Newsletter5'
-import { useGetResponsesByCampaing } from '../hooks/usegetREsponsesByCampaing'
+import { useGetResponsesByCampaing } from '../hooks/useGetResponsesByCampaign'
 
 const NewsletterRender = () => {
 

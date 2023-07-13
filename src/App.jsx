@@ -40,7 +40,6 @@ function App() {
 
         return true // para desarrollo, comentar cuando sea necesario
 
-        return userData.token ? true : false
     }, [userData])
 
     return (
@@ -132,7 +131,7 @@ function App() {
                         }
                     />
                     <Route
-                        path='/campaign/:campaingId/importacion/:step'
+                        path='/campaign/:campaignId/importacion/:step'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Importacion />
@@ -164,7 +163,7 @@ function App() {
                         }
                     />
                     <Route
-                        path='/reunion/:step'
+                        path='/campaign/:campaignId/reunion/:step'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Reunion />
@@ -181,7 +180,7 @@ function App() {
                     /> */}
                     <Route
                         // path='/newsletter/:step'
-                        path='/campaign/:campaingId/newsletter/:step'
+                        path='/campaign/:campaignId/newsletter/:step'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Newsletter />
@@ -197,7 +196,7 @@ function App() {
                         }
                     /> */}
                     <Route
-                        path='/campaign/:campaingId/aumentarred/:step'
+                        path='/campaign/:campaignId/aumentarred/:step'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <AumentarRed />

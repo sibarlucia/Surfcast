@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import styles from "./importacion2.module.css";
 import { ProgressBar } from "../General/ProgressBar";
+import { createResponse } from "../../services/responses/createResponse";
+import { useNavigate } from "react-router-dom";
+
+
 
 const progressData = [
     {
@@ -44,11 +48,26 @@ const progressData = [
     },
 ];
 
-const Importacion2 = () => {
+const DEFAULT_DATA_FORM = {
+    listName: '',
+    importType: '',
+    importValue: null
+}
+
+const RESPONSE_NAMES = {
+    listName: 'importacion/1/listName',
+    importType: 'importacion/1/importType',
+    importValue: 'importacion/1/importValue'
+}
+
+const Importacion2 = ({defaultResponse = [], campaignId}) => {
     const { step } = useParams();
 
     const [route, setRoute] = useState("");
     const [submit, setSubmit] = useState(false);
+
+    const navigate = useNavigate()
+
 
     const estiloBoton = styles.button4;
     const botonSeleccionado = styles.seleccionado;
@@ -82,27 +101,27 @@ const Importacion2 = () => {
                         <button
                             type="button"
                             className={
-                                route === "/reunion/1" ? botonSeleccionado : estiloBoton
+                                route === `/campaign/${campaignId}/reunion/1` ? botonSeleccionado : estiloBoton
                             }
-                            onClick={() => [handleButtonClick("/reunion/1")]}
+                            onClick={() => [handleButtonClick(`/campaign/${campaignId}/reunion/1`)]}
                         >
               Lograr reunirme con clientes potenciales
                         </button>
                         <button
                             type="button"
                             className={
-                                route === "/webinar/1" ? botonSeleccionado : estiloBoton
+                                route === `/campaign/${campaignId}/webinar/1` ? botonSeleccionado : estiloBoton
                             }
-                            onClick={() => [handleButtonClick("/webinar/1")]}
+                            onClick={() => [handleButtonClick(`/campaign/${campaignId}/webinar/1`)]}
                         >
               Invitar a un webinar o evento corporativo
                         </button>
                         <button
                             type="button"
                             className={
-                                route === "/aumentarred/1" ? botonSeleccionado : estiloBoton
+                                route === `/campaign/${campaignId}/aumentarred/1` ? botonSeleccionado : estiloBoton
                             }
-                            onClick={() => [handleButtonClick("/aumentarred/1")]}
+                            onClick={() => [handleButtonClick(`/campaign/${campaignId}/aumentarred/1`)]}
                         >
               Aumentar mi red de contactos
                         </button>
@@ -111,18 +130,18 @@ const Importacion2 = () => {
                         <button
                             type="button"
                             className={
-                                route === "/newsletter/1" ? botonSeleccionado : estiloBoton
+                                route === `/campaign/${campaignId}/newsletter/1` ? botonSeleccionado : estiloBoton
                             }
-                            onClick={() => [handleButtonClick("/newsletter/1")]}
+                            onClick={() => [handleButtonClick(`/campaign/${campaignId}/newsletter/1`)]}
                         >
               Invitar a inscribirse a un newsletter
                         </button>
                         <button
                             type="button"
                             className={
-                                route === "/producto/1" ? botonSeleccionado : estiloBoton
+                                route === `/campaign/${campaignId}/producto/1` ? botonSeleccionado : estiloBoton
                             }
-                            onClick={() => [handleButtonClick("/producto/1")]}
+                            onClick={() => [handleButtonClick(`/campaign/${campaignId}/producto/1`)]}
                         >
               Promocionar un producto
                         </button>

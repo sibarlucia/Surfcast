@@ -17,7 +17,7 @@ const RESPONSE_NAMES = {
     personType: 'aumentaTuRed/2/personType',
 }
 
-const AumentarRed2 = ({ defaultResponse = null, campaingId }) => {
+const AumentarRed2 = ({ defaultResponse = null, campaignId }) => {
     const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
     const navigate = useNavigate()
 
@@ -39,10 +39,10 @@ const AumentarRed2 = ({ defaultResponse = null, campaingId }) => {
                 question_name: RESPONSE_NAMES[inputName],
                 type: 'string',
                 answer: dataForm[inputName],
-                campaign_id: campaingId
+                campaign_id: campaignId
             })
         })
-        navigate(`/campaign/${campaingId}/aumentarred/3/`)
+        navigate(`/campaign/${campaignId}/aumentarred/3/`)
     } 
 
     const handleChangeSelectValue = (event) => {
@@ -92,10 +92,10 @@ const AumentarRed2 = ({ defaultResponse = null, campaingId }) => {
                 </button>
                 {/* </Link> */}
 
-                <Link className={styles.volver} to={`/campaign/${campaingId}/aumentarred/1`}>
+                <Link className={styles.volver} to={`/campaign/${campaignId}/aumentarred/1`}>
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
-                <Link className={styles.continuar} to={`/campaign/${campaingId}/aumentarred/3`}>
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/aumentarred/3`}>
                     <img src="/src/assets/continuardespues.png" />
                 </Link>
             </form>

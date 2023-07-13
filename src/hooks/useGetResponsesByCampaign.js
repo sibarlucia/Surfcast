@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { readResponsesByCampaing } from "../services/responses/readResponsesByCampaing"
+import { readResponsesBycampaign } from "../services/responses/readResponsesByCampaign"
 
-export const useGetResponsesByCampaing = ({ campaingId, filter }) => {
+export const useGetResponsesByCampaign = ({ campaignId, filter }) => {
     const [responses, setResponses] = useState(null)
 
     useEffect(() => {
-        if (campaingId) {
-            readResponsesByCampaing({ campaign_id: campaingId })
+        if (campaignId) {
+            readResponsesBycampaign({ campaign_id: campaignId })
                 .then(response => {
                     const { data } = response
                     const formatedData = data.filter(item => {
@@ -18,9 +18,9 @@ export const useGetResponsesByCampaing = ({ campaingId, filter }) => {
                     setResponses(formatedData)
                 })
         } else {
-            console.error('[useGetResponsesByCampaing] campaingId faltante')
+            console.error('[useGetResponsesBycampaign] campaignId faltante')
         }
-    },[campaingId, filter])
+    },[campaignId, filter])
 
     return responses
 

@@ -51,7 +51,7 @@ const RESPONSE_NAMES = {
     extraPosition: 'aumentaTuRed/1/extraPosition'
 }
 
-const AumentarRed = ({ defaultResponse = null, campaingId }) => {
+const AumentarRed = ({ defaultResponse = null, campaignId }) => {
     const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
     const navigate = useNavigate()
 
@@ -84,10 +84,10 @@ const AumentarRed = ({ defaultResponse = null, campaingId }) => {
                 question_name: RESPONSE_NAMES[inputName],
                 type: 'string',
                 answer: dataForm[inputName],
-                campaign_id: campaingId
+                campaign_id: campaignId
             })
         })
-        navigate(`/campaign/${campaingId}/aumentarred/2/`)
+        navigate(`/campaign/${campaignId}/aumentarred/2/`)
     } 
 
     return (
@@ -194,10 +194,10 @@ const AumentarRed = ({ defaultResponse = null, campaingId }) => {
                 </button>
                 {/* </Link> */}
 
-                <Link className={styles.volver} to={`/campaign/${campaingId}/importacion/2`}>
+                <Link className={styles.volver} to={`/campaign/${campaignId}/importacion/2`}>
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
-                <Link className={styles.continuar} to={`/campaign/${campaingId}/aumentarred/2`}>
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/aumentarred/2`}>
                     <img src="/src/assets/continuardespues.png" />
                 </Link>
             </form>

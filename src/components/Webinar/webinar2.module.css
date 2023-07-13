@@ -62,7 +62,7 @@ body{
 .mainDiv form{
     position: relative;
     height: 1200px;
-    height: clamp(700px,900px,900px);
+    height: clamp(700px,1400px,1400px);
     width: 90vw;
     /* left: 60px;
     top: 66px; */
@@ -88,8 +88,6 @@ body{
     letter-spacing: 0.2em;
     text-align: center;
     color: #7D7DFF;   
-    padding-top: 50px;
-
 }
 
 .mainDiv select {

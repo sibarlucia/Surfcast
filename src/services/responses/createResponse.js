@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { routeGenerator } from '../Routegenerator'
+import { routeGenerator } from '../routegenerator'
 import { getToken } from '../getToken'
 
 const baseUrl = routeGenerator('/responses/responses/')

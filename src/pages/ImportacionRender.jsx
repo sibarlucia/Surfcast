@@ -7,15 +7,15 @@ import Importacion4 from "../components/Importacion/Importacion4";
 import Importacion5 from "../components/Importacion/Importacion5";
 import Loginlinkedin from "../components/Importacion/LoginLinkedin";
 import Logingmail from "../components/Importacion/Logingmail";
-import { readResponsesByCampaing } from '../services/responses/readResponsesByCampaing'
-// RRBC = readResponsesByCampaing
+import { readResponsesBycampaign } from '../services/responses/readResponsesByCampaign'
+// RRBC = readResponsesBycampaign
 
 const ImportacionRender = () => {
-    const { step, campaingId } = useParams()
+    const { step, campaignId } = useParams()
     const [RRBC, setRRBC] = useState(null)
 
     useEffect(() => {
-        readResponsesByCampaing({ campaign_id: campaingId })
+        readResponsesBycampaign({ campaign_id: campaignId })
             .then(response => {
                 const { data } = response
                 const formatedData = data.filter(item => {
@@ -24,7 +24,7 @@ const ImportacionRender = () => {
                 })
                 setRRBC(formatedData)
             })
-    },[campaingId])
+    },[campaignId])
 
     if (step === "loginlinkedin") {
         return <Loginlinkedin></Loginlinkedin>;
@@ -34,19 +34,19 @@ const ImportacionRender = () => {
     }
 
     if (step == null || step === "1") {
-        return <Importacion defaultResponse={RRBC} campaingId={campaingId}></Importacion>;
+        return <Importacion defaultResponse={RRBC} campaignId={campaignId}></Importacion>;
     }
     if (step === "2") {
-        return <Importacion2 defaultResponse={RRBC}></Importacion2>;
+        return <Importacion2 defaultResponse={RRBC} campaignId={campaignId}></Importacion2>;
     }
     if (step === "3") {
-        return <Importacion3 defaultResponse={RRBC}></Importacion3>;
+        return <Importacion3 defaultResponse={RRBC} campaignId={campaignId}></Importacion3>;
     }
     if (step === "4") {
-        return <Importacion4 defaultResponse={RRBC}></Importacion4>;
+        return <Importacion4 defaultResponse={RRBC} campaignId={campaignId}></Importacion4>;
     }
     if (step === "5") {
-        return <Importacion5 defaultResponse={RRBC}></Importacion5>;
+        return <Importacion5 defaultResponse={RRBC} campaignId={campaignId}></Importacion5>;
     }
 
     return null;
