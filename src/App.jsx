@@ -171,32 +171,33 @@ function App() {
                             </PrivateRoute>
                         }
                     />
-                    <Route
+                    {/* <Route
                         path='/newsletter'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Newsletter />
                             </PrivateRoute>
                         }
-                    />
+                    /> */}
                     <Route
-                        path='/newsletter/:step'
+                        // path='/newsletter/:step'
+                        path='/campaign/:campaingId/newsletter/:step'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Newsletter />
                             </PrivateRoute>
                         }
                     />
-                    <Route
+                    {/* <Route
                         path='/aumentarred'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <AumentarRed />
                             </PrivateRoute>
                         }
-                    />
+                    /> */}
                     <Route
-                        path='/aumentarred/:step'
+                        path='/campaign/:campaingId/aumentarred/:step'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <AumentarRed />

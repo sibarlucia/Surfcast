@@ -75,7 +75,7 @@ body{
     color: #7D7DFF;   
 }
 
-.mainDiv select {
+.mainDiv select, .mainDiv input {
     height: 58px;
     width: 995px;
     left: 366px;
@@ -89,6 +89,12 @@ body{
     line-height: 41px;
     letter-spacing: 0em;
     text-align: center;
+}
+
+.mainDiv input {
+    outline-color: #7D7DFF;
+    border-color: #A8A8A8;
+    border-style: solid;
 }
 
  .botonSiguiente {

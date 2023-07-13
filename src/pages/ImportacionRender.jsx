@@ -20,7 +20,7 @@ const ImportacionRender = () => {
                 const { data } = response
                 const formatedData = data.filter(item => {
                     // return item.question_name.includes('importacion/')
-                    return item.question_name.includes('test_importacion/') // para test
+                    return item.question_name.includes('importacion/') // para test
                 })
                 setRRBC(formatedData)
             })

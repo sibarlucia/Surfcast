@@ -48,9 +48,9 @@ const DEFAULT_DATA_FORM = {
 }
 
 const RESPONSE_NAMES = {
-    listName: 'test_importacion/1/listName',
-    importType: 'test_importacion/1/importType',
-    importValue: 'test_importacion/1/importValue'
+    listName: 'importacion/1/listName',
+    importType: 'importacion/1/importType',
+    importValue: 'importacion/1/importValue'
 }
 
 const Importacion = ({ defaultResponse = [], campaingId}) => {
@@ -60,9 +60,9 @@ const Importacion = ({ defaultResponse = [], campaingId}) => {
 
     useEffect(() => {
         if (defaultResponse) {
-            const listName = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['listName']).answer || ''
-            const importType = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['importType']).answer || ''
-            const importValue = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['importValue']).answer || ''
+            const listName = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['listName'])?.answer || ''
+            const importType = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['importType'])?.answer || ''
+            const importValue = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['importValue'])?.answer || ''
             setDataForm({
                 listName,
                 importType,
