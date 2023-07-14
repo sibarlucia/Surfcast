@@ -1,0 +1,28 @@
+.label {
+  color: black;
+  border-style: dashed;
+  border-color: #8e8a8a;
+  border-radius: 10px;
+  /* border: 1px  red; */
+  width: 600px;
+  height: 70px;
+  /* background-color: black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.label input {
+  display: none;
+}
+
+.label img {
+  scale: 0.05;
+}
+
+
+.fileHover {
+  background-color: #7D7DFF55;
+} 

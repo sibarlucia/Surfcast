@@ -1,110 +1,151 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./newsletter.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { createResponse } from "../../services/responses/createResponse";
 
-const Newsletter3 = () => {
-  const gris = styles.opcion;
-  const violeta = styles.opcionVioleta;
 
-  const [activo1, setActivo1] = useState(false);
-  const [activo2, setActivo2] = useState(false);
-  const [activo3, setActivo3] = useState(false);
-  const [activo4, setActivo4] = useState(false);
-  const [activo5, setActivo5] = useState(false);
+const benefitslist = [
+    'Información exclusiva', 'Consejos', 'Trucos y tips', 'Promociones exclusivas'
+]
 
-  const handleButtonClick1 = () => {
-    setActivo1(!activo1);
-  };
-  const handleButtonClick2 = () => {
-    setActivo2(!activo2);
-  };
-  const handleButtonClick3 = () => {
-    setActivo3(!activo3);
-  };
-  const handleButtonClick4 = () => {
-    setActivo4(!activo4);
-  };
-  const handleButtonClick5 = () => {
-    setActivo5(!activo5);
-  };
+const DEFAULT_DATA_FORM = {
+    benefits: [],
+    benefitsOthers: ''
+}
 
-  useEffect(() => {}, [activo5]);
+const RESPONSE_NAMES = {
+    benefits: 'newsletter/3/benefits',
+    benefitsOthers: 'newsletter/3/benefitsOthers'
+}
 
-  return (
-    <div className={styles.mainDiv}>
-      <form>
-        <div className={styles.etapa}>3/5</div>
+const Newsletter3 = ({defaultResponse = null, campaignId}) => {
+    const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
+    const [otroButton, setOtroButton] = useState(false)
+    const navigate = useNavigate()
+    const gris = styles.opcion;
+    const violeta = styles.opcionVioleta;
 
-        <div>
-          <h1>¡Aumentemos tus suscripciones</h1>
-          <p>Es hora de personalizar tu campaña</p>
+    console.log(dataForm)
+
+    useEffect(() => {
+        if (defaultResponse) {
+            const benefits = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['benefits'])?.answer || []
+            const benefitsOthers = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['benefitsOthers'])?.answer || ''
+            setDataForm({
+                benefits,
+                benefitsOthers
+            })
+            if (benefitsOthers) {
+                setOtroButton(true)
+            }
+        }
+    }, [defaultResponse])
+
+ 
+
+    const handleButtonOtro = () => {
+        setOtroButton(!otroButton);
+    };
+
+
+    const handleChangeOthers = (event) => {
+        const { name, value } = event.target
+        setDataForm({ ...dataForm, [name]: value })
+    }
+
+    const handleSelectButton = (selected) => () => {
+        let updatedBenefits = [ ...dataForm.benefits ]
+        if (dataForm.benefits.includes(selected)) {
+            updatedBenefits = updatedBenefits.filter(item => item !== selected)
+            setDataForm({ ...dataForm, benefits: updatedBenefits })
+        } else {
+            updatedBenefits.push(selected)
+            setDataForm({ ...dataForm, benefits: updatedBenefits })
+        }
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        Object.keys(dataForm).forEach(inputName => {
+            let type = 'string'
+            if (inputName === 'benefits') {
+                type = 'Lista'
+            }
+            const answer = dataForm[inputName]
+            createResponse({
+                question_name: RESPONSE_NAMES[inputName],
+                type,
+                answer,
+                campaign_id: campaignId
+            })
+        })
+        navigate(`/campaign/${campaignId}/newsletter/4/`)
+    }  
+
+    return (
+        <div className={styles.mainDiv}>
+            <form onSubmit={handleSubmit}>
+                <div className={styles.etapa}>3/5</div>
+
+                <div>
+                    <h1>¡Aumentemos tus suscripciones</h1>
+                    <p>Es hora de personalizar tu campaña</p>
+                </div>
+
+                <div>
+                    <h2>¿Qué beneficio se ofrecerá para los suscriptores?</h2>
+                    <div className={styles.botonera}>
+                        {
+                            benefitslist.map((item, index) => {
+                                return (
+                                    <button
+                                        type='button'
+                                        key={`button-option-${index}`}
+                                        className={dataForm.benefits.includes(item) ? violeta : gris}
+                                        onClick={handleSelectButton(item)}
+                                    >
+                                        {item}
+                                    </button>
+                                )
+                            })
+                        }
+                    </div>
+
+                    <div className={styles.botonera}>
+                        <button
+                            type="button"
+                            className={otroButton ? violeta : gris}
+                            onClick={handleButtonOtro}
+                        >
+                            Otro
+                        </button>
+
+                        {otroButton == true && (
+                            <input
+                                onChange={handleChangeOthers}
+                                name="benefitsOthers"
+                                type="text"
+                                placeholder="Escribe aquí"
+                                className={styles.input2}
+                                value={FormData.benefitsOthers}
+                            ></input>
+                        )}
+                    </div>
+                </div>
+
+                {/* <Link to="/newsletter/4"> */}
+                <button className={styles.botonSiguiente}>Siguiente</button>
+                {/* </Link> */}
+
+                <Link className={styles.volver} to={`/campaign/${campaignId}/newsletter/2/`}>
+                    <img src="/src/assets/volvernegro.png" />
+                </Link> 
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/newsletter/4/`}>
+                    <img src="/src/assets/continuardespues.png" />
+                </Link>
+            </form>
         </div>
-
-        <div>
-          <h2>¿Qué beneficio se ofrecerá para los suscriptores?</h2>
-          <div className={styles.botonera}>
-            <button
-              type="button"
-              className={activo1 ? violeta : gris}
-              onClick={handleButtonClick1}
-            >
-              Información exclusiva
-            </button>
-            <button
-              type="button"
-              className={activo2 ? violeta : gris}
-              onClick={handleButtonClick2}
-            >
-              Consejos
-            </button>
-            <button
-              type="button"
-              className={activo3 ? violeta : gris}
-              onClick={handleButtonClick3}
-            >
-              Trucos y tips
-            </button>
-            <button
-              type="button"
-              className={activo4 ? violeta : gris}
-              onClick={handleButtonClick4}
-            >
-              Promociones exclusivas
-            </button>
-          </div>
-
-          <div className={styles.botonera}>
-            <button
-              type="button"
-              className={activo5 ? violeta : gris}
-              onClick={handleButtonClick5}
-            >
-              Otro
-            </button>
-
-            {activo5 == true && (
-              <input
-                type="text"
-                placeholder="Escribe aquí"
-                className={styles.input2}
-              ></input>
-            )}
-          </div>
-        </div>
-
-        <Link to="/newsletter/4">
-          <button className={styles.botonSiguiente}>Siguiente</button>
-        </Link>
-
-        <Link className={styles.volver} to="/newsletter/2">
-          <img src="/src/assets/volvernegro.png" />
-        </Link>
-        <Link className={styles.continuar} to="/newsletter/4">
-          <img src="/src/assets/continuardespues.png" />
-        </Link>
-      </form>
-    </div>
-  );
+    );
 };
 
 export default Newsletter3;

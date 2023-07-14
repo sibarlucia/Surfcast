@@ -1,8 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./aumentarRed.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FileDroper } from "../General/FileDroper"; 
+import { createResponse } from "../../services/responses/createResponse";
 
-const AumentarRed3 = () => {
+const DEFAULT_DATA_FORM = {
+    document: '',
+}
+
+const RESPONSE_NAMES = {
+    document: 'aumentaTuRed/3/document',
+}
+
+const AumentarRed3 = ({ defaultResponse = null, campaignId }) => {
+    const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
     const [popUp, setPopUp] = useState(false);
     const [effect, setEffect] = useState();
 
@@ -10,19 +21,44 @@ const AumentarRed3 = () => {
 
     const blur = styles.blur;
 
-    const handleFinalizar = () => {
+    useEffect(() => {
+        if (defaultResponse) {
+            const document = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['document'])?.answer || ''
+            setDataForm({
+                document
+            })
+        }
+    }, [defaultResponse])
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        Object.keys(dataForm).forEach(inputName => {
+            let type = 'string' 
+            if (typeof dataForm[inputName] === Object) {
+                type = 'file'
+            }
+            createResponse({
+                question_name: RESPONSE_NAMES[inputName],
+                type,
+                answer: dataForm[inputName],
+                campaign_id: campaignId
+            })
+        })
         setPopUp(true);
         setEffect(blur);
         setTimeout(() => {
-            navigate("/importacion/3");
+            navigate(`/campaign/${campaignId}/importacion/3/`)
         }, 3000);
-    };
+    } 
 
-    useEffect(() => {}, [popUp]);
+    const handleSelectFile = (files) => {
+        const file = files[0]
+        setDataForm({ ...dataForm, document: file })
+    }
 
     return (
         <div className={styles.mainDiv}>
-            <form className={effect}>
+            <form className={effect} onSubmit={handleSubmit}>
                 {popUp == true && (
                     <div className={styles.fondoImg}>
                         <img
@@ -41,22 +77,28 @@ const AumentarRed3 = () => {
 
                 <div>
                     <h2>Adjunta algún documento que desees compartir</h2>
-                    <input
-                        type="file"
-                        placeholder="Subir archivos"
-                        className={styles.input2}
-                    ></input>
+                    <FileDroper
+                        onDrop={handleSelectFile}
+                    >
+                    </FileDroper>
+                    {
+                        typeof dataForm.document === 'object' && (
+                            <span>
+                                {dataForm.document.name}
+                            </span>
+                        ) 
+                    }
                 </div>
 
-                <Link to="/aumentarred/3">
-                    <button
-                        className={styles.botonSiguiente}
-                        onClick={() => handleFinalizar()}
-                    >
+                {/* <Link to="/aumentarred/3"> */}
+                <button
+                    className={styles.botonSiguiente}
+                    // onClick={() => handleFinalizar()}
+                >
             Finalizar
-                    </button>
-                </Link>
-                <Link className={styles.volver} to="/aumentarred/2">
+                </button>
+                {/* </Link> */}
+                <Link className={styles.volver} to={`/campaign/${campaignId}/aumentarred/2/`} >
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
         

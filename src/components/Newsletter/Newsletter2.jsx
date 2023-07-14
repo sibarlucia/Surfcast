@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./newsletter.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { WeekSchedule } from "../General/WeekSchedule";
@@ -48,9 +48,15 @@ const defaultData = [
     }
 ]
 
+// const DEFAULT_DATA_FORM = {
+//     theme: '',
+// }
 
+// const RESPONSE_NAMES = {
+//     theme: 'newsletter/2/theme',
+// }
 
-const Newsletter2 = ({ defaultResponse = null, campaingId }) => {
+const Newsletter2 = ({ defaultResponse = null, campaignId }) => {
     const [scheduleData, setScheduleData] = useState(defaultData)
     const navigate = useNavigate()
     
@@ -71,7 +77,7 @@ const Newsletter2 = ({ defaultResponse = null, campaingId }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         // TODO: consumir apir para guardar la respuesta
-        navigate(`/campaign/${campaingId}/newsletter/3/`)
+        navigate(`/campaign/${campaignId}/newsletter/3/`)
     }
 
     return (
@@ -99,10 +105,10 @@ const Newsletter2 = ({ defaultResponse = null, campaingId }) => {
                     <button className={styles.botonSiguiente}>Siguiente</button>
                 </div>
 
-                <Link className={styles.volver} to={`/campaign/${campaingId}/newsletter/1/`}>
+                <Link className={styles.volver} to={`/campaign/${campaignId}/newsletter/1/`}>
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
-                <Link className={styles.continuar} to={`/campaign/${campaingId}/newsletter/3/`}>
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/newsletter/3/`}>
                     <img src="/src/assets/continuardespues.png" />
                 </Link>
             </form>

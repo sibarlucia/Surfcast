@@ -4,7 +4,12 @@ import { ProgressBar } from "../General/ProgressBar";
 import styles from "./importacion.module.css";
 import { createResponse } from "../../services/responses/createResponse";
 import { useNavigate } from "react-router-dom";
+// import { FileDrop } from 'react-file-drop';
+import { FileDroper } from "../General/FileDroper";
+import alert from 'sweetalert2'
+
 // controla como se ve la barra de progreso
+
 const progressData = [
     {
         node: {
@@ -58,6 +63,8 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
     const [boton, setBoton] = useState("");
     const navigate = useNavigate()
 
+    console.log(dataForm)
+
     useEffect(() => {
         if (defaultResponse) {
             const listName = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['listName'])?.answer || ''
@@ -73,18 +80,33 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
     }, [defaultResponse])
 
 
+    const handleFile = (files) => {
+        const file = files[0]
+        if (file.type !== 'text/csv') {
+            alert.fire({
+                text: 'El archivo debe ser un SVG',
+                icon: 'Warning',
+            })
+            return
+        }
+        setDataForm({ ...dataForm, importValue: file })
+    }
+
     const handleButtonClick = (accion) => {
         setBoton(accion);
-        const defaultValue = accion === 'buscar' ? '' : ''
-        setDataForm({ ...dataForm, importType: accion, importValue: defaultValue })
+        setDataForm({ ...dataForm, importType: accion, importValue: '' })
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         Object.keys(dataForm).forEach(inputName => {
+            let type = 'string' 
+            if (inputName === 'importValue' && dataForm.importType === 'cargar') {
+                type = 'file'
+            }
             createResponse({
                 question_name: RESPONSE_NAMES[inputName],
-                type: 'string',
+                type,
                 answer: dataForm[inputName],
                 campaign_id: campaignId
             })
@@ -161,10 +183,16 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
                         {boton === "cargar" && (
                             <div className={styles.files}>
                                 <h2>Adjunta algún documento que desees compartir</h2>
-                                <input className={styles.input2} id="file" type="file"></input>
-                                <label htmlFor="file">
-                                    <img src="/src/assets/flecha.png"></img>
-                                </label>
+                                <FileDroper
+                                    onDrop={handleFile}
+                                />
+                                {
+                                    typeof dataForm.importValue === 'object' && (
+                                        <span>
+                                            {dataForm.importValue.name}
+                                        </span>
+                                    ) 
+                                }
                             </div>
                         )}
                     </section>

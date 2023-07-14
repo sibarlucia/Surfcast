@@ -1,5 +1,5 @@
-import {React,  useState, useEffect}  from "react";
-import { Link, useParams,} from "react-router-dom";
+import { useState, useEffect}  from "react";
+import { useParams,} from "react-router-dom";
 import Importacion from "../components/Importacion/Importacion";
 import Importacion2 from "../components/Importacion/Importacion2";
 import Importacion3 from "../components/Importacion/Importacion3";
