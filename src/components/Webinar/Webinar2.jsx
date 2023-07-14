@@ -1,16 +1,74 @@
 import React, { useState } from "react";
 import styles from "./webinar2.module.css";
-import { Link } from "react-router-dom";
-import TimePicker from "react-time-picker";
-import "react-clock/dist/Clock.css";
-import "react-time-picker/dist/TimePicker.css";
+import { Link, useNavigate } from "react-router-dom";
+import { WeekSchedule } from "../General/WeekSchedule";
+// import TimePicker from "react-time-picker";
+// import "react-clock/dist/Clock.css";
+// import "react-time-picker/dist/TimePicker.css";
 
-const Webinar2 = () => {
-    const [hora, setHora] = useState("10:00");
+const defaultData = [
+    {
+        dayName: 'DOM',
+        active: false,
+        startTime: '',
+        endTime: ''
+    },
+    {
+        dayName: 'LUN',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00'   
+    },
+    {
+        dayName: 'MAR',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00'   
+    },
+    {
+        dayName: 'MIER',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00'    
+    },
+    {
+        dayName: 'JUE',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00'    
+    },
+    {
+        dayName: 'VIER',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00' 
+    },
+    {
+        dayName: 'SAB',
+        active: false,
+        startTime: '',
+        endTime: '' 
+    }
+]
+
+
+const Webinar2 = ({ defaultResponse = null, campaignId }) => {
+    const [scheduleData, setScheduleData] = useState(defaultData)
+    const navigate = useNavigate()
+
+    const handleChangeScheduleData = (updatedData) => {
+        setScheduleData(updatedData)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        // TODO: consumir apir para guardar la respuesta
+        navigate(`/campaign/${campaignId}/webinar/3/`)
+    }
 
     return (
         <div className={styles.mainDiv}>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <article className={styles.mainArticle}>
                     <section>
                         <p className={styles.etapa}>2/6</p>
@@ -29,61 +87,14 @@ const Webinar2 = () => {
                         </select>
                     </section>
                     <section className={styles.horarios}>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Lunes: <input
-                                type="time"
-                                className={styles.time}
-                            ></input> --- <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Martes:<input
-                                type="time"
-                                className={styles.time}
-                            ></input> --- <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Miércoles:<input
-                                type="time"
-                                className={styles.time}
-                            ></input> --- <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Jueves:<input
-                                type="time"
-                                className={styles.time}
-                            ></input> --- <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Viernes:<input
-                                type="time"
-                                className={styles.time}
-                            ></input> --- <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Sábado:<input
-                                type="time"
-                                className={styles.time}
-                            ></input> --- <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Domingo:<input
-                                type="time"
-                                className={styles.time}
-                            ></input> --- <input type="time" className={styles.time}></input>
-                        </label>
+                        <WeekSchedule
+                            data={scheduleData}
+                            onChange={handleChangeScheduleData}                        
+                        />
                     </section>
 
                     <section>
-                        <Link to="/webinar/3">
-                            <button className={styles.botonSiguiente}>Siguiente</button>
-                        </Link>
+                        <button className={styles.botonSiguiente}>Siguiente</button>
                     </section>
                 </article>
 

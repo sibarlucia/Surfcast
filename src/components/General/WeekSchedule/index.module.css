@@ -39,6 +39,7 @@
 }
 
 .selectHoursContainer select {
+  height: unset;
   margin-bottom: 0 !important;
   width: 50%;
   font-size: 1em;

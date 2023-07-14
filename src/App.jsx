@@ -138,16 +138,16 @@ function App() {
                             </PrivateRoute>
                         }
                     />
-                    <Route
+                    {/* <Route
                         path='/webinar'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Webinar />
                             </PrivateRoute>
                         }
-                    />
+                    /> */}
                     <Route
-                        path='/webinar/:step'
+                        path='/campaign/:campaignId/webinar/:step'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Webinar />

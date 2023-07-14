@@ -35,7 +35,7 @@ body{
 
 .mainDiv{
     background: linear-gradient(180deg, #3EB5E8 0%, rgba(62, 181, 232, 0) 100%);
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
