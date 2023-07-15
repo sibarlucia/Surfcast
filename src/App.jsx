@@ -123,7 +123,7 @@ function App() {
                         }
                     />
                     <Route
-                        path='/producto/:step'
+                        path='/campaign/:campaignId/producto/:step'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Producto />

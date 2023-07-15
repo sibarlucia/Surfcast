@@ -1,57 +1,110 @@
-import React, { useState } from "react";
-import { Link, BrowserRouter, Route, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./producto.module.css";
-import Producto4 from "./Producto4";
+import { createResponse } from "../../services/responses/createResponse";
 
-const Producto3 = () => {
-  const { step } = useParams();
+const DEFAULT_DATA_FORM = {
+    precio: '',
+    link: ''
+}
 
-  return (
-    <div className={styles.mainDiv}>
-      <form>
-        <article className={styles.mainArticle}>
-          <section className={styles.etapa}>3/5</section>
-          <section>
-            <h1>¡Promocionemos tu producto o servicio!</h1>
-            <p>Es hora de personalizar tu campaña</p>
-          </section>
-          <section>
-            <h2>Precio</h2>
-            <input
-              className={styles.input2}
-              type="text"
-              placeholder="Escribe aquí"
-            ></input>
-          </section>
-          <section>
-            <h2>¿Dónde lo puedo conseguir?</h2>
-            <p>Pega el link aquí</p>
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="https:/workspace.com/webinar/"
-            ></input>
-          </section>
-          <section>
-            <Link to="/producto/4">
-              <button className={styles.botonSiguiente}>Siguiente</button>
-            </Link>
-          </section>
-        </article>
+const RESPONSE_NAMES = {
+    precio: 'producto/3/precio',
+    link: 'producto/3/link'
+}
 
-        <div></div>
+const Producto3 = ({defaultResponse = null, campaignId}) => {
+    const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
+    const navigate = useNavigate()
 
-        <div></div>
+    console.log(dataForm)
 
-        <Link className={styles.volver} to="/producto/2">
-          <img src="/src/assets/volvernegro.png" />
-        </Link>
-        <Link className={styles.continuar} to="/producto/4">
-          <img src="/src/assets/continuardespues.png" />
-        </Link>
-      </form>
-    </div>
-  );
+    useEffect(() => {
+        if (defaultResponse) {
+            const precio = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['precio'])?.answer || ''
+            const link = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['link'])?.answer || ''
+
+            setDataForm({
+                precio,
+                link
+            })
+        }
+    }, [defaultResponse])
+
+    const handleChangeSelectValue = (event) => {
+        const { value, name } = event.target 
+        setDataForm({ ...dataForm, [name]: value })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log({dataForm})
+        Object.keys(dataForm).forEach(inputName => {
+            createResponse({
+                question_name: RESPONSE_NAMES[inputName],
+                type: 'string',
+                answer: dataForm[inputName],
+                campaign_id: campaignId
+            })
+        })
+        navigate(`/campaign/${campaignId}/producto/4/`)
+    } 
+
+
+    return (
+        <div className={styles.mainDiv}>
+            <form onSubmit={handleSubmit}>
+                <article className={styles.mainArticle}>
+                    <section className={styles.etapa}>3/5</section>
+                    <section>
+                        <h1>¡Promocionemos tu producto o servicio!</h1>
+                        <p>Es hora de personalizar tu campaña</p>
+                    </section>
+                    <section>
+                        <h2>Precio</h2>
+                        <input
+                            
+
+                            type="text"
+                            placeholder="Escribe aquí"
+                            className={styles.input2}
+                            value={dataForm.precio}
+                            name='precio'
+                            onChange={handleChangeSelectValue}
+                        ></input>
+                    </section>
+                    <section>
+                        <h2>¿Dónde lo puedo conseguir?</h2>
+                        <p>Pega el link aquí</p>
+                        <input
+                            value={dataForm.link}
+                            name="link"
+                            onChange={handleChangeSelectValue}
+                            type="url"
+                            placeholder="https://workspace.com/webinar/"
+                            className={styles.input}
+                        ></input>
+                    </section>
+                    <section>
+                        
+                        <button className={styles.botonSiguiente}>Siguiente</button>
+                        
+                    </section>
+                </article>
+
+                <div></div>
+
+                <div></div>
+
+                <Link className={styles.volver} to={`/campaign/${campaignId}/producto/2/`}>
+                    <img src="/src/assets/volvernegro.png" />
+                </Link>
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/producto/4/`}>
+                    <img src="/src/assets/continuardespues.png" />
+                </Link>
+            </form>
+        </div>
+    );
 };
 
 export default Producto3;
