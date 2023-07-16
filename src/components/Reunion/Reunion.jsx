@@ -188,11 +188,11 @@ const Reunion = ({ defaultResponse = null, campaignId }) => {
                     }
                 </div>
 
-                <Link to={`/campaign/${campaignId}/reunion/2`}>
-                    <button type="submit" className={styles.botonSiguiente}>
-            Siguiente
-                    </button>
-                </Link>
+                {/* <Link to={`/campaign/${campaignId}/reunion/2`}> */}
+                <button type="submit" className={styles.botonSiguiente}>
+                    Siguiente
+                </button>
+                {/* </Link> */}
 
                 <Link className={styles.volver} to={`/campaign/${campaignId}/importacion/2`}>
                     <img src="/src/assets/volvernegro.png" />

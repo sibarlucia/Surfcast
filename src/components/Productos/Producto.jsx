@@ -18,7 +18,7 @@ const Producto = ({ defaultResponse = null, campaignId }) => {
 
     useEffect(() => {
         if (defaultResponse) {
-            const producto = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['theme'])?.answer || ''
+            const producto = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['producto'])?.answer || ''
             setDataForm({
                 producto,
             })
@@ -62,7 +62,7 @@ const Producto = ({ defaultResponse = null, campaignId }) => {
                         placeholder="¿Qué necesidad satisface o qué problema soluciona?"
                         className={styles.input2}
                         value={dataForm.producto}
-                        name='theme'
+                        name='producto'
                         onChange={handleChangeSelectValue}
                     />
                 </div>

@@ -14,7 +14,7 @@ const RESPONSE_NAMES = {
     benefit2: 'producto/2/benefit2',
     benefit3: 'producto/2/benefit3'
 }
-
+"producto/2/benefit1"
 const Producto2 = ({ defaultResponse = null, campaignId }) => {
 
     const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)

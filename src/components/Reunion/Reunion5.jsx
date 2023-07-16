@@ -11,7 +11,7 @@ const DEFAULT_DATA_FORM = {
 }
 
 const RESPONSE_NAMES = {
-    valor: 'reunion/3/valor',
+    valor: 'reunion/5/valor',
 }
 const Reunion5 = ({ defaultResponse = null, campaignId }) => {
 
@@ -20,7 +20,7 @@ const Reunion5 = ({ defaultResponse = null, campaignId }) => {
 
     useEffect(() => {
         if (defaultResponse) {
-            const valor = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['service'])?.answer || ''
+            const valor = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['valor'])?.answer || ''
             setDataForm({
                 valor
             })
@@ -58,10 +58,8 @@ const Reunion5 = ({ defaultResponse = null, campaignId }) => {
                 <div>
                     <h2>¿Cuál es tu valor diferencial?</h2>
                     <input
-                        
-
-                        value={dataForm.topic}
-                        name="servicio"
+                        value={dataForm.valor}
+                        name="valor"
                         onChange={handelChangeInput}
                         type="text"
                         placeholder="¿Cuál es tu valor diferencial?"
