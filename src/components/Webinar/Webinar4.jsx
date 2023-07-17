@@ -10,9 +10,9 @@ const DEFAULT_DATA_FORM = {
 }
 
 const RESPONSE_NAMES = {
-    benefit1: 'webinar/3/benefit1',
-    benefit2: 'webinar/3/benefit2',
-    benefit3: 'webinar/3/benefit3'
+    benefit1: 'webinar/4/benefit1',
+    benefit2: 'webinar/4/benefit2',
+    benefit3: 'webinar/4/benefit3'
 }
 
 const Webinar4 = ({ defaultResponse = null, campaignId }) => {

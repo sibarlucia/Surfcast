@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 import ArrowIcon from '../../../assets/up_arrow.svg'
 
-export const campaignGeneralInformation = ({ invitations = 0, unreadMessages = 0, views = 0  }) => {
+export const CampaignGeneralInformation = ({ invitations = 0, unreadMessages = 0, views = 0  }) => {
 
     return (
         <section className={`pageSection ${styles.mainSection}`}>

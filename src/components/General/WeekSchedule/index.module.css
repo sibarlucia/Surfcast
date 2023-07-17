@@ -44,6 +44,14 @@
   width: 50%;
   font-size: 1em;
   padding: 1em;
+  border-radius: 13px;
+  background: #f4f4f4;
+  color: #a8a8a8;
+  font-family: PlexRegular;
+  font-weight: 450;
+  line-height: 41px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
 

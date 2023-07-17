@@ -1,10 +1,53 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./importacion4y5.module.css";
 import { ProgressBar } from "../General/ProgressBar";
-import TimePicker from "react-time-picker";
-import "react-clock/dist/Clock.css";
-import "react-time-picker/dist/TimePicker.css";
+import { WeekSchedule } from "../General/WeekSchedule";
+
+const defaultData = [
+    {
+        dayName: 'DOM',
+        active: false,
+        startTime: '',
+        endTime: ''
+    },
+    {
+        dayName: 'LUN',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00'   
+    },
+    {
+        dayName: 'MAR',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00'   
+    },
+    {
+        dayName: 'MIER',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00'    
+    },
+    {
+        dayName: 'JUE',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00'    
+    },
+    {
+        dayName: 'VIER',
+        active: true,
+        startTime: '08:00',
+        endTime: '20:00' 
+    },
+    {
+        dayName: 'SAB',
+        active: false,
+        startTime: '',
+        endTime: '' 
+    }
+]
 
 const progressData = [
     {
@@ -51,15 +94,25 @@ const progressData = [
         },
     },
 ];
+ 
+const Importacion4 = ({ defaultResponse = null, campaignId }) => {
+    const [scheduleData, setScheduleData] = useState(defaultData)
+    const navigate = useNavigate()
 
-const Importacion4 = () => {
-    const [isChecked, setIsChecked] = useState(false);
 
-    const [hora, setHora] = useState("10:00");
+    const handleChangeScheduleData = (updatedData) => {
+        setScheduleData(updatedData)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        // TODO: consumir apir para guardar la respuesta
+        navigate(`/campaign/${campaignId}/importacion/5/`)
+    }
 
     return (
         <div className={styles.mainDiv}>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className={styles.progressBar__container}>
                     <ProgressBar data={progressData} />
                 </div>
@@ -68,70 +121,39 @@ const Importacion4 = () => {
                     <section>
                         <h1>¿Cuándo estará activa tu campaña?</h1>
                         <h2>
-              Como último paso, sólo queremos saber el horario en el que deseas
-              que se mueva la campaña.
+                            Como último paso, sólo queremos saber el horario en el que deseas
+                            que se mueva la campaña.
                         </h2>
                         <h2>
-              Descuida si no estás muy seguro, más adelante podrás editarlo.
+                            Descuida si no estás muy seguro, más adelante podrás editarlo.
                         </h2>
                     </section>
                     <section>
-            
                         <select className={styles.selectPaises}>
                             <option>Horario de Chile</option>
                             <option></option>
                             <option></option>
                         </select>
                     </section>
-                    <section className={styles.horarios}>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Lunes: desde <input type="time" className={styles.time}></input> hasta  <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Martes: desde <input type="time" className={styles.time}></input>
-              hasta <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Miércoles: desde <input type="time" className={styles.time}></input>
-              hasta <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Jueves: desde <input type="time" className={styles.time}></input>
-              hasta <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Viernes: desde <input type="time" className={styles.time}></input>
-              hasta <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Sábado: desde <input type="time" className={styles.time}></input>
-              hasta <input type="time" className={styles.time}></input>
-                        </label>
-                        <label className={styles.hora}>
-                            <input type="checkbox" className={styles.checkbox}></input>
-              Domingo: desde <input type="time" className={styles.time}></input>
-              hasta <input type="time" className={styles.time}></input>
-                        </label>
-                    </section>
+                    <div className={styles.WeekScheduleContainer}>
+                        <WeekSchedule
+                            data={scheduleData}
+                            onChange={handleChangeScheduleData}                        
+                        />
+                    </div>
                     <section>
-                        <Link to="/importacion/5 ">
-                            <button type="submit" className={styles.programar}>
-                Programar
-                            </button>
-                        </Link>
+                        {/* <Link to="/importacion/5 "> */}
+                        <button type="submit" className={styles.programar}>
+                            Programar
+                        </button>
+                        {/* </Link> */}
                     </section>
                 </article>
-
-                <Link className={styles.volver} to="/perfilamiento/3">
+                
+                <Link className={styles.volver} to={`/campaign/${campaignId}/perfilamiento/3/`}>
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
-                <Link className={styles.continuar} to="/perfilamiento/3">
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/perfilamiento/3/`}>
                     <img src="/src/assets/continuardespues.png" />
                 </Link>
             </form>

@@ -6,7 +6,7 @@ import loaderIcon from '../../../assets/campaign/loader.svg'
 import doneICon from '../../../assets/campaign/done.svg'
 import clockIcon from '../../../assets/campaign/clock.svg'
 
-export const campaignInfoStatistics = () => {
+export const CampaignInfoStatistics = () => {
     const [isActive, setIsActive] = useState(true)
   
     const toggleIsActive = () => setIsActive(!isActive)
