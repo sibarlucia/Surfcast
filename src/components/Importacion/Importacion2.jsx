@@ -48,17 +48,17 @@ const progressData = [
     },
 ];
 
-const DEFAULT_DATA_FORM = {
-    listName: '',
-    importType: '',
-    importValue: null
-}
+// const DEFAULT_DATA_FORM = {
+//     listName: '',
+//     importType: '',
+//     importValue: null
+// }
 
-const RESPONSE_NAMES = {
-    listName: 'importacion/1/listName',
-    importType: 'importacion/1/importType',
-    importValue: 'importacion/1/importValue'
-}
+// const RESPONSE_NAMES = {
+//     listName: 'importacion/1/listName',
+//     importType: 'importacion/1/importType',
+//     importValue: 'importacion/1/importValue'
+// }
 
 const Importacion2 = ({defaultResponse = [], campaignId}) => {
     const { step } = useParams();

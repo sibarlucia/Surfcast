@@ -63,6 +63,8 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
     const [boton, setBoton] = useState("");
     const navigate = useNavigate()
 
+    const estiloBoton = styles.button3;
+    const botonSeleccionado = styles.selected;
     console.log(dataForm)
 
     useEffect(() => {
@@ -148,21 +150,23 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
                     <section id={styles.botones}>
                         <button
                             type='button'
-                            className={styles.button3}
+                            className={
+                                boton === 'buscar' ? botonSeleccionado : estiloBoton
+                            }
                             onClick={() => handleButtonClick("buscar")}
                         >
                           Búsqueda de Linkedin
                         </button>
                         <button
                             type='button'
-                            className={styles.button3}
+                            className={boton === 'cargar' ? botonSeleccionado : estiloBoton}
                             onClick={() => handleButtonClick("cargar")}
                         >
                           Cargar Archivo CSV
                         </button>
                         <button
                             type='button'
-                            className={styles.button3}
+                            className={boton === 'usar' ? botonSeleccionado : estiloBoton}
                             onClick={() => handleButtonClick("usar")}
                         >
                           Usando AI

@@ -47,15 +47,14 @@ body{
 .mainDiv form{
     position: relative;
     width: 90vw;
-    /* height: clamp(900px,1300px,1500px); */
-    min-height: 900px;
+    min-height: 90vh;
     border-radius: 51px;
     background: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;    
-    box-shadow: 0px -3px 1px 1px #3d3c3c40 inset;
+    box-shadow: 0px 4px 4px 0px #00000040;
     
 }
 .mainDiv div, select, option{

@@ -119,12 +119,12 @@ body{
     
     align-items: center;
     background-color: white;
-    height: clamp(900px,800px,1300px);
     margin-left: 5vw;
     margin-right: 5vw;
-
+    
     border-radius: 51px;
-    box-shadow: 0px -4px 1px 2px #00000040 inset;
+    min-height: 90vh;   
+    box-shadow: 0px 4px 4px 0px #00000040;
     
     display: flex;
     justify-content: space-between;

@@ -61,14 +61,13 @@ body{
 
 .mainDiv form{
     position: relative;
-    height: 1200px;
-    height: clamp(700px,1400px,1400px);
+    min-height: 90vh;   
+    box-shadow: 0px 4px 4px 0px #00000040; 
     width: 90vw;
     /* left: 60px;
     top: 66px; */
     border-radius: 51px;
     background: white;
-    box-shadow: 0px -4px 1px 2px #00000040 inset;
     display: flex;
     flex-direction: column;
     justify-content: center;
