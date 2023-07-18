@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { PageLayout } from "../components/General/PageLayout"
 import { useParams } from "react-router-dom"
-import { getCampaingById } from "../services/campaign/getCampaingById"
-import { CampaingInfoStatistics } from "../components/campaign/CampaingInfoStatistics/index.js"
-import searchIcon from '../assets/campaing/search.svg'
+import { getcampaignById } from "../services/campaign/getCampaignById"
+import { CampaignInfoStatistics } from "../components/campaign/CampaingInfoStatistics"
+import searchIcon from '../assets/campaign/search.svg'
 import styles from '../styles/pages/campaignInfo.module.css'
 import { LeadsTable } from "../components/campaign/LeadsTable"
 
@@ -18,14 +18,13 @@ const CampaignInfo = () => {
 
     useEffect(() => {
         if (campaignId) {
-            getCampaingById(campaignId)
+            getcampaignById(campaignId)
                 .then(response => {
                     setCampaignData(response.data)
                 })
         }
-
     }, [campaignId])
-  
+
     return (
         <PageLayout>
             <section className='pageMainSection'>
@@ -59,7 +58,7 @@ const CampaignInfo = () => {
                         </button>
                     </div>
                 </header>
-                <CampaingInfoStatistics />
+                <CampaignInfoStatistics />
                 <section className={styles.leadsTableContainer}>
                     <header className={styles.leadsTableContainerHeader}>
                         <h1>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { PageLayout } from "../components/General/PageLayout"
 import { getCampaign } from "../services/campaign/getCampaign"
 import { CampaignTable } from "../components/campaign/CampaignTable"
-import { CampaingGeneralInformation } from "../components/campaign/CampaignGeneralInformacion/index.js"
+import { CampaignGeneralInformation } from "../components/campaign/CampaignGeneralInformation/index.jsx"
 import { CampaignStatistics } from "../components/campaign/CampaignStatistics"
 import styles from '../styles/pages/campaign.module.css'
 
@@ -24,7 +24,7 @@ const Campaign = () => {
     return (
         <PageLayout>
             <section className={styles.mainSection}>
-                <CampaingGeneralInformation
+                <CampaignGeneralInformation
                     invitations={200}
                     unreadMessages={8}
                     views={20}

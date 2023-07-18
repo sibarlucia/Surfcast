@@ -48,42 +48,66 @@ const progressData = [
     },
 ];
 
-// const DEFAULT_DATA_FORM = {
-//     listName: '',
-//     importType: '',
-//     importValue: null
-// }
+const DEFAULT_DATA_FORM = {
+    button: ''
+}
 
-// const RESPONSE_NAMES = {
-//     listName: 'importacion/1/listName',
-//     importType: 'importacion/1/importType',
-//     importValue: 'importacion/1/importValue'
-// }
+const RESPONSE_NAMES = {
+    button: 'importacion/2/button',
+}
 
 const Importacion2 = ({defaultResponse = [], campaignId}) => {
-    const { step } = useParams();
+    const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
+    const navigate = useNavigate()
+
 
     const [route, setRoute] = useState("");
+
     const [submit, setSubmit] = useState(false);
 
-    const navigate = useNavigate()
 
 
     const estiloBoton = styles.button4;
     const botonSeleccionado = styles.seleccionado;
   
 
-    useEffect(() => {}, [route]);
+    useEffect(() => {
+        if (defaultResponse) {
+            const button = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['button'])?.answer || ''
+            setDataForm({
+                button,
+            })
+            setRoute(button)
+        }
+    }, [defaultResponse])
+
+
     const handleButtonClick = (endpoint) => {
-        setRoute(endpoint);
-        setSubmit(true);
+        setRoute(endpoint)
+        setDataForm({ ...dataForm, button: endpoint })
+        setSubmit(true)
     };
 
-  
-    console.log(route);
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        if (!submit) {
+            return 
+        }
+        console.log({dataForm})
+        Object.keys(dataForm).forEach(inputName => {
+            createResponse({
+                question_name: RESPONSE_NAMES[inputName],
+                type: 'string',
+                answer: dataForm[inputName],
+                campaign_id: campaignId
+            })
+        })
+        navigate(route)
+    } 
+
     return (
         <div className={styles.mainDiv}>
-            <form>
+            <form onSubmit={handleSubmit}>
 
                 <div className={styles.progressBar__container}>
                     <ProgressBar data={progressData} />
@@ -101,7 +125,9 @@ const Importacion2 = ({defaultResponse = [], campaignId}) => {
                         <button
                             type="button"
                             className={
-                                route === `/campaign/${campaignId}/reunion/1` ? botonSeleccionado : estiloBoton
+                                route === `/campaign/${campaignId}/reunion/1`
+                                    ? botonSeleccionado
+                                    : estiloBoton
                             }
                             onClick={() => [handleButtonClick(`/campaign/${campaignId}/reunion/1`)]}
                         >
@@ -156,11 +182,11 @@ const Importacion2 = ({defaultResponse = [], campaignId}) => {
                         </button>
                     </section>
                     <section>
-                        <Link to={route}>
-                            <button type="submit" className={styles.botonSiguiente}>
-                Elegir
-                            </button>
-                        </Link>
+                        {/* <Link to={route}> */}
+                        <button type="submit" className={styles.botonSiguiente}>
+                            Elegir
+                        </button>
+                        {/* </Link> */}
                     </section>
                 </article>
     

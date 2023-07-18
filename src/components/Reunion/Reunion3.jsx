@@ -59,7 +59,7 @@ const Reunion3 = ({ defaultResponse = null, campaignId }) => {
                 </div>
 
                 <div>
-                    <h2>Deja el link de tu agenda para que conozcan tu disponibilidad</h2>
+                    <h2>¿Qué servicio brindarás?</h2>
                     <input
                         
 

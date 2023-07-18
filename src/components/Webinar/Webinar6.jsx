@@ -1,8 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./webinar.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FileDroper } from "../General/FileDroper"; 
+import { createResponse } from "../../services/responses/createResponse";
 
-const Webinar6 = () => {
+
+const DEFAULT_DATA_FORM = {
+    document: ''
+}
+
+const RESPONSE_NAMES = {
+    document: 'webinar/6/document',
+}
+
+const Webinar6 = ({ defaultResponse = null, campaignId }) => {
+    const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
     const [popUp, setPopUp] = useState(false);
     const [effect, setEffect] = useState();
 
@@ -10,19 +22,44 @@ const Webinar6 = () => {
 
     const blur = styles.blur;
 
-    const handleFinalizar = () => {
+    useEffect(() => {
+        if (defaultResponse) {
+            const document = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['document'])?.answer || ''
+            setDataForm({
+                document
+            })
+        }
+    }, [defaultResponse])
+
+    const handleSelectFile = (files) => {
+        const file = files[0]
+        setDataForm({ ...dataForm, document: file })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        Object.keys(dataForm).forEach(inputName => {
+            let type = 'string' 
+            if (typeof dataForm[inputName] === Object) {
+                type = 'file'
+            }
+            createResponse({
+                question_name: RESPONSE_NAMES[inputName],
+                type,
+                answer: dataForm[inputName],
+                campaign_id: campaignId
+            })
+        })
         setPopUp(true);
         setEffect(blur);
         setTimeout(() => {
-            navigate("/importacion/3");
+            navigate(`/campaign/${campaignId}/importacion/3/`)
         }, 3000);
-    };
-
-    useEffect(() => {}, [popUp]);
+    } 
 
     return (
         <div className={styles.mainDiv}>
-            <form className={effect}>
+            <form className={effect} onSubmit={handleSubmit}>
                 {popUp == true && (
                     <section className={styles.fondoImg}>
                         <img
@@ -40,20 +77,26 @@ const Webinar6 = () => {
                     </section>
                     <section className={styles.files}>
                         <h2>Adjunta algún documento que desees compartir</h2>
-                        <input className={styles.input2} id="file" type="file"></input>
-                        <label htmlFor="file">
-                            <img src="/src/assets/flecha.png"></img>
-                        </label>
+                        <FileDroper
+                            onDrop={handleSelectFile}
+                        />
+                        {
+                            typeof dataForm.document === 'object' && (
+                                <span>
+                                    {dataForm.document.name}
+                                </span>
+                            ) 
+                        }
                     </section>
                     <section>
-                        <Link to="/webinar/6">
-                            <button
-                                className={styles.botonSiguiente}
-                                onClick={() => handleFinalizar()}
-                            >
-                Finalizar
-                            </button>
-                        </Link>
+                        {/* <Link to="/webinar/6"> */}
+                        <button
+                            className={styles.botonSiguiente}
+                            // onClick={() => handleFinalizar()}
+                        >
+                            Finalizar
+                        </button>
+                        {/* </Link> */}
                     </section>
                 </article>
 
@@ -63,7 +106,7 @@ const Webinar6 = () => {
 
                 <div></div>
 
-                <Link className={styles.volver} to="/webinar/5">
+                <Link className={styles.volver} to={`/campaign/${campaignId}/webinar/5/`}>
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
             </form>

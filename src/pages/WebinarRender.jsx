@@ -35,12 +35,12 @@ const WebinarRender = () => {
     }
     if (step === '5') {
         return (
-            <Webinar5></Webinar5>
+            <Webinar5 defaultResponse={responses} campaignId={campaignId}></Webinar5>
         )
     }
     if (step === '6') {
         return (
-            <Webinar6></Webinar6>
+            <Webinar6 defaultResponse={responses} campaignId={campaignId}></Webinar6>
         )
     }
   
