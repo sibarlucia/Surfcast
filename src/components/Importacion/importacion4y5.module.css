@@ -40,6 +40,8 @@ body{
     justify-content: center;
     align-items: center;
     padding-top: 2.5%;
+    padding-bottom: 2.5%;
+
 }
 .selectPaises {
     height: 58px;
@@ -105,7 +107,7 @@ body{
 }
 
 
-.mainArticle h1 {
+.mainDiv h1 {
     color: black;
     font-family: PlexBold;
     font-size: 40px;
@@ -123,10 +125,10 @@ body{
     
     align-items: center;
     background-color: white;
-    /* height: clamp(900px,1400px,1800px); */
     width: 90vw;
+    min-height: 90vh;
     border-radius: 51px;
-    box-shadow: -14px 12px 31px 0px #00000040 inset;
+    box-shadow: 0px 4px 4px 0px #00000040;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -272,7 +274,7 @@ body{
     border: none;
     color: black;
     border-radius: 51px;
-    background-color: #3EB5E8;
+    background-color: #9CE5FF;
     margin-left: 50px;
     margin-bottom: 50px;
 }

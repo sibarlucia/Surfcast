@@ -59,13 +59,15 @@ body{
     justify-content: center;
     align-items: center;
     padding-top: 2.5%;
+    padding-bottom: 2.5%;
+
 }
 
 .formPerfilamiento {
     position: relative;
     background: linear-gradient(180deg, #7D7DFF 0%, #001B8D 100%);
     width: 90vw;
-    height: clamp(800px,900px,1100px);
+    min-height: 90vh;
     border-radius: 51px;
     /* box-shadow: -14px 12px 31px 0px #00000040 inset; */
 
@@ -75,6 +77,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+
 }
 
 .mainDiv form h1 {
