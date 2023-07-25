@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 // import { FileDrop } from 'react-file-drop';
 import { FileDroper } from "../General/FileDroper";
 import alert from 'sweetalert2'
+import { uploadLeadsByFile } from "../../services/leads/uploadLeadsByFile";
 
 // controla como se ve la barra de progreso
 
@@ -105,13 +106,15 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
             let type = 'string' 
             if (inputName === 'importValue' && dataForm.importType === 'cargar') {
                 type = 'file'
+                uploadLeadsByFile(dataForm.importValue)
+            } else {
+                createResponse({
+                    question_name: RESPONSE_NAMES[inputName],
+                    type,
+                    answer: dataForm[inputName],
+                    campaign_id: campaignId
+                })
             }
-            createResponse({
-                question_name: RESPONSE_NAMES[inputName],
-                type,
-                answer: dataForm[inputName],
-                campaign_id: campaignId
-            })
         })
         navigate(`/campaign/${campaignId}/importacion/2/`)
     };
