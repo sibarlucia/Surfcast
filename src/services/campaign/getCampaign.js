@@ -1,14 +1,18 @@
 import axios from 'axios'
-import { routeGenerator } from "../Routegenerator"
+import { routeGenerator } from "../routegenerator"
 import { getToken } from '../getToken'
 
-const baseUrl = routeGenerator('/campaigns/campaigns/')
+const baseUrl = routeGenerator('/campaigns/get/')
 
 // listado de campañas
-export const getCampaign = async () => {
+export const getCampaign = async ({ skip = 0, limit = 100 }) => {
     const response = await axios.get(baseUrl, {
         headers: {
-            authorization: getToken()
+            access_token: getToken()
+        },
+        params: {
+            skip,
+            limit
         }
     }) 
 

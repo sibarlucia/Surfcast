@@ -106,7 +106,7 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
             let type = 'string' 
             if (inputName === 'importValue' && dataForm.importType === 'cargar') {
                 type = 'file'
-                uploadLeadsByFile(dataForm.importValue)
+                uploadLeadsByFile(campaignId, dataForm.importValue)
             } else {
                 createResponse({
                     question_name: RESPONSE_NAMES[inputName],

@@ -1,19 +1,19 @@
 import axios from 'axios'
-import { routeGenerator } from "../Routegenerator"
+import { routeGenerator } from "../routegenerator"
 import { getToken } from '../getToken'
 
 const baseUrl = routeGenerator('/campaigns/campaigns/')
 // crea de campañas
-export const createCampaign = async ({ name, owner_id = 0, email_bool = true, linkedin_bool = true, state = "draft"}) => {
+export const createCampaign = async ({ name, email_bool = true, linkedin_bool = true, active = false, state = "draft"}) => {
     const response = await axios.post(baseUrl, {
         name,
-        owner_id,
         email_bool,
         linkedin_bool,
+        active,
         state
     },{
         headers: {
-            authorization: getToken()
+            access_token: getToken()
         }
     }) 
 

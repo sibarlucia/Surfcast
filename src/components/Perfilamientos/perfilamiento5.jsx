@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+// import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { createCampaign } from "../../services/campaign/createCampaign";
 import styles from "./perfilamiento.module.css";
 
 const Perfilamiento5 = () => {
-    const { step } = useParams();
+    // const { step } = useParams();
     const navigate = useNavigate()
 
-    const handleCreateCampaign = () => {
-        // TODO: consumir apir de nueva campaña
-        const newCampaingId = 4
+    const handleCreateCampaign = async () => {
+        const newCampaing = await createCampaign({name: "Mi primera campaña"})
+        const newCampaingId = newCampaing.id || 4
         navigate(`/campaign/${newCampaingId}/importacion/1/`)
     }
 
