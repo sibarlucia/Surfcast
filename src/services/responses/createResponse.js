@@ -2,7 +2,7 @@ import axios from 'axios'
 import { routeGenerator } from '../routegenerator'
 import { getToken } from '../getToken'
 
-const baseUrl = routeGenerator('/responses/responses/')
+const baseUrl = routeGenerator('/responses/add/')
 
 // crea una respuesta de un formulario
 export const createResponse = async ({ question_name, type, answer, campaign_id  }) => {
@@ -10,7 +10,7 @@ export const createResponse = async ({ question_name, type, answer, campaign_id 
         question_name,
         type,
         answer,
-        campaign_id
+        campaign_id: parseInt(campaign_id)
     }, {
         headers: {
             Authorization: getToken()

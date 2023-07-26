@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { getToken } from '../getToken'
-import { routeGenerator } from '../Routegenerator'
+import { routeGenerator } from '../routegenerator'
 
 const baseUrl = routeGenerator('/leads/campaigns/')
 

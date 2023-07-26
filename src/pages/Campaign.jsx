@@ -10,7 +10,7 @@ const Campaign = () => {
     const [campaigns, setCampaigns] = useState([])
 
     useEffect(() => {
-        getCampaign()
+        getCampaign({})
             .then(response => {
                 setCampaigns(response.data)
             })

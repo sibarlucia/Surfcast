@@ -7,15 +7,21 @@ const Perfilamiento5 = () => {
     // const { step } = useParams();
     const navigate = useNavigate()
 
-    const handleCreateCampaign = async () => {
-        const newCampaing = await createCampaign({name: "Mi primera campaña"})
-        const newCampaingId = newCampaing.id || 4
+    const handleCreateCampaign = async (event) => {
+        event.preventDefault()
+        let newCampaingId = 4
+        try {
+            const response = await createCampaign({name: "Mi primera campaña"})
+            newCampaingId = response.data.id
+        } catch (error) {
+            console.error('algo fallo con al crear la campaña')
+        }
         navigate(`/campaign/${newCampaingId}/importacion/1/`)
     }
 
     return (
         <div className={styles.mainDiv}>
-            <form className={styles.formPerfilamiento}>
+            <form className={styles.formPerfilamiento} onSubmit={handleCreateCampaign}>
                 <article className={styles.mainArticle}>
                     <section>
                         <h1>¡EMPECEMOS TU PRIMERA CAMPAÑA!</h1>
@@ -24,14 +30,17 @@ const Perfilamiento5 = () => {
                     <section></section>
                     <section id={styles.botones}>
                         <Link to="/">
-                            <button className={styles.botonClarito}>
+                            <button
+                                className={styles.botonClarito}
+                                type="button"
+                            >
                 Dejarlo para después
                             </button>
                         </Link>
 
                         <button
                             className={styles.button2}
-                            onClick={handleCreateCampaign}
+                            // onClick={handleCreateCampaign}
                         >
                             Crear ahora
                         </button>
