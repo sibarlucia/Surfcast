@@ -30,6 +30,9 @@ export const LeadsTable = ({ filter = '', campaignId = null }) => {
     const [LeadsList, setLeadsList] = useState([])
     const [selectedLeadType, setSelectedLeadType] = useState(LEADS_TYPES[0])
     const [sortField, setSortField] = useState(null)
+    const [selectedLead, setSelectedLead] = useState(null) //eslint-disable-line
+    // TODO: utilizar selectedLead para mostrar el modal del lead
+
 
     const handleSelectLeadsType = (selectedIndex) => () => {
         const selectedData = LEADS_TYPES[selectedIndex]
@@ -74,6 +77,11 @@ export const LeadsTable = ({ filter = '', campaignId = null }) => {
         return sorted 
     }, [filteredLeads, sortField])
 
+    const handelSelectLead = (selectedLeadIndex) => () => {
+        const selectedLead = sortedLeads[selectedLeadIndex]
+        setSelectedLead(selectedLead)
+    }
+
     return (
         <section className="pageSection">
             <div className={styles.tableContainer}>
@@ -99,31 +107,31 @@ export const LeadsTable = ({ filter = '', campaignId = null }) => {
                                 <input type="checkbox" />
                             </th>
                             <th>
-                Nombre completo
+                                Nombre completo
                                 <button onClick={handleSortButton('full_name')}>
                                     {'>'}
                                 </button>
                             </th>
                             <th>
-                Puesto
+                                Puesto
                                 <button onClick={handleSortButton('job')}>
                                     {'>'}
                                 </button>
                             </th>
                             <th>
-                Correo
+                                Correo
                                 <button onClick={handleSortButton('email')}>
                                     {'>'}
                                 </button>
                             </th>
                             <th>
-                Ubicación
+                                 Ubicación
                                 <button onClick={handleSortButton('location')}>
                                     {'>'}
                                 </button>
                             </th>
                             <th>
-                Actualización
+                                Actualización
                                 <button onClick={handleSortButton('timestamp')}>
                                     {'>'}
                                 </button>
@@ -132,7 +140,7 @@ export const LeadsTable = ({ filter = '', campaignId = null }) => {
                     </thead>
                     <tbody className={styles.tableBody}>
                         {
-                            sortedLeads.map(item => {
+                            sortedLeads.map((item, leadIndex) => {
                                 return (
                                     <tr
                                         className={styles.bodyRow}
@@ -142,7 +150,7 @@ export const LeadsTable = ({ filter = '', campaignId = null }) => {
                                             <input type="checkbox" />
                                         </td>
                                         <td>
-                                            <p>
+                                            <p onClick={handelSelectLead(leadIndex)}>
                                                 {item.full_name}
                                             </p>
                                         </td>
@@ -153,7 +161,7 @@ export const LeadsTable = ({ filter = '', campaignId = null }) => {
                                         </td>
                                         <td>
                                             <p>
-                        jmansilla@surfcast.com
+                                                jmansilla@surfcast.com
                                             </p>
                                         </td>
                                         <td>
