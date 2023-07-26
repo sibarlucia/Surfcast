@@ -1,0 +1,68 @@
+.notesContainer {
+  height: 100%;
+  position: relative;
+  padding-bottom: 2em;
+}
+
+.noteList {
+  padding: 0;
+  list-style: none;
+}
+
+.noteItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.noteItem:not(:last-child) {
+  border-bottom: 0.05em solid #A8A8A8;
+  margin-bottom: 0.5em;
+}
+
+.noteItemContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.deleteButton {
+  border: 0;
+  background-color: transparent;
+}
+
+.deleteButton span {
+  color: var(--color-pink);
+  font-weight: 600;
+  font-size: 1em;
+  padding:  1em 0.5em;
+}
+
+.noteItemContainer img {
+  width: 1.6em;
+}
+
+.noteItemContainer p {
+  margin: 0;
+}
+
+.newNoteContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+} 
+
+.newNoteContainer input {
+  border: 0;
+  border-radius: 0.5em;
+  padding: 0.2em 0.5em ;
+  width: 100%;
+  font-size: 1em;
+}
+
+.saveButton {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+}

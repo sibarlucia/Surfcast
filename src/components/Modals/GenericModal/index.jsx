@@ -4,7 +4,7 @@ export const GenericModal = ({ isOpen, onClose, label = '', className = '', chil
 
     const customStyles = {
         overlay: {
-            zIndex: 99999
+            zIndex: 99
         },
 
         content: {

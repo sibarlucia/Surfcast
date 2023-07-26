@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from 'react'
 import { getLeadsByCampaign } from '../../../services/leads/getLeadsByCampaign'
 import menuDotsIcon from '../../../assets/campaign/menu_dots.svg'
 import styles from './index.module.css'
+import { LeadInfoModal } from '../../Modals/LeadInfoModal'
 
 const LEADS_TYPES = [
     {
@@ -26,7 +27,7 @@ const LEADS_TYPES = [
     }
 ]
 
-export const LeadsTable = ({ filter = '', campaignId = null }) => {
+export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}) => {
     const [LeadsList, setLeadsList] = useState([])
     const [selectedLeadType, setSelectedLeadType] = useState(LEADS_TYPES[0])
     const [sortField, setSortField] = useState(null)
@@ -80,6 +81,10 @@ export const LeadsTable = ({ filter = '', campaignId = null }) => {
     const handelSelectLead = (selectedLeadIndex) => () => {
         const selectedLead = sortedLeads[selectedLeadIndex]
         setSelectedLead(selectedLead)
+    }
+
+    const cleanSelectedLead = () => {
+        setSelectedLead(null)
     }
 
     return (
@@ -189,6 +194,14 @@ export const LeadsTable = ({ filter = '', campaignId = null }) => {
                     </tbody>
                 </table>
             </div>
+
+            <LeadInfoModal
+                campaignName={campaignName}
+                leadData={selectedLead}
+                onClose={cleanSelectedLead}
+                onDone={(() => {cleanSelectedLead()})}
+                onDeleteLead={() => {cleanSelectedLead()}}
+            />
 
         </section>
     )

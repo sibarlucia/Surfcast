@@ -1,0 +1,106 @@
+.modalSection {
+  /* padding: 0 1em; */
+  min-width: 300px;
+  max-width: 100%;
+  max-height: 85vh;
+  width: 35em;
+  overflow: auto;
+}
+
+.modalHeader {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1.6em;
+}
+
+.headerOptions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.headerOptions button:first-child {
+  font-size: 0.7em;
+  font-weight: 600;
+  border-width: 0.2em;
+  margin: 0.2em 0.1em;
+}
+
+.headerOptions button:last-child {
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--color-black);
+  font-size: 1.2em;
+}
+
+.profile {
+  width: 8em;
+}
+
+.profileDataContainer {
+  margin-top: 2em;
+  width: 100%;
+}
+
+.mainLeadDataContainer {
+  width: 100%;
+  padding-bottom: 1em;
+  border-bottom: 0.05em solid var(--color-black);
+}
+
+.mainLeadDataContainer h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.mainLeadDataContainer p {
+  margin: 0;
+  margin-top: 0.5em;
+  font-size: 1m;
+}
+
+.secondaryLeadDataContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  padding: 0.5em 0;
+}
+
+.secondaryLeadDataContainerItem p:first-child {
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+.secondaryLeadDataContainerItem p:last-child {
+  margin: 0;
+}
+
+.leadinfoArticle {
+  width: 100%;
+  border-radius: 1em;
+  padding: 0.8em;  
+  border: 0.1em solid var(--color-black);
+  box-sizing: border-box;
+  margin: 1em 0;
+}
+
+.leadinfoArticleHeader {
+  box-sizing: border-box;
+  border-bottom: 0.1em solid var(--color-black);
+  margin: 0.2em;
+}
+
+.leadinfoArticleHeader h2 {
+  color: var(--color-pink);
+  margin: 0;
+  margin-bottom: 0.4em;
+  font-size: 1.2em;
+}

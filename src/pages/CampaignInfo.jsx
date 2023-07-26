@@ -86,7 +86,8 @@ const CampaignInfo = () => {
                         </label>
                     </header>
                     <LeadsTable
-                        campaingId={campaignId}
+                        campaignName={campaignData.name}
+                        campaignId={campaignId}
                         filter={leadsFilter}
                     />
                 </section>
