@@ -6,11 +6,17 @@ import { CampaignInfoStatistics } from "../components/campaign/CampaingInfoStati
 import searchIcon from '../assets/campaign/search.svg'
 import styles from '../styles/pages/campaignInfo.module.css'
 import { LeadsTable } from "../components/campaign/LeadsTable"
+import { CampaignConfigModal } from "../components/Modals/CampaignConfigModal" 
 
 const CampaignInfo = () => {
     const [campaignData, setCampaignData] = useState({})
     const [leadsFilter, setLeadsFilter] = useState('')
+    const [showConfigModal, setShowConfigModal] = useState(false)
     const { id: campaignId } = useParams()
+
+    const toggleShowConfigModal = () => {
+        setShowConfigModal(!showConfigModal)
+    }
 
     const handleChangeLeadsFilter = (event) => {
         setLeadsFilter(event.target.value)
@@ -19,9 +25,9 @@ const CampaignInfo = () => {
     useEffect(() => {
         if (campaignId) {
             getcampaignById(campaignId)
-                .then(response => {
+                .then(response => { 
                     setCampaignData(response.data)
-                })
+                }) 
         }
     }, [campaignId])
 
@@ -41,20 +47,21 @@ const CampaignInfo = () => {
                                 <button>{'>'}</button>
                             </div>
                             <p>
-                Esta Semana: 12 - 18 de marzo 2023
+                                Esta Semana: 12 - 18 de marzo 2023
                             </p>
                         </div>
                     </article>
                     <div className={styles.headerButtons}>
                         <button
                             className="pageButton pageButton--empty pageButton--hover"
+                            onClick={toggleShowConfigModal}
                         >
-              Configurar
+                            Configurar
                         </button>
                         <button
                             className="pageButton pageButton--hover"
                         >
-              Descargar reporte
+                            Descargar reporte
                         </button>
                     </div>
                 </header>
@@ -62,7 +69,7 @@ const CampaignInfo = () => {
                 <section className={styles.leadsTableContainer}>
                     <header className={styles.leadsTableContainerHeader}>
                         <h1>
-              Todas tus leads
+                            Todas tus leads
                         </h1>
                         <label className={styles.searchLabel}>
                             <img
@@ -79,11 +86,17 @@ const CampaignInfo = () => {
                         </label>
                     </header>
                     <LeadsTable
-                        campaingId={campaignId}
+                        campaignName={campaignData.name}
+                        campaignId={campaignId}
                         filter={leadsFilter}
                     />
                 </section>
             </section>
+            <CampaignConfigModal
+                isOpen={showConfigModal}
+                onClose={toggleShowConfigModal}
+                onDone={toggleShowConfigModal}
+            />
         </PageLayout>
     )
 

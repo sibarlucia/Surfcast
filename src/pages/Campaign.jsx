@@ -5,20 +5,35 @@ import { CampaignTable } from "../components/campaign/CampaignTable"
 import { CampaignGeneralInformation } from "../components/campaign/CampaignGeneralInformation/index.jsx"
 import { CampaignStatistics } from "../components/campaign/CampaignStatistics"
 import styles from '../styles/pages/campaign.module.css'
+import { NewCampaingModal } from "../components/Modals/NewCampaignModal"
+import { createCampaign } from "../services/campaign/createCampaign" 
+import { useNavigate } from "react-router-dom"
 
 const Campaign = () => {
     const [campaigns, setCampaigns] = useState([])
+    const [showNewCampaignModal, setShowNewCampaignModal] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
-        getCampaign()
+        getCampaign({})
             .then(response => {
                 setCampaigns(response.data)
             })
     }, [])
   
-    const handleCreateCampaign = () => {
-    // TODO: consumir api crear
-    // redireccionar a los formularios con el id de la nueva campaña
+    const toggleshowCampaingModal = () => {
+        setShowNewCampaignModal(!showNewCampaignModal)
+    }
+
+    const handleCreateCampaign = async (campaingName) => {
+        let campaingId = 4 // TODO: eliminar el id 4 por defecto
+        try {
+            const response = createCampaign({ name: campaingName })
+            campaingId = response.data.id
+        } catch (error) {
+            console.error('algo fallo al crear la campaña')
+        }
+        navigate(`/campaign/${campaingId}/importacion/1`)
     }
 
     return (
@@ -34,19 +49,19 @@ const Campaign = () => {
                     <header className={styles.campaignListHeader}>
                         <div>
                             <h2>
-                Todas tus campañas
+                                Todas tus campañas
                             </h2>
                             <select defaultValue={'-1'}>
                                 <option value="-1" disabled>
-                  Filtrar por
+                                    Filtrar por                                 
                                 </option>
                             </select>
                         </div>
                         <button
                             className="pageButton pageButton--hover"
-                            onClick={handleCreateCampaign}
+                            onClick={toggleshowCampaingModal}
                         >
-              Nueva campaña
+                            Nueva campaña
                         </button>
                     </header>
                     <section className={`pageSection ${styles.tableContainer}`}>
@@ -54,6 +69,11 @@ const Campaign = () => {
                     </section>
                 </div>
             </section>
+            <NewCampaingModal
+                isOpen={showNewCampaignModal}
+                onClose={toggleshowCampaingModal}
+                onDone={handleCreateCampaign}
+            />
         </PageLayout>
     )
 
