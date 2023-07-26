@@ -31,9 +31,7 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
     const [LeadsList, setLeadsList] = useState([])
     const [selectedLeadType, setSelectedLeadType] = useState(LEADS_TYPES[0])
     const [sortField, setSortField] = useState(null)
-    const [selectedLead, setSelectedLead] = useState(null) //eslint-disable-line
-    // TODO: utilizar selectedLead para mostrar el modal del lead
-
+    const [selectedLead, setSelectedLead] = useState(null)
 
     const handleSelectLeadsType = (selectedIndex) => () => {
         const selectedData = LEADS_TYPES[selectedIndex]
