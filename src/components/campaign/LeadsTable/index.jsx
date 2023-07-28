@@ -3,6 +3,10 @@ import { getLeadsByCampaign } from '../../../services/leads/getLeadsByCampaign'
 import menuDotsIcon from '../../../assets/campaign/menu_dots.svg'
 import styles from './index.module.css'
 import { LeadInfoModal } from '../../Modals/LeadInfoModal'
+import { DropdownMenu } from '../../DropdownMenu'
+import trashICon from '../../../assets/trash_icon.svg'
+import historyIcon from '../../../assets/icons/historyIcon.svg'
+import { useNavigate } from 'react-router-dom'
 
 const LEADS_TYPES = [
     {
@@ -32,6 +36,7 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
     const [selectedLeadType, setSelectedLeadType] = useState(LEADS_TYPES[0])
     const [sortField, setSortField] = useState(null)
     const [selectedLead, setSelectedLead] = useState(null)
+    const navigate = useNavigate()
 
     const handleSelectLeadsType = (selectedIndex) => () => {
         const selectedData = LEADS_TYPES[selectedIndex]
@@ -83,6 +88,19 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
 
     const cleanSelectedLead = () => {
         setSelectedLead(null)
+    }
+
+    const handelSelectMenu = (selected) => {
+        console.log(selected)
+        switch (selected.value) {
+        case 'history': 
+            console.log('history')    
+            navigate(`/campaign/${campaignId}/lead/history/${selected.data.id}`)
+            break
+        case 'delete': 
+            console.log('delete', selected.data.id)
+            break
+        }
     }
 
     return (
@@ -178,12 +196,38 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
                                             </p>
                                         </td>
                                         <td>
-                                            <button className={styles.tableMenuButton}>
+                                            <DropdownMenu
+                                                id={`lead-DropdownMenu-${item.id}`}
+                                                onSelect={handelSelectMenu}
+                                                options={[
+                                                    {
+                                                        value: 'history',
+                                                        text: 'Historial',
+                                                        data: item,
+                                                        icon: historyIcon,
+                                                        color: 'primary'
+                                                    },
+                                                    {
+                                                        value: 'delete',
+                                                        text: 'Eliminar',
+                                                        data: item,
+                                                        icon: trashICon
+                                                    },
+                                                ]}
+                                            >
                                                 <img
                                                     src={menuDotsIcon}
                                                     alt="menu"
                                                 />
-                                            </button>
+                                            </DropdownMenu>
+                                            {/* <button className={styles.tableMenuButton}>
+
+                                                <img
+                                                    src={menuDotsIcon}
+                                                    alt="menu"
+                                                />
+
+                                            </button> */}
                                         </td>
                                     </tr>
                                 )

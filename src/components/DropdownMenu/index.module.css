@@ -1,0 +1,69 @@
+.general__dropdownMenu {
+	position: relative;
+}
+
+.general__dropdownMenu__mainButton {
+  border: 0;
+  background-color: transparent;
+}
+
+.general__dropdownMenu__optionContainer {
+  background-color: white;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.3em 0;
+  border-radius: 0.4em;
+  min-width: 10em;
+  /* box-shadow: $krino-boxShadow; */
+  filter: drop-shadow(0px 0px 21px rgba(0, 0, 0, 0.25));
+}
+
+.general__dropdownMenu__option {
+  border: 0;
+  background-color: transparent;
+  text-align: center;
+  width: 100%;
+  padding: 0.5em 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.general__dropdownMenu__option img {
+  width: 1.8em;
+}
+
+.general__dropdownMenu__option--primary {
+  color: var(--color-pink);
+}
+
+.general__dropdownMenu__option:hover { 
+  background-color: rgba(225, 65, 146, 0.1)
+ }
+
+
+/* .general__dropdownMenu__option:not(:last-child) { */
+  /* border-bottom: 1px solid $color-krino-grey2; */
+/* } */
+
+
+/* 
+.general__dropdownMenu__option--error {
+  color: $color-danger;
+}
+
+
+.general__dropdownMenu__option--success {
+  color: $color-success;
+} */
