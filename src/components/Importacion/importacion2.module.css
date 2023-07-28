@@ -34,8 +34,9 @@ body{
 }
 
 .mainArticle {
-    position: absolute;
-    top: 150px;
+    /* position: absolute; */
+    /* top: 150px; */
+    margin-top: 5em;
 }
 .mainDiv{
     background: linear-gradient(180deg, #0447B2 0%, rgba(4, 71, 178, 0) 100%);
@@ -141,7 +142,7 @@ body{
     border-radius: 51px;
     box-shadow: 0px 4px 4px 0px #00000040;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-direction: column;
     text-align: center;
 
@@ -232,7 +233,7 @@ body{
 .botonera {
     
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     justify-self: center;
     align-items: center;
     /* display: flex; */
