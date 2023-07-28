@@ -36,6 +36,7 @@ body {
 } 
 
 .pageButton {
+  text-decoration: none;
   border-radius: 4em;
   background-color: var(--color-pink);
   color: var(--color-white);

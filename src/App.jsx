@@ -30,7 +30,7 @@ const LoginToken = lazy(() => import('./pages/LoginToken'))
 const Team = lazy(() => import('./pages/Team'))
 const Campaign = lazy(() => import('./pages/Campaign'))
 const CampaignInfo = lazy(() => import('./pages/CampaignInfo'))
-
+const LeadHistory = lazy(() => import('./pages/LeadHistory'))
 
 
 function App() {
@@ -203,6 +203,15 @@ function App() {
                             </PrivateRoute>
                         }
                     />
+                    <Route
+                        path='/campaign/:campaignId/lead/history/:leadId'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <LeadHistory />
+                            </PrivateRoute>
+                        }
+                    />
+
                     <Route
                         path='/*'
                         element={<NotFound/>}

@@ -18,6 +18,7 @@ const Home = () => {
     }
 
     return (
+
         <PageLayout>
             {/* <h1>
         home
