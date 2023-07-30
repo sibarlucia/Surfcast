@@ -4,7 +4,10 @@ import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import styles from '../styles/pages/LeadHistory.module.css'
 import profileImg from '../assets/campaign/defaultProfile.svg'
-
+import linkedinLogo from '../assets/linkedin.png'
+import gmailLogo from '../assets/gmail.png'
+import { LinkedInHistory } from "../components/campaign/LinkedInHistory/LinkedInHistory" 
+import { GmailHistory } from "../components/campaign/GmailHistory/GmailHistory"
 const defaultLeadData = {
     name: 'Javier Mansilla',
     position: 'CTO en Surfcast'
@@ -56,62 +59,20 @@ const defaultHistory = [
         hour: '17:30',
     }
 ]
-
-const LinkedInHistory = ({ history, leadId }) => {
-    return (
-        <ul className={styles.historyList}>
-            {
-                history.map((item, index) => {
-                    if (item.divider) {
-                        return (
-                            <li
-                                key={`leadHistory-${leadId}-divider-${index}`}
-                                className={styles.historyListItem}
-                            >
-                                <article className={styles.divider}>
-                                    <span></span>
-                                    <p>
-                                        {item.text}
-                                    </p>
-                                    <span></span>
-                                </article>
-                            </li>
-                        )
-                    }
-                    return (
-                        <li
-                            key={`leadHistory-${leadId}-message-${index}`}
-                            className={styles.historyListItem}
-                        >
-                            <article className={styles.message}>
-                                <img
-                                    src={item.user.icon}
-                                    alt={item.user.name}
-                                />
-                                <div>
-                                    <h4 className={styles.messageUser}>
-                                        {item.user.name}
-                                        <span>
-                                            {item.hour}
-                                        </span>
-                                    </h4>
-                                    <p>
-                                        {item.message}
-                                    </p>
-                                </div>
-                            </article>
-                        </li>
-                    )
-                })
-            }
-        </ul>
-    )
-}
+const channelsOptions = {
+    linkedIn: 'linkedIn',
+    gmail: 'gmail'
+} 
 
 const LeadHistory = () => {
     const { leadId, campaignId } = useParams() // eslint-disable-line
     const [leadData] = useState(defaultLeadData)
     const [history] = useState(defaultHistory)
+    const [channel, setChannel] = useState(channelsOptions.linkedIn)
+    
+    const handelSelectChannel = (newChannel) => () => {
+        setChannel(newChannel)
+    }
 
     return (
         <PageLayout>
@@ -136,41 +97,45 @@ const LeadHistory = () => {
                 </header>
                 <main className={`pageSection ${styles.MainhistoryContainer}`}>
                     <section className={styles.channelSection}>
-                        <button>
-                            linkding
+                        <button
+                            className={`${styles.channelButton} ${channelsOptions.linkedIn === channel ? styles.channelButton_selected: ''}`}
+                            onClick={handelSelectChannel(channelsOptions.linkedIn)}
+                        >
+                            <img
+                                src={linkedinLogo}
+                                alt="linkedin"
+                            />
                         </button>
-                        <button>
-                            gmail
+                        <button
+                            className={`${styles.channelButton} ${channelsOptions.gmail === channel ? styles.channelButton_selected: ''}`}
+                            onClick={handelSelectChannel(channelsOptions.gmail)}
+                        >
+                            <img
+                                src={gmailLogo}
+                                alt="gmail"
+                            />
                         </button>
                     </section>
-                    <section className={styles.historyContainer}>
-                        <header>
-                            <div className={styles.historyHeaderContainer}>
-                                <img
-                                    className={styles.headerProfileImg}
-                                    src={profileImg}
-                                    alt={leadData.name}
-                                />
-                                <div className={styles.historyHeaderContainer_leadInfo}>
-                                    <h2>
-                                        {leadData.name}
-                                    </h2>
-                                    <p>
-                                        {leadData.position}
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={styles.historyHeaderContainer}>
-                                <p>
-                                    Esta Semana: 12 - 18 de marzo 2023
-                                </p>
-                            </div>
-                        </header>
-                        <LinkedInHistory
-                            history={history}
-                            leadId={leadId}
-                        />
-                    </section>
+                    {
+                        channelsOptions.linkedIn === channel && (
+                            <LinkedInHistory
+                                leadData={leadData}
+                                leadId={leadId}
+                                history={history}
+                            />
+                        )
+                    }
+                    {
+                        channelsOptions.gmail === channel && (
+                            <GmailHistory
+                                // history={}
+                                leadId={leadId}
+                            />
+
+                        )
+                    }
+                    
+
                 </main>
             </section>
         </PageLayout>

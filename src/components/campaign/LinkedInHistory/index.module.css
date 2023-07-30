@@ -1,0 +1,150 @@
+
+  .historyContainer {
+    position: relative;
+    padding: 1em;
+    padding-bottom: 0;
+    background-color: var(--color-white);
+    border-radius: 2.1em;
+    border-top-left-radius: 0;
+  }
+  
+  
+  .historyContainer header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .historyHeaderContainer {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  
+  .headerProfileImg {
+    width: 7em;
+  }
+  
+  .historyHeaderContainer_leadInfo h2 {
+    margin: 0;
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .historyHeaderContainer_leadInfo p {
+    margin: 0;
+  }
+.historyList {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .historyListItem {
+    padding: 0.5em;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+  }
+  
+  .divider span {
+    display: block;
+    flex-grow: 1;
+    width: 100%;
+    height: 0.1em;
+    background-color: #A8A8A8;
+    border-radius: 1em;
+  }
+  
+  .divider p {
+    color: #A8A8A8;
+    font-size: 1em;
+    margin: 0 1em;
+    white-space: nowrap;
+  }
+  
+  .message {
+    display: flex;
+    gap: 1em;
+  }
+  
+  .message img {
+    width: 4em;
+  }
+  
+  .messageUser {
+    margin-bottom: 0.5em;
+  }
+  
+  .messageUser span {
+    margin-left: 1em;
+    color: #A8A8A8;
+    font-size: 0.8em;
+  }
+
+  
+/* footer */
+
+.historyContainerFooter {
+    width: 100%;
+  }
+  
+  .historyInputContainer {
+    padding:1em 0;
+    background-color: #f4f4f4;
+  }
+  
+  .historyInput {
+    width: 95%;
+    display: block;
+    font-size: 1.1em;
+    margin: 0 auto;
+    /* color: #A8A8A8; */
+    background-color: white;
+    padding: 1em;
+    border: 0;
+    outline-color: var(--color-pink);
+    border-radius: 2.1em;
+  }
+  
+  
+  .footerActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1em;
+    padding: 1em;
+  }
+  
+  .footerActions button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .footerActions button:hover {
+    background-color: var(--color-grey);
+  }
+  
+  .footerActions button img{
+    width: 3em;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .footerSend {
+    padding: 0.5em 1.4em;
+    background-color: #929292 !important;
+    color: var(--color-white);
+    border-radius: 1em;
+    font-size: 1em;
+  }
+  
+  .footerSend:hover {
+    background-color: var(--color-pink) !important;
+  }
+  
+  
+  .footerMenu img {
+    transform: rotate(90deg);
+  }

@@ -7,6 +7,7 @@ import searchIcon from '../assets/campaign/search.svg'
 import styles from '../styles/pages/campaignInfo.module.css'
 import { LeadsTable } from "../components/campaign/LeadsTable"
 import { CampaignConfigModal } from "../components/Modals/CampaignConfigModal" 
+import { DateRangeButtons } from "../components/campaign/DateRangeButtons"
 
 const CampaignInfo = () => {
     const [campaignData, setCampaignData] = useState({})
@@ -41,15 +42,9 @@ const CampaignInfo = () => {
                                 campaignData.name
                             }
                         </h1>
-                        <div className={styles.dateContaner}>
-                            <div className={styles.dateButtonContainer}>
-                                <button>{'<'}</button>
-                                <button>{'>'}</button>
-                            </div>
-                            <p>
-                                Esta Semana: 12 - 18 de marzo 2023
-                            </p>
-                        </div>
+                        <DateRangeButtons
+                            text='Esta Semana: 12 - 18 de marzo 2023'
+                        />
                     </article>
                     <div className={styles.headerButtons}>
                         <button
@@ -81,7 +76,7 @@ const CampaignInfo = () => {
                                 type="text"
                                 onChange={handleChangeLeadsFilter}
                                 value={leadsFilter}
-                            >
+                            > 
                             </input>
                         </label>
                     </header>
