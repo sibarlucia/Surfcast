@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { PageLayout } from '../components/General/PageLayout'  
 import { userLogoutAction } from '../Store/actions/user/userLogoutAction'
 import { useDispatch } from 'react-redux'
@@ -5,56 +6,56 @@ import '/src/styles/stylesglobales.css'
 import styles from '../styles/pages/campaignHome.module.css'
 import {Funnel} from '../components/Dashboards/Funnel/Index'
 import ActividadReciente from '../components/campaign/ActividadReciente/ActividadReciente'
+import { Circular } from '../components/Dashboards/Circular'
 
 // import rutas from '../Routes/routes'
 
 const Home = () => {
     const dispatch = useDispatch()
+    const [userData, setUserData] = useState({ name: 'Javier' })
 
-    const nombre = ''
-
-    const handleLogOut = () => {
+    const handleLogOut = () => { // eslint-disable-line
         dispatch(userLogoutAction())
     }
 
     return (
-
-        <PageLayout>
-            {/* <h1>
-        home
-            </h1> */}
-            <div className={styles.grid}>
-                <div className={styles.funnelContainer}>
+        <PageLayout
+            separator={false}
+        >
+            <header className={styles.homeHeader}>
+                <div className={styles.homeHeaderInfo}>
+                    <h1>
+                        Hola, {userData.name}!
+                    </h1>
+                    <p>
+                        Esto es lo que está pasando con tu cuenta de LinkedIn hoy
+                    </p>
+                </div>
+                <button className={`pageButton pageButton--hover ${styles.headerButton}`}>
+                    Ver por campaña
+                </button>
+            </header>
+            <section className={styles.grid}>
+                <article className={styles.funnelContainer}>
                     <Funnel></Funnel>
-                </div>
+                </article>
 
-                <div className={styles.AD}>
-                    <div className={styles.graficoCircular}>
-                        {/* <defs>
-                            <linearGradient id={styles.gradiente}>
-                                <stop offset="0%" stopColor='#e91e63' />
-                            </linearGradient>
-                        </defs> */}
-                        <svg width="150" height="150">
-                            <circle r="65" cx="50%" cy="50%" pathLength="100"/>
-                            <circle r="65" cx="50%" cy="50%" pathLength="100" strokeLinecap='round'/>
+                <Circular
+                    percentage={60}
+                    title='Avance general'
+                    description='Métrica según el avance de todas tus campañas activas'
+                />
 
-                        </svg>
-                        <span>60%</span>
-
+                <article className={`pageSection ${styles.activity}`}>
+                    <div className={styles.activityHeader}>
+                        <h2 className={styles.activityTitle}>
+                        Actividad Reciente
+                        </h2>
                     </div>
-                    <div>
-                        <h2>Avance general</h2>
-                        <p>Métrica según el avance de todas tus campañas activas</p>
-                    </div>
-                    
-                </div>
-                <ActividadReciente></ActividadReciente>
+                    <ActividadReciente></ActividadReciente>
+                </article>
 
-            </div>
-            {/* <button onClick={handleLogOut}>
-        logout
-            </button> */}
+            </section>
         </PageLayout>
     
     ) 
