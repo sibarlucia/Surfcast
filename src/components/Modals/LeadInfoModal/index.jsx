@@ -4,7 +4,22 @@ import defaultProfile from '../../../assets/campaign/defaultProfile.svg'
 import styles from './index.module.css'
 import { LeadNotes } from "../../campaign/LeadNotes"
 import alert from 'sweetalert2'
+import ActividadReciente from "../../campaign/ActividadReciente/ActividadReciente"
 
+const DefaultActivity = [
+    {
+        text: 'Aceptó la solicitud y se envió mensaje',
+        type: 'response'
+    },
+    {
+        text: 'Se envió solicitud de contacto',
+        type: 'invitation'
+    },
+    {
+        text: 'Se vió el perfil de Javier Mansilla',
+        type: 'view'
+    },
+]
 
 const DEFAULT_LEAD_NOTES = [
     'Enviarle la cotización que solicitó'
@@ -100,7 +115,9 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
                             Actividad
                         </h2>
                     </div>
-                    {/* componente de actividad */}
+                    <ActividadReciente
+                        listData={DefaultActivity}
+                    />
                 </article>
                 <article className={styles.leadinfoArticle}>
                     <div className={styles.leadinfoArticleHeader}>

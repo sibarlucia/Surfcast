@@ -11,11 +11,11 @@
 .listItem {
   display: flex;
   gap: 0.5em;
-  min-height: 4em;
 }
 
 .listItem:not(:last-child) {
   margin-bottom: 0.5em;
+  min-height: 4em;
 }
 
 .iconContainer {
