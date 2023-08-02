@@ -12,7 +12,7 @@ import { Circular } from '../components/Dashboards/Circular'
 
 const Home = () => {
     const dispatch = useDispatch()
-    const [userData, setUserData] = useState({ name: 'Javier' })
+    const [userData, setUserData] = useState({ name: 'Javier' }) // eslint-disable-line
 
     const handleLogOut = () => { // eslint-disable-line
         dispatch(userLogoutAction())
