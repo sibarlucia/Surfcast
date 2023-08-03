@@ -8,6 +8,7 @@ import styles from '../styles/pages/campaign.module.css'
 import { NewCampaingModal } from "../components/Modals/NewCampaignModal"
 import { createCampaign } from "../services/campaign/createCampaign" 
 import { useNavigate } from "react-router-dom"
+import { updateCampaign } from "../services/campaign/updateCampaign"
 
 const Campaign = () => {
     const [campaigns, setCampaigns] = useState([])
@@ -34,6 +35,22 @@ const Campaign = () => {
             console.error('algo fallo al crear la campaña')
         }
         navigate(`/campaign/${campaingId}/importacion/1`)
+    }
+
+    // maneja el boton de active
+    const handleToggleCampaign = async (campaignData) => {
+        const updatedData = { ...campaignData }
+        updatedData.active = !updatedData.active
+        const response = await updateCampaign({...updatedData, campaignId: updatedData.id})
+        const { data } = response
+
+        const updatedCampaigns = campaigns.map(item => {
+            if (item.id === data.id) {
+                item = data
+            }
+            return item
+        })
+        setCampaigns(updatedCampaigns)
     }
 
     return (
@@ -65,7 +82,10 @@ const Campaign = () => {
                         </button>
                     </header>
                     <section className={`pageSection ${styles.tableContainer}`}>
-                        <CampaignTable data={campaigns}/>
+                        <CampaignTable
+                            data={campaigns}
+                            onToggleActive={handleToggleCampaign}
+                        />
                     </section>
                 </div>
             </section>
