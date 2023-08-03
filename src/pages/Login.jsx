@@ -17,6 +17,7 @@ const Login = () => {
         })
 
         const { data } = response
+        debugger
         // TODO: manejar token
         // console.log('login con google', userData)
         navigate('/perfilamiento/1')
@@ -85,23 +86,23 @@ const Login = () => {
                         </GoogleLoginButton>
                     </label>
                 </div>
-                <div className='login__option'>
+                {/* <div className='login__option'>
                     <label>
                         <img className='icon' src='/src/assets/linkedinicon.png'></img>
                         <input placeholder='LinkedIn'></input>
                     </label>
-                </div>
+                </div> */}
 
                 <div>
-                    <Link to="/perfilamiento/1">
+                    {/* <Link to="/perfilamiento/1">
                         <button className='button1'>Verificar y crear cuenta</button>
-                    </Link>
+                    </Link> */}
                     <button
                         className='button2'
                         type='button'
                         onClick={handleClickOnAlreadyHaveAccount}
                     >
-                        Ya tengo cuenta
+                        Continuar
                     </button>
 
                 </div>

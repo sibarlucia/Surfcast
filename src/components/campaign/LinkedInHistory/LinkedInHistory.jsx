@@ -1,7 +1,7 @@
 import styles from './index.module.css'
-import clipIcon from '../../../assets//icons/clipIcon.svg'
-import imgIcon from '../../../assets/icons/imgIcon.svg'
-import menuDotsIcon from '../../../assets/campaign/menu_dots.svg'
+// import clipIcon from '../../../assets//icons/clipIcon.svg'
+// import imgIcon from '../../../assets/icons/imgIcon.svg'
+// import menuDotsIcon from '../../../assets/campaign/menu_dots.svg'
 import { DateRangeButtons } from '../DateRangeButtons'
 import profileImg from '../../../assets/campaign/defaultProfile.svg'
 
@@ -85,7 +85,7 @@ export const LinkedInHistory = ({ leadData, leadId, history }) => {
                 history={history}
                 leadId={leadId}
             />
-            <footer className={styles.historyContainerFooter}>
+            {/* <footer className={styles.historyContainerFooter}>
                 <div className={styles.historyInputContainer}>
                     <input
                         className={styles.historyInput}
@@ -107,7 +107,7 @@ export const LinkedInHistory = ({ leadData, leadId, history }) => {
                         <img src={menuDotsIcon} alt="Menu" />
                     </button>
                 </div>
-            </footer>
+            </footer> */}
         </section>
     )
 }

@@ -207,12 +207,12 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
                                                         icon: historyIcon,
                                                         color: 'primary'
                                                     },
-                                                    {
-                                                        value: 'delete',
-                                                        text: 'Eliminar',
-                                                        data: item,
-                                                        icon: trashICon
-                                                    },
+                                                    // {
+                                                    //     value: 'delete',
+                                                    //     text: 'Eliminar',
+                                                    //     data: item,
+                                                    //     icon: trashICon
+                                                    // },
                                                 ]}
                                             >
                                                 <img

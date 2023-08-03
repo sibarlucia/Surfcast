@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./importacion4y5.module.css";
 import { ProgressBar } from "../General/ProgressBar";
 import { WeekSchedule } from "../General/WeekSchedule";
+import alert from 'sweetalert2'
 
 const defaultData = [
     {
@@ -95,7 +96,7 @@ const progressData = [
     },
 ];
  
-const Importacion4 = ({ defaultResponse = null, campaignId }) => {
+const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-disable-line
     const [scheduleData, setScheduleData] = useState(defaultData)
     const navigate = useNavigate()
 
@@ -107,7 +108,13 @@ const Importacion4 = ({ defaultResponse = null, campaignId }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         // TODO: consumir apir para guardar la respuesta
-        navigate(`/campaign/${campaignId}/importacion/5/`)
+        // navigate(`/campaign/${campaignId}/importacion/5/`) // comentado por el momento
+        alert.fire({
+            title: 'Campaña configurada',
+            text: 'Tu campaña fue configurada correctamente',
+            icon: 'success',
+        })
+        navigate(`/campaign`)
     }
 
     return (

@@ -2,7 +2,7 @@ import profileImg from '../../../assets/campaign/defaultProfile.svg'
 import styles from './index.module.css'
 import favoriteIcon from '../../../assets/icons/favoriteIcon.svg'
 import menudotsIcon from '../../../assets/campaign/menu_dots.svg'
-import resendIcon from '../../../assets/icons/resendIcon.svg'
+// import resendIcon from '../../../assets/icons/resendIcon.svg'
 
 
 const defaultHistory = [
@@ -112,7 +112,7 @@ export const GmailHistory = ({ history = defaultHistory }) => {
                     }
                 </ul>
             </main>
-            <footer className={styles.footer}>
+            {/* <footer className={styles.footer}>
                 <button className={styles.footerButton}>
                     <ResponseIcon
                         color='#231F20'
@@ -131,7 +131,7 @@ export const GmailHistory = ({ history = defaultHistory }) => {
                     </span>
 
                 </button>
-            </footer>
+            </footer> */}
         </section>
     )
 }

@@ -38,7 +38,7 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
         setLeadNotes(updateNotes)
     }
 
-    const handleDeleteLead = async () => {
+    const handleDeleteLead = async () => { // eslint-disable-line
         const { isConfirmed } = await alert.fire({
             title: `Borrar lead`,
             text: "¿Estás seguro esta acción no se puede deshacer?",
@@ -67,12 +67,12 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
             <section className={` pageScrollbar ${styles.modalSection}`}>
                 <header className={styles.modalHeader}>
                     <aside className={styles.headerOptions}>
-                        <button
+                        {/* <button
                             className="pageButton pageButton--empty"
                             onClick={handleDeleteLead}
                         >
                             Eliminar
-                        </button>
+                        </button> */}
                         <button
                             onClick={() => {onDone()}}
                         >
