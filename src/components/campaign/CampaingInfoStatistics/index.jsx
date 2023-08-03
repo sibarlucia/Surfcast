@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from './index.module.css'
 import { SliceButton } from '../../General/SliceButton'
 import personICon from '../../../assets/campaign/person.svg'
@@ -6,11 +5,8 @@ import loaderIcon from '../../../assets/campaign/loader.svg'
 import doneICon from '../../../assets/campaign/done.svg'
 import clockIcon from '../../../assets/campaign/clock.svg'
 
-export const CampaignInfoStatistics = () => {
-    const [isActive, setIsActive] = useState(true)
+export const CampaignInfoStatistics = ({ isActive, onToggleActive = () => {} }) => {
   
-    const toggleIsActive = () => setIsActive(!isActive)
-
     const data = [
         {
             icon: personICon,
@@ -40,7 +36,7 @@ export const CampaignInfoStatistics = () => {
                 <div className={styles.header_activeContainer}>
                     <SliceButton
                         active={isActive}
-                        onClick={toggleIsActive}
+                        onClick={onToggleActive}
                     />
                     <p
                         className={isActive ? styles.activeText : ''}

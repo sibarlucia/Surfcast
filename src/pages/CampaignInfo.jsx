@@ -8,12 +8,15 @@ import styles from '../styles/pages/campaignInfo.module.css'
 import { LeadsTable } from "../components/campaign/LeadsTable"
 import { CampaignConfigModal } from "../components/Modals/CampaignConfigModal" 
 import { DateRangeButtons } from "../components/campaign/DateRangeButtons"
+import { updateCampaign } from "../services/campaign/updateCampaign"
 
 const CampaignInfo = () => {
     const [campaignData, setCampaignData] = useState({})
     const [leadsFilter, setLeadsFilter] = useState('')
     const [showConfigModal, setShowConfigModal] = useState(false)
     const { id: campaignId } = useParams()
+
+    console.log({campaignData})
 
     const toggleShowConfigModal = () => {
         setShowConfigModal(!showConfigModal)
@@ -31,6 +34,14 @@ const CampaignInfo = () => {
                 }) 
         }
     }, [campaignId])
+
+    // maneja el campo active
+    const handleToggleActive = async () => {
+        const updateData = { ...campaignData, active: !campaignData.active }
+        const response = await updateCampaign({ ...updateData, campaignId: updateData.id })
+        const { data } = response
+        setCampaignData(data)
+    }
 
     return (
         <PageLayout>
@@ -60,7 +71,10 @@ const CampaignInfo = () => {
                         </button>
                     </div>
                 </header>
-                <CampaignInfoStatistics />
+                <CampaignInfoStatistics
+                    isActive={campaignData.active}
+                    onToggleActive={handleToggleActive}
+                />
                 <section className={styles.leadsTableContainer}>
                     <header className={styles.leadsTableContainerHeader}>
                         <h1>
