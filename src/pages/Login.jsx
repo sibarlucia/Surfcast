@@ -11,8 +11,14 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    const handleGoogleLogin = (userData) => { 
-        console.log('login con google', userData)
+    const handleGoogleLogin = async (googleData) => {
+        const response = await login({
+            googleToken: googleData.access_token
+        })
+
+        const { data } = response
+        // TODO: manejar token
+        // console.log('login con google', userData)
         navigate('/perfilamiento/1')
     }
 
@@ -20,7 +26,7 @@ const Login = () => {
         setEmail(event.target.value)
     }
 
-    const handleClickOnAlreadyHaveAccount = (event) => {
+    const handleClickOnAlreadyHaveAccount = () => {
         if (!email) {
             return
         }
