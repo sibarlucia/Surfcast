@@ -1,54 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./importacion4y5.module.css";
 import { ProgressBar } from "../General/ProgressBar";
 import { WeekSchedule } from "../General/WeekSchedule";
 import alert from 'sweetalert2'
-
-const defaultData = [
-    {
-        dayName: 'DOM',
-        active: false,
-        startTime: '',
-        endTime: ''
-    },
-    {
-        dayName: 'LUN',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'   
-    },
-    {
-        dayName: 'MAR',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'   
-    },
-    {
-        dayName: 'MIER',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'    
-    },
-    {
-        dayName: 'JUE',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'    
-    },
-    {
-        dayName: 'VIER',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00' 
-    },
-    {
-        dayName: 'SAB',
-        active: false,
-        startTime: '',
-        endTime: '' 
-    }
-]
+import { getSchedules } from "../../services/schedules/getSchedules";
+import { addSchedules } from "../../services/schedules/addSchedule";
+import { updateSchedules } from "../../services/schedules/updateSchedule";
+import { getIANATimeZone } from "../../utils/getIANATimeZone";
+const defaultData = {
+    campain_id: 0,
+    monday_bool: true,
+    tuesday_bool: true,
+    wednesday_bool: true,
+    thursday_bool: true,
+    friday_bool: true,
+    saturday_bool: false,
+    sunday_bool: false,
+    monday_time: "09:00-18:00",
+    tuesday_time: "09:00-18:00",
+    wednesday_time: "09:00-18:00",
+    thursday_time: "09:00-18:00",
+    friday_time: "09:00-18:00",
+    saturday_time: "",
+    sunday_time: "",
+    timezone: "America/Santiago",
+}
 
 const progressData = [
     {
@@ -100,14 +77,55 @@ const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-dis
     const [scheduleData, setScheduleData] = useState(defaultData)
     const navigate = useNavigate()
 
+    useEffect(() => {
+        getSchedules()
+            .then(response => {
+                const { data } = response
+                // TODO: api fallando
+                setScheduleData(data)
+            })
+    }, [])
 
-    const handleChangeScheduleData = (updatedData) => {
+
+    const handleChangeScheduleData = async (updatedData) => {
+        // consumir api para actilizar schedule
+
+        if (scheduleData.id) {
+            // creado - debe actualizar
+            const { data } = await updateSchedules({...updatedData, campain_id: parseInt(campaignId) })
+            console.log(data)
+
+        } else {
+            // debe crarlo
+            // TODO: api fallando
+            const { data } = await addSchedules({...updatedData, campain_id: parseInt(campaignId) })
+            console.log(data)
+        }
+         
+        setScheduleData(updatedData)
+    }
+
+    const handleChangeTimeZone = async (event) => {
+        const { value } = event.target
+        console.log({value})
+        const updatedData = { ...scheduleData }
+
+        if (updatedData.id) {
+            // creado - debe actualizar
+            const { data } = await updateSchedules({...updatedData, campain_id: parseInt(campaignId) })
+            console.log(data)
+        } else {
+            // debe crarlo
+            const { data } = await addSchedules({...updatedData, campain_id: parseInt(campaignId) })
+            console.log(data)
+        }
+
+        updatedData.timezone = value
         setScheduleData(updatedData)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // TODO: consumir apir para guardar la respuesta
         // navigate(`/campaign/${campaignId}/importacion/5/`) // comentado por el momento
         alert.fire({
             title: 'Campaña configurada',
@@ -116,6 +134,8 @@ const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-dis
         })
         navigate(`/campaign`)
     }
+
+    
 
     return (
         <div className={styles.mainDiv}>
@@ -136,7 +156,29 @@ const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-dis
                         </h2>
                     </section>
                     <section>
-                        <select className={styles.selectPaises}>
+                        <select
+                            className={styles.selectPaises}
+                            onChange={handleChangeTimeZone}
+                            value={scheduleData.timezone}
+                        >
+                            <option hidden value={""}>
+                                Selecciona tu zona horaria
+                            </option>
+
+                            {
+                                getIANATimeZone().map((item, index) => {
+                                    return (
+                                        <option
+                                            value={item.value}
+                                            key={`timeZon-option-${index}`}
+                                        >
+                                            {item.country}
+                                        </option>
+                                    )
+                                })
+
+                            }
+
                             <option>Horario de Chile</option>
                             <option></option>
                             <option></option>

@@ -1,56 +1,62 @@
+import { useMemo } from 'react'
 import styles from './index.module.css'
 
-// const defaultData = [
-//     {
-//         dayName: 'DOM',
-//         active: true,
-//         startTime: '',
-//         endTime: ''
-//     },
-//     {
-//         dayName: 'LUN',
-//         active: true,
-//         startTime: '',
-//         endTime: ''    
-//     },
-//     {
-//         dayName: 'MAR',
-//         active: false,
-//         startTime: '',
-//         endTime: ''    
-//     },
-//     {
-//         dayName: 'MIER',
-//         active: false,
-//         startTime: '',
-//         endTime: ''    
-//     },
-//     {
-//         dayName: 'JUE',
-//         active: false,
-//         startTime: '',
-//         endTime: ''    
-//     },
-//     {
-//         dayName: 'VIER',
-//         active: false,
-//         startTime: '',
-//         endTime: ''
-//     },
-//     {
-//         dayName: 'SAB',
-//         active: false,
-//         startTime: '',
-//         endTime: ''
-//     }
-// ]
-
+const WeeksDays = [
+    {
+        "value": "monday",
+        "name": "LUN"
+    },
+    {
+        "value": "tuesday",
+        "name": "MAR"
+    },
+    {
+        "value": "wednesday",
+        "name": "MIER"
+    },
+    {
+        "value": "thursday",
+        "name": "JUE"
+    },
+    {
+        "value": "friday",
+        "name": "VIER"
+    },
+    {
+        "value": "saturday",
+        "name": "SAB"
+    },
+    {
+        "value": "sunday",
+        "name": "DOM"
+    }
+]
 
 const hoursOptions = [
     '00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00'
 ] 
 
 export const WeekSchedule = ({  onChange = () => {}, data = [], disabled = false }) => {
+
+    const formatedData = useMemo(() => {
+        const formated = WeeksDays.map(item => {
+            const dayName = item.name
+            const active = data[`${item.value}_bool`]
+            let startTime = ''
+            let endTime = ''
+            try {
+                let time = data[`${item.value}_time`]
+                startTime = time.split('-')[0] || ''
+                endTime = time.split('-')[1] || ''
+            } catch (error) {
+                console.log('')
+            }
+            return {
+                dayName, active, startTime, endTime, dayValue: item.value
+            }            
+        })
+        return formated
+    }, [data])
 
     // data = defaultData
     const disabeledStyles = {
@@ -59,15 +65,22 @@ export const WeekSchedule = ({  onChange = () => {}, data = [], disabled = false
     }
 
     const handleToggleDay = (selectedIndex) => () => {
-        const updatedData = [...data]
-        updatedData[selectedIndex].active = !updatedData[selectedIndex].active
+        const toggleDay = formatedData[selectedIndex].dayValue
+        const updatedData = {...data}
+        updatedData[`${toggleDay}_bool`] = !updatedData[`${toggleDay}_bool`]
         onChange(updatedData)
     } 
 
     const handleChageTime = (changeIndex) => (event) => {
-        const updatedData = [...data]
         const { value, name } = event.target
-        updatedData[changeIndex][name] = value 
+        const toggleDay = formatedData[changeIndex].dayValue
+        const updatedData = {...data}
+        let [startTime, endTime] = updatedData[`${toggleDay}_time`].split('-')
+        if (name === 'startTime') {
+            updatedData[`${toggleDay}_time`] = `${value}-${endTime}`
+        } else {
+            updatedData[`${toggleDay}_time`] = `${startTime}-${value}`
+        }   
         onChange(updatedData)
     }
 
@@ -77,7 +90,7 @@ export const WeekSchedule = ({  onChange = () => {}, data = [], disabled = false
             style={disabled ? disabeledStyles : {} }
         >
             {
-                data.map((item, index) => {
+                formatedData.map((item, index) => {
                     return (
                         <li key={`scheduleItem-${index}`}>
                             <button

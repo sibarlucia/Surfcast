@@ -3,50 +3,24 @@ import styles from "./newsletter.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { WeekSchedule } from "../General/WeekSchedule";
 
-const defaultData = [
-    {
-        dayName: 'DOM',
-        active: false,
-        startTime: '',
-        endTime: ''
-    },
-    {
-        dayName: 'LUN',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'   
-    },
-    {
-        dayName: 'MAR',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'   
-    },
-    {
-        dayName: 'MIER',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'    
-    },
-    {
-        dayName: 'JUE',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'    
-    },
-    {
-        dayName: 'VIER',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00' 
-    },
-    {
-        dayName: 'SAB',
-        active: false,
-        startTime: '',
-        endTime: '' 
-    }
-]
+const defaultData = {
+    campain_id: 0,
+    monday_bool: true,
+    tuesday_bool: true,
+    wednesday_bool: true,
+    thursday_bool: true,
+    friday_bool: true,
+    saturday_bool: false,
+    sunday_bool: false,
+    monday_time: "09:00-18:00",
+    tuesday_time: "09:00-18:00",
+    wednesday_time: "09:00-18:00",
+    thursday_time: "09:00-18:00",
+    friday_time: "09:00-18:00",
+    saturday_time: "",
+    sunday_time: "",
+    timezone: "America/Santiago",
+}
 
 // const DEFAULT_DATA_FORM = {
 //     theme: '',
@@ -56,7 +30,7 @@ const defaultData = [
 //     theme: 'newsletter/2/theme',
 // }
 
-const Newsletter2 = ({ defaultResponse = null, campaignId }) => {
+const Newsletter2 = ({ campaignId }) => {
     const [scheduleData, setScheduleData] = useState(defaultData)
     const navigate = useNavigate()
     

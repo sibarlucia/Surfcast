@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./importacion4y5.module.css";
 import { ProgressBar } from "../General/ProgressBar";
-import { WeekSchedule } from "../General/WeekSchedule";
 
 const progressData = [
     {
@@ -50,7 +48,7 @@ const progressData = [
     },
 ];
 
-const Importacion5 = ({ defaultResponse = null, campaignId }) => {
+const Importacion5 = ({ campaignId }) => {
     const navigate = useNavigate()
 
     const handleSubmit = (event) => {
