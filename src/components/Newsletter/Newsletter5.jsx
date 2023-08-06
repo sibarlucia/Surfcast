@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./newsletter.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { createResponse } from "../../services/responses/createResponse";
 import { FileDroper } from "../General/FileDroper"; 
+import { addCampaignDocument } from "../../services/campaign/addCampaignDocument";
 
 const DEFAULT_DATA_FORM = {
     document: ''
@@ -38,16 +38,8 @@ const Newsletter5 = ({defaultResponse = null, campaignId}) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         Object.keys(dataForm).forEach(inputName => {
-            let type = 'string' 
-            if (typeof dataForm[inputName] === Object) {
-                type = 'file'
-            }
-            createResponse({
-                question_name: RESPONSE_NAMES[inputName],
-                type,
-                answer: dataForm[inputName],
-                campaign_id: campaignId
-            })
+            const file = dataForm[inputName] 
+            addCampaignDocument(campaignId, file)
         })
         setPopUp(true);
         setEffect(blur);

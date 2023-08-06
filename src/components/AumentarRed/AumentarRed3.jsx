@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./aumentarRed.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FileDroper } from "../General/FileDroper"; 
-import { createResponse } from "../../services/responses/createResponse";
+import { addCampaignDocument } from "../../services/campaign/addCampaignDocument";
 
 const DEFAULT_DATA_FORM = {
     document: '',
@@ -33,16 +33,8 @@ const AumentarRed3 = ({ defaultResponse = null, campaignId }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         Object.keys(dataForm).forEach(inputName => {
-            let type = 'string' 
-            if (typeof dataForm[inputName] === Object) {
-                type = 'file'
-            }
-            createResponse({
-                question_name: RESPONSE_NAMES[inputName],
-                type,
-                answer: dataForm[inputName],
-                campaign_id: campaignId
-            })
+            const file = dataForm[inputName] 
+            addCampaignDocument(campaignId, file)
         })
         setPopUp(true);
         setEffect(blur);

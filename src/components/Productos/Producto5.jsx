@@ -5,8 +5,7 @@ import {
 } from "react-router-dom";
 import styles from "./producto.module.css";
 import { FileDroper } from "../General/FileDroper"; 
-import { createResponse } from "../../services/responses/createResponse";
-
+import { addCampaignDocument } from "../../services/campaign/addCampaignDocument";
 
 const DEFAULT_DATA_FORM = {
     document: '',
@@ -38,16 +37,8 @@ const Producto5 = ({ defaultResponse = null, campaignId }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         Object.keys(dataForm).forEach(inputName => {
-            let type = 'string' 
-            if (typeof dataForm[inputName] === Object) {
-                type = 'file'
-            }
-            createResponse({
-                question_name: RESPONSE_NAMES[inputName],
-                type,
-                answer: dataForm[inputName],
-                campaign_id: campaignId
-            })
+            const file = dataForm[inputName] 
+            addCampaignDocument(campaignId, file)
         })
         setPopUp(true);
         setEffect(blur);
