@@ -79,6 +79,7 @@ const Webinar6 = ({ defaultResponse = null, campaignId }) => {
                         <h2>Adjunta algún documento que desees compartir</h2>
                         <FileDroper
                             onDrop={handleSelectFile}
+                            accept=".pdf,.jpg,.png,jpeg"
                         />
                         {
                             typeof dataForm.document === 'object' && (

@@ -189,9 +189,10 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
 
                         {boton === "cargar" && (
                             <div className={styles.files}>
-                                <h2>Adjunta algún documento que desees compartir</h2>
+                                <h2>Carga tus leads desde un archivo exel o scv</h2>
                                 <FileDroper
                                     onDrop={handleFile}
+                                    accept=".csv,.xlsx"
                                 />
                                 {
                                     typeof dataForm.importValue === 'object' && (

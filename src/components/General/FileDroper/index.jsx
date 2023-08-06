@@ -1,7 +1,7 @@
 import { FileDrop } from "react-file-drop"
 import styles from './index.module.css'
 
-export const FileDroper = ({ onDrop, id = 'file' }) => {
+export const FileDroper = ({ onDrop, id = 'file', accept = '' }) => {
     // const [fileHover, toggleFileHover] = useReducer((state) => !state, false)
 
 
@@ -29,6 +29,7 @@ export const FileDroper = ({ onDrop, id = 'file' }) => {
                     className={styles.input2}
                     id={id} type="file"
                     onChange={handleSelectFile}
+                    accept={accept}
                 ></input>
                 <img src="/src/assets/flecha.png"></img>
             </label>
