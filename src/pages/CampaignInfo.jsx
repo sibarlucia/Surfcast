@@ -105,6 +105,7 @@ const CampaignInfo = () => {
                 isOpen={showConfigModal}
                 onClose={toggleShowConfigModal}
                 onDone={toggleShowConfigModal}
+                campaignId={campaignId}
             />
         </PageLayout>
     )

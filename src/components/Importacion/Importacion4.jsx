@@ -8,6 +8,7 @@ import { getSchedules } from "../../services/schedules/getSchedules";
 import { addSchedules } from "../../services/schedules/addSchedule";
 import { updateSchedules } from "../../services/schedules/updateSchedule";
 import { getIANATimeZone } from "../../utils/getIANATimeZone";
+
 const defaultData = {
     campain_id: 0,
     monday_bool: true,
@@ -164,7 +165,6 @@ const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-dis
                             <option hidden value={""}>
                                 Selecciona tu zona horaria
                             </option>
-
                             {
                                 getIANATimeZone().map((item, index) => {
                                     return (
@@ -178,10 +178,6 @@ const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-dis
                                 })
 
                             }
-
-                            <option>Horario de Chile</option>
-                            <option></option>
-                            <option></option>
                         </select>
                     </section>
                     <div className={styles.WeekScheduleContainer}>

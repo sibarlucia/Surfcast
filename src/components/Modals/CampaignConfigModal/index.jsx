@@ -1,69 +1,68 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { GenericModal } from "../GenericModal" 
 import { WeekSchedule } from "../../General/WeekSchedule"
 import editIcon from '../../../assets/icons/editIcon.svg' 
 import earthIcon from '../../../assets/icons/tierraIcon.png' 
 import styles from './index.module.css'
+import { getSchedules } from "../../../services/schedules/getSchedules"
+import { updateSchedules } from "../../../services/schedules/updateSchedule"
+import { getIANATimeZone } from "../../../utils/getIANATimeZone"
 
-const defaultData = [
-    {
-        dayName: 'DOM',
-        active: false,
-        startTime: '',
-        endTime: ''
-    },
-    {
-        dayName: 'LUN',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'   
-    },
-    {
-        dayName: 'MAR',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'   
-    },
-    {
-        dayName: 'MIER',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'    
-    },
-    {
-        dayName: 'JUE',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00'    
-    },
-    {
-        dayName: 'VIER',
-        active: true,
-        startTime: '08:00',
-        endTime: '20:00' 
-    },
-    {
-        dayName: 'SAB',
-        active: false,
-        startTime: '',
-        endTime: '' 
-    }
-]
+const defaultData = {
+    campain_id: 0,
+    monday_bool: true,
+    tuesday_bool: true,
+    wednesday_bool: true,
+    thursday_bool: true,
+    friday_bool: true,
+    saturday_bool: false,
+    sunday_bool: false,
+    monday_time: "09:00-18:00",
+    tuesday_time: "09:00-18:00",
+    wednesday_time: "09:00-18:00",
+    thursday_time: "09:00-18:00",
+    friday_time: "09:00-18:00",
+    saturday_time: "",
+    sunday_time: "",
+    timezone: "America/Santiago",
+}
 
-export const CampaignConfigModal = ({isOpen, onClose, onDone = () => {} }) => {
+export const CampaignConfigModal = ({isOpen, onClose, onDone = () => {}, campaignId }) => {
     const [scheduleData, setScheduleData] = useState(defaultData)
     const [isEditing, setIsEditing] = useState(false)
+
+    console.log(scheduleData)
+
+    useEffect(() => {
+        getSchedules()
+            .then(response => {
+                const { data } = response
+                // TODO: api fallando
+                // Filtrar por id de campaña
+                setScheduleData(data)
+            })
+    }, [])
 
     const toggleIdEditing = () => {
         setIsEditing(!isEditing)
     }
 
-    const handleSaveChanges = () => {
+    const handleSaveChanges = async () => {
         console.log('guardar cambios de config')
+        const { data } = await updateSchedules({...scheduleData, campain_id: parseInt(campaignId) })
+        console.log('updated data', data)
         onDone()
     }
 
     const handleChangeScheduleData = (updatedData) => {
+        setScheduleData(updatedData)
+    }
+
+
+    const handleChangeTimeZone = async (event) => {
+        const { value } = event.target
+        const updatedData = { ...scheduleData }
+        updatedData.timezone = value
         setScheduleData(updatedData)
     }
 
@@ -95,13 +94,29 @@ export const CampaignConfigModal = ({isOpen, onClose, onDone = () => {} }) => {
                                 style={!isEditing ? {opacity: '0.4'} : {}}
                             />
                             <select
+                                onChange={handleChangeTimeZone}
+                                value={scheduleData.timezone}
                                 className={styles.countrySelector}
                                 disabled={!isEditing}
                             >
-                                <option value="-1" hidden>selecciona tu pais</option>
-                                <option value="chile">Horario de Chile</option>
+                                <option hidden value={""}>
+                                    Selecciona tu zona horaria
+                                </option>
+
+                                {
+                                    getIANATimeZone().map((item, index) => {
+                                        return (
+                                            <option
+                                                value={item.value}
+                                                key={`timeZone-option-${index}`}
+                                            >
+                                                {item.country}
+                                            </option>
+                                        )
+                                    })
+
+                                }
                             </select>
-                            
                         </label>
                     </div>
                     <div>

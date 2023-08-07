@@ -66,6 +66,8 @@
   border-radius: 0.4em;
   background: #F4F4F4;
   color: #A8A8A8;
+  max-width: 50%;
+  min-width: 10em;
 }
 
 .saveButton {
