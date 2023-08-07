@@ -1,0 +1,75 @@
+.card {
+    border-radius: 2.1em;
+    background-color: var(--color-white);
+    min-width: 8em;
+    width: 20em;
+}
+
+.header {
+    background-color: var(--color-purpel);
+    padding-top: 3em;
+    border-top-left-radius: 2.1em;
+    border-top-right-radius: 2.1em;
+}
+
+.headerTitle {
+    margin: 0;
+    text-align: center;
+    color: var(--color-white);
+    font-size: 2em;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em 1em;
+    min-height: 20em;
+}
+
+.description {
+    text-align: center;
+    font-weight: 600;
+}
+
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.price {
+    margin: 0;
+    font-size: 3em;
+    font-weight: 800;
+}
+
+.priceSpace {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.button {
+    border: 0;
+    border-radius: 2em;
+    padding: 0.6em 0;
+    width: 60%;
+    min-width: 5em;
+    background-color: var(--color-purpel);
+    color: var(--color-white);
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+
+.button:hover {
+    scale: 1.1;
+}
+
+.disabelText {
+    color: #E14192;
+    margin: 0;
+}

@@ -20,7 +20,7 @@ const Team = lazy(() => import('./pages/Team'))
 const Campaign = lazy(() => import('./pages/Campaign'))
 const CampaignInfo = lazy(() => import('./pages/CampaignInfo'))
 const LeadHistory = lazy(() => import('./pages/LeadHistory'))
-
+const Plans = lazy(() => import('./pages/Plans'))
 
 function App() {
     const userData = useSelector(state => state.user)
@@ -84,6 +84,14 @@ function App() {
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Home />
+                            </PrivateRoute>
+                        }
+                    /> 
+                    <Route
+                        path='/plans'
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Plans />
                             </PrivateRoute>
                         }
                     /> 
@@ -200,6 +208,8 @@ function App() {
                             </PrivateRoute>
                         }
                     />
+
+
 
                     <Route
                         path='/*'
