@@ -25,10 +25,12 @@ const Plans = lazy(() => import('./pages/Plans'))
 function App() {
     const userData = useSelector(state => state.user)
 
+    console.log({userData})
+
     const isLogged = useMemo(() => {
 
-        return true // para desarrollo, comentar cuando sea necesario
-
+        // return true // para desarrollo, comentar cuando sea necesario
+        return userData.token ? true : false
     }, [userData])
 
     return (
@@ -37,7 +39,12 @@ function App() {
                 <Routes>
                     <Route
                         path='/'
-                        element={<Login />}
+                        // element={<Login />}
+                        element={
+                            <PrivateRoute isLogged={isLogged}>
+                                <Home />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path='/login'
