@@ -24,11 +24,7 @@ const Plans = lazy(() => import('./pages/Plans'))
 
 function App() {
     const userData = useSelector(state => state.user)
-
-    console.log({userData})
-
     const isLogged = useMemo(() => {
-
         // return true // para desarrollo, comentar cuando sea necesario
         return userData.token ? true : false
     }, [userData])

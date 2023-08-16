@@ -1,34 +1,48 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import styles from "./perfilamiento.module.css";
-const perfilamiento2 = () => {
-    const { step } = useParams();
+import { Link } from "react-router-dom"
+import styles from "./perfilamiento.module.css"
 
-    const [opcion, setOpcion] = useState("");
+const SELECT_DATA = [
+    'Corporación multinacional',
+    'Pequela y mediana empresa (PyME)',
+    'Start-up',
+    'Organización sin fines de lucro',
+    'Organismo gubernamental'
+]
 
-    const handleCambioOpcion = (event) => {
-        setOpcion(event.target.value);
-    };
-    console.log(opcion);
+const Perfilamiento2 = ({ type, onChange, name }) => {
 
-    const nombre = localStorage.nombre;
-    // console.log(nombre);
     return (
         <div className={styles.mainDiv}>
             <form className={styles.formPerfilamiento}>
                 <article className={styles.mainArticle}>
                     <section>
-                        <p>¡{nombre}, cuéntanos un poco sobre tí!</p>
+                        <p>¡{name}, cuéntanos un poco sobre tí!</p>
                         <h2>¿En qué tipo de empresa trabajas?</h2>
                     </section>
                     <section>
-                        <select value={opcion} onChange={handleCambioOpcion}>
-                            <option value="">Elige una opción</option>
-                            <option value="opcion1">Corporación multinacional</option>
-                            <option value="opcion2">Pequela y mediana empresa (PyME)</option>
-                            <option value="opcion3">Start-up</option>
-                            <option value="opcion4">Organización sin fines de lucro</option>
-                            <option value="opcion4">Organismo gubernamental</option>
+                        <select
+                            value={type}
+                            onChange={onChange}
+                            name="company_type"
+                        >
+                            <option
+                                value=""
+                                hidden
+                            >
+                                Elige una opción
+                            </option>
+                            {
+                                SELECT_DATA.map((item, index) => {
+                                    return (
+                                        <option
+                                            value={item}
+                                            key={`company_type-option-${index}`}
+                                        >
+                                            {item}
+                                        </option>
+                                    )
+                                })
+                            }
                         </select>
                     </section>
                     <section>
@@ -46,4 +60,4 @@ const perfilamiento2 = () => {
     );
 };
 
-export default perfilamiento2;
+export default Perfilamiento2;

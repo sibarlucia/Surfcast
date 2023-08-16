@@ -3,12 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { createCampaign } from "../../services/campaign/createCampaign";
 import styles from "./perfilamiento.module.css";
 
-const Perfilamiento5 = () => {
+const Perfilamiento5 = ({ finalData }) => {
     // const { step } = useParams();
     const navigate = useNavigate()
 
+    const saveUserData = () => {
+        console.log(finalData)
+        // consumir api con de actualizar con finalData
+    }
+
     const handleCreateCampaign = async (event) => {
         event.preventDefault()
+        saveUserData()
         let newCampaingId = 4
         try {
             const response = await createCampaign({name: "Mi primera campaña"})
@@ -17,6 +23,11 @@ const Perfilamiento5 = () => {
             console.error('algo fallo con al crear la campaña')
         }
         navigate(`/campaign/${newCampaingId}/importacion/1/`)
+    }
+
+    const handleGotToHome = () => {
+        saveUserData()
+        navigate('/')
     }
 
     return (
@@ -29,18 +40,18 @@ const Perfilamiento5 = () => {
                     </section>
                     <section></section>
                     <section id={styles.botones}>
-                        <Link to="/">
-                            <button
-                                className={styles.botonClarito}
-                                type="button"
-                            >
-                Dejarlo para después
-                            </button>
-                        </Link>
+                        {/* <Link to="/"> */}
+                        <button
+                            onClick={handleGotToHome}
+                            className={styles.botonClarito}
+                            type="button"
+                        >
+                                Dejarlo para después
+                        </button>
+                        {/* </Link> */}
 
                         <button
                             className={styles.button2}
-                            // onClick={handleCreateCampaign}
                         >
                             Crear ahora
                         </button>
