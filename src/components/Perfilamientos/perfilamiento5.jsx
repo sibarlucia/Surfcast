@@ -2,14 +2,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { createCampaign } from "../../services/campaign/createCampaign";
 import styles from "./perfilamiento.module.css";
+import { updateUserData } from "../../services/auth/updateUserData";
 
 const Perfilamiento5 = ({ finalData }) => {
     // const { step } = useParams();
     const navigate = useNavigate()
 
     const saveUserData = () => {
-        console.log(finalData)
-        // consumir api con de actualizar con finalData
+        // llama a la api de actualizar info
+        if (finalData.other_role) {
+            finalData.role = finalData.other_role
+        }
+        finalData.first_time = false
+        updateUserData(finalData)
     }
 
     const handleCreateCampaign = async (event) => {
