@@ -12,12 +12,14 @@
   "dependencies": {
     "@react-oauth/google": "^0.11.0",
     "axios": "^1.4.0",
+    "easymde": "^2.18.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-file-drop": "^3.1.6",
     "react-modal": "^3.16.1",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.12.1",
+    "react-simplemde-editor": "^5.2.0",
     "react-time-picker": "^6.2.0",
     "redux": "^4.2.1",
     "sweetalert2": "^11.7.16"

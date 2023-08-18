@@ -38,6 +38,7 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
     const [selectedLead, setSelectedLead] = useState(null)
     const navigate = useNavigate()
 
+
     const handleSelectLeadsType = (selectedIndex) => () => {
         const selectedData = LEADS_TYPES[selectedIndex]
         setSelectedLeadType(selectedData)
@@ -162,6 +163,17 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
                     <tbody className={styles.tableBody}>
                         {
                             sortedLeads.map((item, leadIndex) => {
+                                let leadDate = item.timestamp
+                                try {
+                                    const date = new Date(item.timestamp)
+                                    // en-US
+                                    leadDate = date.toLocaleString('en-GB', {
+                                        minimumIntegerDigits: 2
+                                    })
+                                } catch (error) {
+                                    console.log(error)
+                                }
+
                                 return (
                                     <tr
                                         className={styles.bodyRow}
@@ -182,7 +194,7 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
                                         </td>
                                         <td>
                                             <p>
-                                                jmansilla@surfcast.com
+                                                {item.email}
                                             </p>
                                         </td>
                                         <td>
@@ -192,7 +204,7 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
                                         </td>
                                         <td>
                                             <p>
-                                                {item.timestamp}
+                                                {leadDate}
                                             </p>
                                         </td>
                                         <td>
