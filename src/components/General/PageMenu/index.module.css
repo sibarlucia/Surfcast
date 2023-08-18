@@ -75,15 +75,20 @@
 .footerContent {
   text-align: center;
   color: #706F6F;
+  max-width: 100%;
 }
 
 .footerContent_title {
   font-size: 1em;
   margin: 0;
   margin-bottom: 0.3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .footerContent_email {
-  font-size: 0.7em;
+  font-size: 0.8em;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

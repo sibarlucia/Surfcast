@@ -1,19 +1,8 @@
-import React, { useState } from "react";
-import { Link, BrowserRouter, Route, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 import styles from "./perfilamiento.module.css";
 
-const Perfilamiento = () => {
-    const { step } = useParams();
-
-    const [nombre, setNombre] = useState("");
-
-    const handleCambioNombre = (event) => {
-        setNombre(event.target.value);
-    };
-
-    const handleGuardarNombre = () => {
-        localStorage.setItem("nombre", nombre);
-    };
+const Perfilamiento = ({ name, onChange }) => {
+    // const [nombre, setNombre] = useState("");
 
     return (
         <div className={styles.mainDiv}>
@@ -29,23 +18,20 @@ const Perfilamiento = () => {
                             placeholder="Nombre"
                             className={styles.input2}
                             type="text"
-                            value={nombre}
-                            onChange={handleCambioNombre}
+                            value={name}
+                            name="full_name"
+                            onChange={onChange}
                         ></input>
                     </section>
 
                     <section>
                         <Link to="/perfilamiento/2">
-                            <button className={styles.button2} onClick={handleGuardarNombre}>
-                Continuar
+                            <button className={styles.button2}>
+                                Continuar
                             </button>
                         </Link>
                     </section>
                 </article>
-
-                <Link className={styles.volver} to="/">
-                    <img src="/src/assets/volverblanco.png" />
-                </Link>
             </form>
         </div>
     );

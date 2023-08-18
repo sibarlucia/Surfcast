@@ -4,6 +4,7 @@ import { auhtenticate } from "../services/auth/auhtenticate"
 import { userLoginAction } from "../Store/actions/user/userLoginAction"
 import { useDispatch } from "react-redux"
 import alert from 'sweetalert2'
+import { userDataAction } from "../Store/actions/user/userDataAction"
 
 // manjea el token de autentificacion
 const LoginToken = () => {
@@ -15,9 +16,18 @@ const LoginToken = () => {
         const token = params.get('token')
         auhtenticate({ access_token: token })
             .then(response => {
-                const finalToken = response.data.access_token
+                const { data } = response
+                const finalToken = data.access_token
+                const userId = data.user
+                
                 dispatch(userLoginAction(finalToken))
-                navigate('/home')
+                dispatch(userDataAction({ userId }))
+                
+                if (data.first_time) {
+                    navigate('/perfilamiento/1')
+                } else {
+                    navigate('/home')
+                }
             })
             .catch(error => {
                 console.error(error)

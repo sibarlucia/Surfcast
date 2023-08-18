@@ -1,12 +1,17 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { GoogleLoginButton } from '../components/google/GoogleLoginButton'
 import { login } from '../services/auth/Login'
 import '/src/styles/stylesglobales.css'
 import alert from 'sweetalert2'
+import { useDispatch } from "react-redux"
+import { userLoginAction } from '../Store/actions/user/userLoginAction'
+import { userDataAction } from '../Store/actions/user/userDataAction'
+import { getUserData } from '../services/auth/getUserData'
 // import rutas from '../Routes/routes'
 
 const Login = () => {
+    const dispatch = useDispatch()
     const [email, setEmail] = useState('')
 
     const navigate = useNavigate()
@@ -17,17 +22,26 @@ const Login = () => {
         })
 
         const { data } = response
-        debugger
-        // TODO: manejar token
-        // console.log('login con google', userData)
-        navigate('/perfilamiento/1')
+
+        dispatch(userLoginAction(data.access_token))
+        dispatch(userDataAction({ userId: data.user }))
+        const { data: userData } = await getUserData()
+
+        if (userData.first_time) {
+            navigate('/perfilamiento/1')
+        } else {
+            navigate('/home')
+        }
+
     }
 
     const handleChangEmail = (event) => {
         setEmail(event.target.value)
     }
 
-    const handleClickOnAlreadyHaveAccount = () => {
+    const handleClickOnAlreadyHaveAccount = (event) => {
+        event.preventDefault()
+        
         if (!email) {
             return
         }
@@ -57,7 +71,7 @@ const Login = () => {
                 <img id='peces' src="\src\assets\imgmenu.png"  />
             </div>
 
-            <form>
+            <form onSubmit={handleClickOnAlreadyHaveAccount}>
                 <h1>
                   ¡HOLA!
                 </h1>
@@ -99,7 +113,6 @@ const Login = () => {
                     </Link> */}
                     <button
                         className='button2'
-                        type='button'
                         onClick={handleClickOnAlreadyHaveAccount}
                     >
                         Continuar
