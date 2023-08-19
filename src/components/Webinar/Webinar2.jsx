@@ -1,41 +1,67 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./webinar2.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { WeekSchedule } from "../General/WeekSchedule";
-
-
-const defaultData = {
-    campain_id: 0,
-    monday_bool: true,
-    tuesday_bool: true,
-    wednesday_bool: true,
-    thursday_bool: true,
-    friday_bool: true,
-    saturday_bool: false,
-    sunday_bool: false,
-    monday_time: "09:00-18:00",
-    tuesday_time: "09:00-18:00",
-    wednesday_time: "09:00-18:00",
-    thursday_time: "09:00-18:00",
-    friday_time: "09:00-18:00",
-    saturday_time: "",
-    sunday_time: "",
-    timezone: "America/Santiago",
+import { getIANATimeZone } from "../../utils/getIANATimeZone";
+import { WeelDaysSchedule } from "../General/WeekDaysSchedule";
+import { hoursOptions } from "../../utils/getHoursOptions";
+import { createResponse } from "../../services/responses/createResponse";
+ 
+const DEFAULT_DATA_FORM = {
+    timezone: '',
+    frequency: '',
 }
 
+const RESPONSE_NAMES = {
+    timezone: 'webinar/2/timezone',
+    frequency: 'webinar/2/frequency',
+    startTime: 'webinar/2/startTime',
+    endTime: 'webinar/2/endTime'
+}
 
-const Webinar2 = ({ campaignId }) => {
-    const [scheduleData, setScheduleData] = useState(defaultData)
+const Webinar2 = ({ defaultResponse = null, campaignId }) => {
+    const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
     const navigate = useNavigate()
-
-    const handleChangeScheduleData = (updatedData) => {
-        setScheduleData(updatedData)
-    }
+    
+    useEffect(() => {
+        if (defaultResponse) {
+            const timezone = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['timezone'])?.answer || ''
+            const frequency = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['frequency'])?.answer || ''
+            const startTime = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['startTime'])?.answer || ''
+            const endTime = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['endTime'])?.answer || ''
+            setDataForm({
+                timezone,
+                frequency,
+                startTime,
+                endTime
+            })
+        }
+    }, [defaultResponse])
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // TODO: consumir apir para guardar la respuesta
+        Object.keys(dataForm).forEach(inputName => {
+            createResponse({
+                question_name: RESPONSE_NAMES[inputName],
+                type: 'string',
+                answer: dataForm[inputName],
+                campaign_id: campaignId
+            })
+        })
         navigate(`/campaign/${campaignId}/webinar/3/`)
+    }
+
+    const handleChangeTimeZone = async (event) => {
+        const { value } = event.target
+        setDataForm({ ...dataForm, timezone: value })
+    }
+
+    const handleUpdatefrequency = (updateData) => {
+        setDataForm({ ...dataForm, frequency: updateData })
+    }
+
+    const handleChageTime = (event) => {
+        const { name, value } = event.target
+        setDataForm({ ...dataForm, [name]: value })
     }
 
     return (
@@ -51,20 +77,83 @@ const Webinar2 = ({ campaignId }) => {
                     </section>
                     <section>
                         <h2>Define el horario en que se desarrollará</h2>
-                        <select className={styles.selectPaises}>
-                            <option>Horario de Chile</option>
-                            <option>Horario de </option>
-                            <option>Horario de </option>
-                            <option>Horario de </option>
+                        <select
+                            className={styles.selectPaises}
+                            onChange={handleChangeTimeZone}
+                            value={dataForm.timezone}
+                        >
+                            <option hidden value={""}>
+                                Selecciona tu zona horaria
+                            </option>
+                            {
+                                getIANATimeZone().map((item, index) => {
+                                    return (
+                                        <option
+                                            value={item.value}
+                                            key={`timeZon-option-${index}`}
+                                        >
+                                            {item.country}
+                                        </option>
+                                    )
+                                })
+
+                            }
                         </select>
                     </section>
-                    <section className={styles.horarios}>
-                        <WeekSchedule
-                            data={scheduleData}
-                            onChange={handleChangeScheduleData}                        
+                    <section>
+                        <WeelDaysSchedule
+                            className={styles.webinarDaysSchedule}
+                            selectedDays={dataForm.frequency}
+                            onChange={handleUpdatefrequency}
                         />
                     </section>
-
+                    <section className={styles.horarios}>
+                        <select
+                            name='startTime'
+                            value={dataForm.startTime}
+                            onChange={handleChageTime}
+                        >
+                            <option value="" hidden>
+                                Desde
+                            </option>
+                            {
+                                hoursOptions.map((item) => {
+                                    return (
+                                        <option
+                                            value={item}
+                                            key={`starthours-${item}`}
+                                        >
+                                            {item}
+                                        </option>
+                                    )
+                                })
+                            }
+                        </select>
+                        <p className={styles.selectDivider}>
+                                    -
+                        </p>
+                        <select
+                            name='endTime'
+                            value={dataForm.endTime}
+                            onChange={handleChageTime}
+                        >
+                            <option value="" hidden>
+                                Hasta
+                            </option>
+                            {
+                                hoursOptions.map((item) => {
+                                    return (
+                                        <option
+                                            value={item}
+                                            key={`endhours-${item}`}
+                                        >
+                                            {item}
+                                        </option>
+                                    )
+                                })
+                            }
+                        </select>
+                    </section>
                     <section>
                         <button className={styles.botonSiguiente}>Siguiente</button>
                     </section>

@@ -278,15 +278,21 @@ input[type="file"] {
 }
 
 .horarios {
-    background: linear-gradient(180deg, #001a8d00 0%, rgba(0, 27, 141, 0) 100%);
-    border-radius: 50px;
-
-    text-align: left;
     display: flex;
-    justify-content: flex-start;
-    font-size: 20px;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1em;
+}
 
-/* border: 1px solid red; */
+.horarios select {
+    margin: 0;
+    width: fit-content;
+}
+
+.horarios .selectDivider {
+    font-size: 1.5em;
+    margin: 0;
 }
 
 .hora * {
@@ -294,3 +300,8 @@ input[type="file"] {
     margin-right: 20px;
 
 }
+
+
+.webinarDaysSchedule {
+    font-size: 2em;
+} 

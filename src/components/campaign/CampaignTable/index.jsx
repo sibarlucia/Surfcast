@@ -33,7 +33,7 @@ export const CampaignTable = ({ data = [], onToggleActive = () => {} }) => {
                                         </p>
                                     </div>
                                 </td>
-                                <td className={styles.bodyItem}>
+                                {/* <td className={styles.bodyItem}>
                                     <div className={styles.dataInfo}>
                                         <h5>
                                           50%
@@ -42,7 +42,7 @@ export const CampaignTable = ({ data = [], onToggleActive = () => {} }) => {
                                           NIVEL DE ÉXITO
                                         </p>
                                     </div>
-                                </td>
+                                </td> */}
                                 <td className={styles.bodyItem}>
                                     <div className={styles.dateContainer}>
                                         <h5>

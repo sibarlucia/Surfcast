@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { WeeksDays } from '../../../utils/getWeekDays'
 import styles from './index.module.css'
 
-export const WeelDaysSchedule = ({selectedDays = '', onChange = () => {}}) => {
+export const WeelDaysSchedule = ({selectedDays = '', onChange = () => {}, className = ''}) => {
 
     const formatedSelectedDays = useMemo(() => {
         if (!selectedDays) return []
@@ -21,7 +21,7 @@ export const WeelDaysSchedule = ({selectedDays = '', onChange = () => {}}) => {
     }
 
     return (
-        <ul className={styles.list}>
+        <ul className={`${styles.list} ${className}`}>
             {
                 WeeksDays.map((item, index) => {
                     return (

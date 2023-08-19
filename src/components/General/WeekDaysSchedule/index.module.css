@@ -9,11 +9,11 @@
 }
 
 .dayButton {
-    width: 80px;
-    height: 40px;
-    border-radius: 15px;
+    width: 5em;
+    height: 2.5em;
+    border-radius: 0.95em;
     border: none;
-    margin: 5px;
+    margin: 0.31em;
     color: #a8a8a8;
     cursor: pointer;
   }
