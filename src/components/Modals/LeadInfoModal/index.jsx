@@ -13,7 +13,7 @@ const DefaultActivity = [
     },
     {
         text: 'Se envió solicitud de contacto',
-        type: 'invitation'
+        type: 'invitation' //event
     },
     {
         text: 'Se vió el perfil de Javier Mansilla',

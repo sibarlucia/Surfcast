@@ -3,6 +3,8 @@ import vistoIcon from '../../../assets/icons/visto.svg'
 import invitationIcon from '../../../assets/icons/invitation.svg'
 import responseIcon from '../../../assets/icons/response.svg'
 import styles from './index.module.css'
+import { getMetrics } from '../../../services/campaign/getCampaignActividad'
+import { useEffect, useState } from 'react'
 
 const ICONS = {
     'newMessage': newMessageIcon,
@@ -12,7 +14,10 @@ const ICONS = {
 }
 
 
+
+
 const DefaultData = [
+
     {
         text: 'Un mensaje de Royer se ha detectado en la campaña de "Venta de lanzamiento"',
         type: 'newMessage'
@@ -40,6 +45,22 @@ const DefaultData = [
 ]    
 
 const ActividadReciente = ({ listData = DefaultData }) => {
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+        
+        getMetrics()
+            .then(responseData => {
+                setData(responseData); 
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
+
+    
+
+    console.log(data.latest_audits);
     return (
         <ul className={styles.list}>
             {

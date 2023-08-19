@@ -28,8 +28,8 @@ const Billing = lazy(() => import('./pages/Billing'))
 function App() {
     const userData = useSelector(state => state.user)
     const isLogged = useMemo(() => {
-        // return true // para desarrollo, comentar cuando sea necesario
-        return userData.token ? true : false
+        return true // para desarrollo, comentar cuando sea necesario
+        // return userData.token ? true : false
     }, [userData])
 
     return (

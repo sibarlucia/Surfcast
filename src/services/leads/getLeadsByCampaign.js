@@ -7,13 +7,14 @@ const baseUrl = routeGenerator('/leads/campaigns')
 export const getLeadsByCampaign = async (campaignId) => {
     const url = `${baseUrl}/${campaignId}/leads/`
 
-    return { // para test, borrar en prod
-        data: defaultData
-    }
+    // return { // para test, borrar en prod
+    //     data: defaultData
+    // }
 
     const response = await axios.get(url, {
         headers: {
-            token: getToken()
+            token: getToken(),
+            
         }
     })
 
