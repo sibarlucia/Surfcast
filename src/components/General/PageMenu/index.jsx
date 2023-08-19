@@ -28,13 +28,13 @@ const MENUS_DATA = [
         url: '/campaign',
         matchUrl: ['campaign']
     },
-    {
-        title: 'Equipo',
-        img: userPlus,
-        selectedImg: userPlusSelected,
-        url: '/team',
-        matchUrl: ['team']
-    },
+    // {
+    //     title: 'Equipo',
+    //     img: userPlus,
+    //     selectedImg: userPlusSelected,
+    //     url: '/team',
+    //     matchUrl: ['team']
+    // },
     {
         title: 'Facturación',
         img: fileIcon,

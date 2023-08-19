@@ -16,12 +16,12 @@ const Reunion = lazy(() => import('./pages/ReunionRender'))
 const Newsletter = lazy(() => import('./pages/NewsletterRender'))
 const AumentarRed = lazy(() => import('./pages/AumentarRedRender'))
 const LoginToken = lazy(() => import('./pages/LoginToken'))
-const Team = lazy(() => import('./pages/Team'))
+// const Team = lazy(() => import('./pages/Team'))
 const Campaign = lazy(() => import('./pages/Campaign'))
 const CampaignInfo = lazy(() => import('./pages/CampaignInfo'))
 const LeadHistory = lazy(() => import('./pages/LeadHistory'))
-const Plans = lazy(() => import('./pages/Plans'))
-const Upgrade = lazy(() => import('./pages/Upgrade'))
+// const Plans = lazy(() => import('./pages/Plans'))
+// const Upgrade = lazy(() => import('./pages/Upgrade'))
 const Billing = lazy(() => import('./pages/Billing'))
 
 
@@ -77,14 +77,14 @@ function App() {
                             </PrivateRoute>
                         }
                     /> 
-                    <Route
+                    {/* <Route
                         path='/team'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Team />
                             </PrivateRoute>
                         }
-                    /> 
+                    />  */}
                     <Route
                         path='/billing'
                         element={
@@ -93,14 +93,14 @@ function App() {
                             </PrivateRoute>
                         }
                     /> 
-                    <Route
+                    {/* <Route
                         path='/plans'
                         element={
                             <PrivateRoute isLogged={isLogged}>
                                 <Plans />
                             </PrivateRoute>
                         }
-                    /> 
+                    />  */}
                     <Route
                         path='/perfilamiento'
                         element={
@@ -215,10 +215,10 @@ function App() {
                         }
                     />
 
-                    <Route
+                    {/* <Route
                         path='/plans/upgrade'
                         element={<Upgrade/>}
-                    />
+                    /> */}
 
                     <Route
                         path='/*'
