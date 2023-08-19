@@ -10,9 +10,9 @@ const Billing = () => {
         publishableKey: "for_dQyGmLqaDz1NOGTIbXmJzBYUypbfnHTQ46t3KzwOv261bsfC"
     };
     (function () { var s=document.createElement("script"); s.src="https://js.piriod.com/embed/piriod-embed.umd.min.js"; s.async=true; s.type="text/javascript"; var x=document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); })();
-       
+
     return (
-        <PageLayout>
+        <PageLayout separator={false}>
 
             {/* <header className={styles.homeHeader}>
                 <div className={styles.homeHeaderInfo}>
