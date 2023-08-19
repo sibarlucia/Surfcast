@@ -4,6 +4,7 @@ import checkIcon from '../../../assets/icons/checkIcon.svg'
 import trashIcon from '../../../assets/trash_icon.svg'
 import editIcon from '../../../assets/icons/editIcon.svg'
 
+// lista de notas ( no markdown )
 export const LeadNotes = ({ notes = [], leadId = null, onDeleteNote = () => {}, onSaveNote= () => {} })  => {
     const [newNote, setNewNote] = useState('')
     const [deleteIndex, setDeleteIndex] = useState(null)

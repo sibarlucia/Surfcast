@@ -1,0 +1,18 @@
+.notesContainer {
+    height: 100%;
+    position: relative;
+    padding-bottom: 2em;
+  }
+
+  .saveButton {
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+  }
+
+  .mdContainer {
+    pointer-events: all;
+    padding-bottom: 1em;
+    /* max-height: 10em; */
+    /* overflow: hidden; */
+  }

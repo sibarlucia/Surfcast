@@ -1,5 +1,5 @@
+import { useState, useEffect } from "react"
 import { PageLayout } from "../components/General/PageLayout"
-import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import styles from '../styles/pages/LeadHistory.module.css'
@@ -8,6 +8,8 @@ import linkedinLogo from '../assets/linkedin.png'
 import gmailLogo from '../assets/gmail.png'
 import { LinkedInHistory } from "../components/campaign/LinkedInHistory/LinkedInHistory" 
 import { GmailHistory } from "../components/campaign/GmailHistory/GmailHistory"
+import { getMessagesOfLead } from "../services/messages/getMessagesOfLead"
+
 const defaultLeadData = {
     name: 'Javier Mansilla',
     position: 'CTO en Surfcast'
@@ -36,28 +38,6 @@ const defaultHistory = [
         Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.`,
         hour: '17:30',
     },
-    {
-        divider: true,
-        text: '30 SEPT 2023'
-    },
-    {
-        user: {
-            icon: profileImg,
-            name: 'Javier Mansilla'
-        },
-        message: `Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-        Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.`,
-        hour: '17:30',
-    },
-    {
-        user: { 
-            icon: profileImg,
-            name: 'Surfcast'
-        },
-        message: `Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-        Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.`,
-        hour: '17:30',
-    }
 ]
 const channelsOptions = {
     linkedIn: 'linkedIn',
@@ -70,6 +50,33 @@ const LeadHistory = () => {
     const [history] = useState(defaultHistory)
     const [channel, setChannel] = useState(channelsOptions.linkedIn)
     
+    const [linkedInHistory, setLinkedInHistory] = useState([]) 
+    const [gmailHistory, setGmailHistory] = useState([]) 
+
+    useEffect(() => {
+        getMessagesOfLead(leadId)
+            .then(response => {
+                const { data } = response
+
+                const linkedInMessages = []
+                const gmailMessages = []
+
+                data.forEach(item => {
+                    if (item.channel === "email") {
+                        gmailMessages.push(item)
+                    } else if (item.channel === 'linkedin') {
+                        linkedInMessages.push(item)
+                    }
+                })
+
+                setLinkedInHistory(linkedInMessages)
+                setGmailHistory(gmailMessages)
+            })
+
+        
+    }, [leadId])
+
+
     const handelSelectChannel = (newChannel) => () => {
         setChannel(newChannel)
     }

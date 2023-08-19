@@ -1,57 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./newsletter.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { WeekSchedule } from "../General/WeekSchedule";
+import { WeelDaysSchedule } from "../General/WeekDaysSchedule";
+import { createResponse } from "../../services/responses/createResponse";
 
-const defaultData = {
-    campain_id: 0,
-    monday_bool: true,
-    tuesday_bool: true,
-    wednesday_bool: true,
-    thursday_bool: true,
-    friday_bool: true,
-    saturday_bool: false,
-    sunday_bool: false,
-    monday_time: "09:00-18:00",
-    tuesday_time: "09:00-18:00",
-    wednesday_time: "09:00-18:00",
-    thursday_time: "09:00-18:00",
-    friday_time: "09:00-18:00",
-    saturday_time: "",
-    sunday_time: "",
-    timezone: "America/Santiago",
+
+const DEFAULT_DATA_FORM = {
+    frequency: '',
 }
 
-// const DEFAULT_DATA_FORM = {
-//     theme: '',
-// }
+const RESPONSE_NAMES = {
+    frequency: 'newsletter/2/frequency',
+}
 
-// const RESPONSE_NAMES = {
-//     theme: 'newsletter/2/theme',
-// }
-
-const Newsletter2 = ({ campaignId }) => {
-    const [scheduleData, setScheduleData] = useState(defaultData)
+const Newsletter2 = ({ defaultResponse = null, campaignId }) => {
     const navigate = useNavigate()
-    
+    const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
 
-    // useEffect(() => {
-    //     if (defaultResponse) {
-    //         const theme = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['theme'])?.answer || ''
-    //         setDataForm({
-    //             theme,
-    //         })
-    //     }
-    // }, [defaultResponse])
+    console.log(dataForm)
 
-    const handleChangeScheduleData = (updatedData) => {
-        setScheduleData(updatedData)
-    }
+    useEffect(() => {
+        if (defaultResponse) {
+            const frequency = defaultResponse.find(item => item.question_name === RESPONSE_NAMES['frequency'])?.answer || ''
+            setDataForm({
+                frequency,
+            })
+        }
+    }, [defaultResponse])
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // TODO: consumir apir para guardar la respuesta
+        Object.keys(dataForm).forEach(inputName => {
+            createResponse({
+                question_name: RESPONSE_NAMES[inputName],
+                type: 'string',
+                answer: dataForm[inputName],
+                campaign_id: campaignId
+            })
+        })
+
         navigate(`/campaign/${campaignId}/newsletter/3/`)
+    }
+
+    const handleUpdatefrequency = (updateData) => {
+        setDataForm({ ...dataForm, frequency: updateData })
     }
 
     return (
@@ -68,9 +61,9 @@ const Newsletter2 = ({ campaignId }) => {
                     <h2>¿Con qué frecuencia se publicará?</h2>
 
                     <div>
-                        <WeekSchedule
-                            data={scheduleData}
-                            onChange={handleChangeScheduleData}                        
+                        <WeelDaysSchedule
+                            selectedDays={dataForm.frequency}
+                            onChange={handleUpdatefrequency}
                         />
                     </div>
                 </div> 

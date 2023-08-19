@@ -1,10 +1,12 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { GenericModal } from "../GenericModal" 
 import defaultProfile from '../../../assets/campaign/defaultProfile.svg'
 import styles from './index.module.css'
-import { LeadNotes } from "../../campaign/LeadNotes"
+// import { LeadNotes } from "../../campaign/LeadNotes"
 import alert from 'sweetalert2'
 import ActividadReciente from "../../campaign/ActividadReciente/ActividadReciente"
+import { MarkDownNote } from "../../campaign/MarkDownNote"
+import { getLeadNotes } from "../../../services/notes/getLeadNotes"
 
 const DefaultActivity = [
     {
@@ -21,22 +23,36 @@ const DefaultActivity = [
     },
 ]
 
-const DEFAULT_LEAD_NOTES = [
-    'Enviarle la cotización que solicitó'
-]
 
 export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignName = '', onDeleteLead = () => {} }) => {
-    const [leadNotes, setLeadNotes] = useState(DEFAULT_LEAD_NOTES) 
+    const [noteData, setNoteData] = useState({}) 
+
+    console.log({leadData})
+
+    useEffect(() => {
+        if (leadData) {
+            getLeadNotes({ leadId: leadData.id })
+                .then(response => {
+                    const { data } = response
+                    if (data.length) {
+                        setNoteData(data[0])
+                    }
+                })
+        }
+    }, [leadData])
 
     const handleAddNote = (newNote) => {
-        setLeadNotes([ ...leadNotes, newNote ])
+        // setLeadNotes([ ...leadNotes, newNote ])
     }
 
     const handleDeleteNote = (deleteIndex) => {
-        const updateNotes = [...leadNotes]
-        updateNotes.splice(deleteIndex, 1)
-        setLeadNotes(updateNotes)
+        // const updateNotes = [...leadNotes]
+        // updateNotes.splice(deleteIndex, 1)
+        // setLeadNotes(updateNotes)
     }
+
+
+    
 
     const handleDeleteLead = async () => { // eslint-disable-line
         const { isConfirmed } = await alert.fire({
@@ -125,12 +141,18 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
                             Notas
                         </h2>
                     </div>
-                    <LeadNotes
+                    <MarkDownNote
+                        onSaveNote={handleAddNote}
+                        onDeleteNote={handleDeleteNote}
+                        leadId={leadData.id}
+                        note={noteData}
+                    />
+                    {/* <LeadNotes
                         onSaveNote={handleAddNote}
                         onDeleteNote={handleDeleteNote}
                         leadId={leadData.id}
                         notes={leadNotes}
-                    />
+                    /> */}
 
                 </article>
             </section>
