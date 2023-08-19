@@ -6,65 +6,111 @@ import styles from './index.module.css'
 import { getMetrics } from '../../../services/campaign/getCampaignActividad'
 import { useEffect, useState } from 'react'
 
+
+const DefaultData = [
+    {
+        text: 'Hola',
+        type: ''
+    },
+    {
+        text: '',
+        type: ''
+    },
+    {
+        text: '',
+        type: ''
+    },
+    {
+        text: '',
+        type: ''
+    },
+    {
+        text: '',
+        type: ''
+    },
+    {
+        text: '',
+        type: ''
+    },
+    {
+        text: '',
+        type: ''
+    },
+    
+   
+]    
+
+
+async function fetchAndProcessData() {
+    try {
+        let data = await getMetrics(); 
+        // console.log("API Data:", data);
+        let actividad = []
+        for (let i = 0; i < 7; i++) {
+            actividad.push(data.latest_audits[i])
+            
+            
+            
+        }
+        // console.log(actividad);
+        // console.log(actividad[0].comment);
+        // console.log(DefaultData[0]);
+        // console.log(DefaultData[0].text);
+
+
+        for (let j = 0; j < actividad.length; j++) {
+            DefaultData[j].id = actividad[j].id
+
+            DefaultData[j].text = actividad[j].comment
+
+            DefaultData[j].type = actividad[j].event
+
+
+
+            // console.log(DefaultData[j]);
+        }
+
+        
+    } catch (error) {
+        console.error("API Request Error:", error);
+    }
+}
+
+fetchAndProcessData();
+
+// console.log(DefaultData);
+const Datos = DefaultData
+
+// console.log(Datos);
+
+
+
+
 const ICONS = {
-    'newMessage': newMessageIcon,
-    'view': vistoIcon,
-    'response': responseIcon,
-    'invitation': invitationIcon
+    'message_sent': newMessageIcon,
+
+    'message_read': vistoIcon,
+    'profile_visited': vistoIcon,
+
+    'skill_endorsed': responseIcon,
+    'end_of_sequence': responseIcon,
+
+    'follow_up_scheduled': invitationIcon,
+    'connection_sent': invitationIcon
+
 }
 
 
+const ActividadReciente = ({ Actividad = Datos }) => {
+    const [data, setData] = useState(Actividad);
 
-
-const DefaultData = [
-
-    {
-        text: 'Un mensaje de Royer se ha detectado en la campaña de "Venta de lanzamiento"',
-        type: 'newMessage'
-    },
-    {
-        text: 'Perfil visto de Royer en la campaña numero 1',
-        type: 'view'
-    },
-    {
-        text: 'Royer respondió por mensaje privado',
-        type: 'response'
-    },
-    {
-        text: 'Se le envió a Pedro una invitación para conectar',
-        type: 'invitation'
-    },
-    {
-        text: 'Un mensaje de Royer se ha detectado en la campaña de "Venta de lanzamiento"',
-        type: 'newMessage'
-    },
-    {
-        text: 'Perfil visto de Royer en la campaña numero 1',
-        type: 'view'
-    }
-]    
-
-const ActividadReciente = ({ listData = DefaultData }) => {
-    const [data, setData] = useState([]);
+    // console.log(Actividad);
+    // console.log(data);
     
-    useEffect(() => {
-        
-        getMetrics()
-            .then(responseData => {
-                setData(responseData); 
-            })
-            .catch(error => {
-                console.error("Error fetching data:", error);
-            });
-    }, []);
-
-    
-
-    console.log(data.latest_audits);
     return (
         <ul className={styles.list}>
             {
-                listData.map((item, index) => {
+                data.map((item, index) => {
                     return (
                         <li
                             key={`Activiti-Item-${index}`}
@@ -80,7 +126,7 @@ const ActividadReciente = ({ listData = DefaultData }) => {
                                     )
                                 }
                                 {
-                                    index < listData.length -1 && (
+                                    index < DefaultData.length -1 && (
                                         <div className={styles.divisor}></div>
                                     )
                                 }
@@ -95,6 +141,7 @@ const ActividadReciente = ({ listData = DefaultData }) => {
             }
         </ul>
     )
+    
 }
 
 export default ActividadReciente
