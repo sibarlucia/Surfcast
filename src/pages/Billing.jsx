@@ -1,20 +1,31 @@
-import React from 'react'
+import { useEffect, useRef } from 'react';
 import { PageLayout } from '../components/General/PageLayout'  
-import styles from '../styles/pages/campaignHome.module.css'
+// import styles from '../styles/pages/campaignHome.module.css'
 
 
 const Billing = () => {
-    
-    window.piriodSettings = {
-        service: "signupForms",
-        publishableKey: "for_dQyGmLqaDz1NOGTIbXmJzBYUypbfnHTQ46t3KzwOv261bsfC"
-    };
-    (function () { var s=document.createElement("script"); s.src="https://js.piriod.com/embed/piriod-embed.umd.min.js"; s.async=true; s.type="text/javascript"; var x=document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); })();
+    const render = useRef()
+
+    useEffect(() => {
+        if (!render.current) {
+            window.piriodSettings = {
+                service: "signupForms",
+                publishableKey: "for_dQyGmLqaDz1NOGTIbXmJzBYUypbfnHTQ46t3KzwOv261bsfC"
+            };
+            (function () { var s=document.createElement("script"); s.src="https://js.piriod.com/embed/piriod-embed.umd.min.js"; s.async=true; s.type="text/javascript"; var x=document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); })();
+            render.current = true
+        }
+    }, [])
 
     return (
         <PageLayout separator={false}>
+            <div id="piriod-widget"></div>
+        </PageLayout>
+    )
+}
 
-            {/* <header className={styles.homeHeader}>
+// return (
+/*{ <header className={styles.homeHeader}>
                 <div className={styles.homeHeaderInfo}>
                     <h1>
                         Pagos y facturación
@@ -66,16 +77,7 @@ const Billing = () => {
 
                     </div>
                 </div>
-            </header> */}
-            <div id="piriod-widget">
-                
-            </div>
-
-
-            
-       
-        </PageLayout>
-    )
-}
+            </header> }*/
+// )
 
 export default Billing
