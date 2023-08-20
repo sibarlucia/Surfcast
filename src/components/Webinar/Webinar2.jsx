@@ -75,7 +75,7 @@ const Webinar2 = ({ defaultResponse = null, campaignId }) => {
                         <h1>¡Invitemos a un webinar!</h1>
                         <p>Es hora de personalizar tu campaña</p>
                     </section>
-                    <section>
+                    <section className={styles.questionContainer}>
                         <h2>Define el horario en que se desarrollará</h2>
                         <select
                             className={styles.selectPaises}
@@ -100,14 +100,14 @@ const Webinar2 = ({ defaultResponse = null, campaignId }) => {
                             }
                         </select>
                     </section>
-                    <section>
+                    <section className={styles.questionContainer}> 
                         <WeelDaysSchedule
                             className={styles.webinarDaysSchedule}
                             selectedDays={dataForm.frequency}
                             onChange={handleUpdatefrequency}
                         />
                     </section>
-                    <section className={styles.horarios}>
+                    <section className={`${styles.horarios} ${styles.questionContainer}`}>
                         <select
                             name='startTime'
                             value={dataForm.startTime}

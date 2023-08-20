@@ -286,6 +286,7 @@ input[type="file"] {
 }
 
 .horarios select {
+    font-size: 1.2em;
     margin: 0;
     width: fit-content;
 }
@@ -305,3 +306,7 @@ input[type="file"] {
 .webinarDaysSchedule {
     font-size: 2em;
 } 
+
+.questionContainer {
+    margin: 1em 0 !important;
+}
