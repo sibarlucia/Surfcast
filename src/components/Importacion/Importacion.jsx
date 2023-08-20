@@ -217,9 +217,7 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
                 <Link className={styles.volver} to="/perfilamiento/3">
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
-                <Link className={styles.continuar} to="/perfilamiento/3">
-                    <img src="/src/assets/crearcampañadespues.png" />
-                </Link>
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/importacion/2/`}></Link>
             </form>
         </div>
     );

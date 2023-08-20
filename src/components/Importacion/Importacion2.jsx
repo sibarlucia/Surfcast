@@ -189,14 +189,11 @@ const Importacion2 = ({defaultResponse = [], campaignId}) => {
                         {/* </Link> */}
                     </section>
                 </article>
-    
-
-                <Link className={styles.volver} to="/perfilamiento/3">
+ 
+                <Link className={styles.volver} to={`/campaign/${campaignId}/importacion/1/`}>
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
-                <Link className={styles.continuar} to="/perfilamiento/3">
-                    <img src="/src/assets/continuardespues.png" />
-                </Link>
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/importacion/3/`}></Link>
             </form>
         </div>
     );
