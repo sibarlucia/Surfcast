@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link} from "react-router-dom";
 import styles from "./importacion2.module.css";
 import { ProgressBar } from "../General/ProgressBar";
 import { createResponse } from "../../services/responses/createResponse";

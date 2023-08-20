@@ -1,59 +1,123 @@
-import { useState } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import styles from './index.module.css'
+import ReactMarkdown from 'react-markdown'
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
-
+import { getLeadNotes } from "../../../services/notes/getLeadNotes"
 // import checkIcon from '../../../assets/icons/checkIcon.svg'
 // import trashIcon from '../../../assets/trash_icon.svg'
 // import editIcon from '../../../assets/icons/editIcon.svg'
 
+const editorOptions = {
+    spellChecker: false,
+    autofocus: true
+} 
 
-const defualt_options = {
-    preview: true,
-    // toolbar: false, // oclutar iconos
-    // status: false
-    // previewClass: "editor-preview"
-    // syncSideBySidePreviewScroll : false
+const testNote = {
+    "markdown_note": "# Nota de Actualización 📝\n\n> Propietario y editor: Usuario con ID 14\n\n**Asociaciones**:\n- Lead ID: 3\n- Campaña ID: 14\n\n---\n\nPor favor, añadir el contenido relevante aquí.",
+    "owner_id": 2,
+    "editor_id": 2,
+    "lead_id": 3,
+    "campaign_id": 14,
+    "id": 1
 }
 
 // nota con markdown 
-export const MarkDownNote = ({ notes = [], leadId = null, onDeleteNote = () => {}, onSaveNote= () => {} })  => {
-    const [newNote, setNewNote] = useState('')
-    const [deleteIndex, setDeleteIndex] = useState(null)
+export const MarkDownNote = ({ leadId = null })  => {
+    const [isEditing, setIsEditing] = useState(false)
+    const [noteData, setNoteData] = useState({})
+    const [editText, setEditText] = useState('')
 
-    const handleSaveNote = () => {
-        if (newNote) {
-            onSaveNote(newNote)
-            setNewNote('')
+    useEffect(() => {
+        if (leadId) {
+            getLeadNotes({ leadId})
+                .then(response => {
+                    const { data } = response
+                    console.log(data) 
+                    // setNoteData(data) // TODO: descomentar
+                    setNoteData(testNote) // TODO: eliminar datos de prueba
+                })
         }
+    }, [leadId])
+
+    useEffect(() => {
+        setEditText(isEditing.markdown_note)
+    }, [isEditing.markdown_note])
+
+    const toggleEdit = () => {
+        setIsEditing(!isEditing)
     }
 
-    const handleSelectedDeleteItem = (index) => {
-        if (deleteIndex === index) {
-            onDeleteNote(index)
-            setDeleteIndex(null)
-            return
-        }
-        setDeleteIndex(index)
-        setTimeout(() => {
-            setDeleteIndex(null)
-        }, 5000)
+    const handleSaveNote = () => {
+        // guardar nota
+        // TODO: consumir api para guardar nota
+        setNoteData({ ...noteData, markdown_note: editText })
+    }
+
+    const handleChangeNote = (newText) => {
+        setEditText(newText)
     }
 
     return (
         <article className={styles.notesContainer}>
             <div className={styles.mdContainer}>
-                <SimpleMDE
-                    options={defualt_options}
-                    value='# hola'
-                />
+                {
+                    isEditing
+                        ? (
+                            <SimpleMDE
+                                options={editorOptions}
+                                onChange={handleChangeNote}
+                                value={editText}
+                            />
+                        )
+                        : (
+                            <ReactMarkdown>
+                                {noteData.markdown_note}
+                            </ReactMarkdown>
+                        )
+                }
             </div>
-            <button
-                className={`pageButton pageButton--hover ${styles.saveButton}`}
-                onClick={handleSaveNote}
-            >
-              Guardar
-            </button>
+            <div className={`${styles.saveButtonContianer}`}>
+                {
+                    isEditing
+                        ? (
+                            <Fragment>
+                                <button
+                                    className={`pageButton pageButton--empty pageButton--hover ${styles.saveButton}`}
+                                    onClick={() => {
+
+                                        setEditText(noteData.markdown_note)
+                                        toggleEdit()
+                                    }}
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    className={`pageButton pageButton--hover ${styles.saveButton}`}
+                                    onClick={() => {
+                                        handleSaveNote()
+                                        toggleEdit()
+                                    }}
+                                >
+                                    Guardar
+                                </button>
+                            </Fragment>
+                        
+                        ) 
+                        : (
+                            <button
+                                className={`pageButton pageButton--empty pageButton--hover ${styles.saveButton}`}
+                                onClick={() => {
+                                    setEditText(noteData.markdown_note)
+                                    toggleEdit()
+                                }}
+                            >
+                                Editar
+                            </button>
+                        )
+                }
+            </div>
+            
         </article>
     ) 
 }

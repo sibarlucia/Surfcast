@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useMemo } from "react"
 import { GenericModal } from "../GenericModal" 
 import defaultProfile from '../../../assets/campaign/defaultProfile.svg'
 import styles from './index.module.css'
@@ -6,7 +6,6 @@ import styles from './index.module.css'
 import alert from 'sweetalert2'
 import ActividadReciente from "../../campaign/ActividadReciente/ActividadReciente"
 import { MarkDownNote } from "../../campaign/MarkDownNote"
-import { getLeadNotes } from "../../../services/notes/getLeadNotes"
 
 const DefaultActivity = [
     {
@@ -25,34 +24,6 @@ const DefaultActivity = [
 
 
 export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignName = '', onDeleteLead = () => {} }) => {
-    const [noteData, setNoteData] = useState({}) 
-
-    console.log({leadData})
-
-    useEffect(() => {
-        if (leadData) {
-            getLeadNotes({ leadId: leadData.id })
-                .then(response => {
-                    const { data } = response
-                    if (data.length) {
-                        setNoteData(data[0])
-                    }
-                })
-        }
-    }, [leadData])
-
-    const handleAddNote = (newNote) => {
-        // setLeadNotes([ ...leadNotes, newNote ])
-    }
-
-    const handleDeleteNote = (deleteIndex) => {
-        // const updateNotes = [...leadNotes]
-        // updateNotes.splice(deleteIndex, 1)
-        // setLeadNotes(updateNotes)
-    }
-
-
-    
 
     const handleDeleteLead = async () => { // eslint-disable-line
         const { isConfirmed } = await alert.fire({
@@ -110,9 +81,13 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
                             </p>
                         </section>
                         <section className={styles.secondaryLeadDataContainer}>
-                            <div className={styles.secondaryLeadDataContainerItem}>
+                            {/* <div className={styles.secondaryLeadDataContainerItem}>
                                 <p>Número de contacto</p>
                                 <p>+58998764567</p>
+                            </div> */}
+                            <div className={styles.secondaryLeadDataContainerItem}>
+                                <p>Email de contacto</p>
+                                <p>{leadData.email}</p>
                             </div>
                             <div className={styles.secondaryLeadDataContainerItem}>
                                 <p>Compañía</p>
@@ -142,18 +117,8 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
                         </h2>
                     </div>
                     <MarkDownNote
-                        onSaveNote={handleAddNote}
-                        onDeleteNote={handleDeleteNote}
                         leadId={leadData.id}
-                        note={noteData}
                     />
-                    {/* <LeadNotes
-                        onSaveNote={handleAddNote}
-                        onDeleteNote={handleDeleteNote}
-                        leadId={leadData.id}
-                        notes={leadNotes}
-                    /> */}
-
                 </article>
             </section>
         </GenericModal>

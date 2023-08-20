@@ -38,7 +38,7 @@ export const GmailHistory = ({ history = [], leadData = {} }) => {
 
                             let messageMail = 'mail@surfcast'
                             if (!item.reply) {
-                                messageMail = leadData.mail
+                                messageMail = leadData.email
                             }
 
                             const date = new Date(item.updated_at)
