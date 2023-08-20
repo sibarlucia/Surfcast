@@ -7,85 +7,6 @@ import { getMetrics } from '../../../services/campaign/getCampaignActividad'
 import { useEffect, useState } from 'react'
 
 
-const DefaultData = [
-    {
-        text: 'Hola',
-        type: ''
-    },
-    {
-        text: '',
-        type: ''
-    },
-    {
-        text: '',
-        type: ''
-    },
-    {
-        text: '',
-        type: ''
-    },
-    {
-        text: '',
-        type: ''
-    },
-    {
-        text: '',
-        type: ''
-    },
-    {
-        text: '',
-        type: ''
-    },
-    
-   
-]    
-
-
-async function fetchAndProcessData() {
-    try {
-        let data = await getMetrics(); 
-        // console.log("API Data:", data);
-        let actividad = []
-        for (let i = 0; i < 7; i++) {
-            actividad.push(data.latest_audits[i])
-            
-            
-            
-        }
-        // console.log(actividad);
-        // console.log(actividad[0].comment);
-        // console.log(DefaultData[0]);
-        // console.log(DefaultData[0].text);
-
-
-        for (let j = 0; j < actividad.length; j++) {
-            DefaultData[j].id = actividad[j].id
-
-            DefaultData[j].text = actividad[j].comment
-
-            DefaultData[j].type = actividad[j].event
-
-
-
-            // console.log(DefaultData[j]);
-        }
-
-        
-    } catch (error) {
-        console.error("API Request Error:", error);
-    }
-}
-
-fetchAndProcessData();
-
-// console.log(DefaultData);
-const Datos = DefaultData
-
-// console.log(Datos);
-
-
-
-
 const ICONS = {
     'message_sent': newMessageIcon,
 
@@ -101,16 +22,19 @@ const ICONS = {
 }
 
 
-const ActividadReciente = ({ Actividad = Datos }) => {
-    const [data, setData] = useState(Actividad);
+const ActividadReciente = ({ data }) => {
+    const [info, setInfo] = useState(data);
 
-    // console.log(Actividad);
-    // console.log(data);
+
+    // useEffect (()=> {
+    //     setInfo(data)
+    // },[])
+    // console.log(info);
     
     return (
         <ul className={styles.list}>
             {
-                data.map((item, index) => {
+                info.map((item, index) => {
                     return (
                         <li
                             key={`Activiti-Item-${index}`}
@@ -126,7 +50,7 @@ const ActividadReciente = ({ Actividad = Datos }) => {
                                     )
                                 }
                                 {
-                                    index < DefaultData.length -1 && (
+                                    index < info.length -1 && (
                                         <div className={styles.divisor}></div>
                                     )
                                 }
