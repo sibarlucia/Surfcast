@@ -3,42 +3,13 @@ import { PageLayout } from "../components/General/PageLayout"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import styles from '../styles/pages/LeadHistory.module.css'
-import profileImg from '../assets/campaign/defaultProfile.svg'
 import linkedinLogo from '../assets/linkedin.png'
 import gmailLogo from '../assets/gmail.png'
 import { LinkedInHistory } from "../components/campaign/LinkedInHistory/LinkedInHistory" 
 import { GmailHistory } from "../components/campaign/GmailHistory/GmailHistory"
 import { getMessagesOfLead } from "../services/messages/getMessagesOfLead"
+import { getLeadsByCampaign } from "../services/leads/getLeadsByCampaign"
 
-const defaultLeadData = {
-    name: 'Javier Mansilla',
-    position: 'CTO en Surfcast'
-}
-
-const defaultHistory = [
-    {
-        divider: true,
-        text: '28 SEPT 2023'
-    },
-    {
-        user: {
-            icon: profileImg,
-            name: 'Javier Mansilla'
-        },
-        message: `Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-        Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.`,
-        hour: '17:30',
-    },
-    {
-        user: {
-            icon: profileImg,
-            name: 'Surfcast'
-        },
-        message: `Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-        Sed ut perspiciatis unde omnis ste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.`,
-        hour: '17:30',
-    },
-]
 const channelsOptions = {
     linkedIn: 'linkedIn',
     gmail: 'gmail'
@@ -46,8 +17,8 @@ const channelsOptions = {
 
 const LeadHistory = () => {
     const { leadId, campaignId } = useParams() // eslint-disable-line
-    const [leadData] = useState(defaultLeadData)
-    const [history] = useState(defaultHistory)
+    const [leadData, setLead] = useState({})
+    // const [history] = useState(defaultHistory)
     const [channel, setChannel] = useState(channelsOptions.linkedIn)
     
     const [linkedInHistory, setLinkedInHistory] = useState([]) 
@@ -76,6 +47,17 @@ const LeadHistory = () => {
         
     }, [leadId])
 
+    useEffect(() => {
+        getLeadsByCampaign(campaignId)
+            .then(response => {
+                const { data: allLeads } = response 
+                console.log(leadId)
+                const selectedLead = allLeads.find(lead => lead.id === parseInt(leadId))
+                setLead(selectedLead)
+            })
+            
+    }, [campaignId, leadId])
+
 
     const handelSelectChannel = (newChannel) => () => {
         setChannel(newChannel)
@@ -86,7 +68,7 @@ const LeadHistory = () => {
             <section className={styles.mainSection}>
                 <header className={styles.mainHeader}>
                     <h1 className={styles.mainTitle}>
-                      Historial de {leadData.name}
+                      Historial de {leadData.full_name}
                     </h1>
                     <div className={styles.headerButtonContainer}>
                         <Link
@@ -128,21 +110,19 @@ const LeadHistory = () => {
                             <LinkedInHistory
                                 leadData={leadData}
                                 leadId={leadId}
-                                history={history}
+                                history={linkedInHistory}
                             />
                         )
                     }
                     {
                         channelsOptions.gmail === channel && (
                             <GmailHistory
-                                // history={}
+                                leadData={leadData}
                                 leadId={leadId}
+                                history={gmailHistory}
                             />
-
                         )
                     }
-                    
-
                 </main>
             </section>
         </PageLayout>

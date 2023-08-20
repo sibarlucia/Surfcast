@@ -4,13 +4,14 @@ import styles from './index.module.css'
 // import menuDotsIcon from '../../../assets/campaign/menu_dots.svg'
 import { DateRangeButtons } from '../DateRangeButtons'
 import profileImg from '../../../assets/campaign/defaultProfile.svg'
+import ReactMarkdown from 'react-markdown'
 
-const LinkedInHistoryMessages = ({ history, leadId }) => {
+const LinkedInHistoryMessages = ({ history, leadId, leadData }) => {
     return (
         <ul className={styles.historyList}>
             {
                 history.map((item, index) => {
-                    if (item.divider) {
+                    if (item.divider) { // divisor de fecha, no usado por el momento
                         return (
                             <li
                                 key={`leadHistory-${leadId}-divider-${index}`}
@@ -19,13 +20,21 @@ const LinkedInHistoryMessages = ({ history, leadId }) => {
                                 <article className={styles.divider}>
                                     <span></span>
                                     <p>
-                                        {item.text}
+                                        {item.message}
                                     </p>
                                     <span></span>
                                 </article>
                             </li>
                         )
                     }
+                    let messageName = 'Surfcast'
+                    if (!item.reply) {
+                        messageName = leadData.full_name
+                    }
+                    const date = new Date(item.updated_at)
+                    const messageDate = date.toLocaleString('en-GB', {
+                        minimumIntegerDigits: 2
+                    })
                     return (
                         <li
                             key={`leadHistory-${leadId}-message-${index}`}
@@ -33,19 +42,21 @@ const LinkedInHistoryMessages = ({ history, leadId }) => {
                         >
                             <article className={styles.message}>
                                 <img
-                                    src={item.user.icon}
-                                    alt={item.user.name}
+                                    src={profileImg}
+                                    alt={messageName}
                                 />
-                                <div>
+                                <div className={styles.messageContainer}>
                                     <h4 className={styles.messageUser}>
-                                        {item.user.name}
+                                        {messageName}
                                         <span>
-                                            {item.hour}
+                                            {messageDate}
                                         </span>
                                     </h4>
-                                    <p>
-                                        {item.message}
-                                    </p>
+                                    <div className={styles.messageTextContainer}>
+                                        <ReactMarkdown>
+                                            {item.message}
+                                        </ReactMarkdown>
+                                    </div>
                                 </div>
                             </article>
                         </li>
@@ -64,14 +75,14 @@ export const LinkedInHistory = ({ leadData, leadId, history }) => {
                     <img
                         className={styles.headerProfileImg}
                         src={profileImg}
-                        alt={leadData.name}
+                        alt={leadData.full_name}
                     />
                     <div className={styles.historyHeaderContainer_leadInfo}>
                         <h2>
-                            {leadData.name}
+                            {leadData.full_name}
                         </h2>
                         <p>
-                            {leadData.position}
+                            {leadData.job}
                         </p>
                     </div>
                 </div>
@@ -82,6 +93,7 @@ export const LinkedInHistory = ({ leadData, leadId, history }) => {
                 </div>
             </header>
             <LinkedInHistoryMessages
+                leadData={leadData}
                 history={history}
                 leadId={leadId}
             />

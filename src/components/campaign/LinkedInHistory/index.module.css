@@ -148,3 +148,15 @@
   .footerMenu img {
     transform: rotate(90deg);
   }
+
+  .messageContainer {
+    width: 100%;
+    padding: 1em;
+  }
+
+  .messageTextContainer {
+    width: 100%;
+    background-color: var(--color-grey);
+    padding: 1em;
+    border-radius: 0.5em;
+  }

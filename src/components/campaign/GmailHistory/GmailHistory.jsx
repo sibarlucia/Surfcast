@@ -3,41 +3,8 @@ import styles from './index.module.css'
 import favoriteIcon from '../../../assets/icons/favoriteIcon.svg'
 import menudotsIcon from '../../../assets/campaign/menu_dots.svg'
 // import resendIcon from '../../../assets/icons/resendIcon.svg'
+import ReactMarkdown from 'react-markdown'
 
-
-const defaultHistory = [
-    {
-        user: {
-            icon: profileImg,
-            name: 'Javier Mansilla',
-            mail: 'jmansillomo@gmail.com'
-        },
-
-        message: `"Sed ut perspiciatis unde omnis
-
-        iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-        
-        Nemo enim ipsam voluptatem: quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.`,
-        date: '18 de abr 2023, 7:23',
-        for: 'Royer'
-    },
-    {
-        user: {
-            icon: profileImg,
-            name: 'Javier Mansilla',
-            mail: 'jmansillomo@gmail.com'
-        },
-
-        message: `"Sed ut perspiciatis unde omnis
-
-        iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-       
-        Nemo enim ipsam voluptatem: quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.`,
-        date: '18 de abr 2023, 7:23',
-        for: 'Royer'
-    },
-    
-]
 
 const ResponseIcon = ({color = '#A8A8A8', size = 30}) => {
     return (
@@ -47,7 +14,10 @@ const ResponseIcon = ({color = '#A8A8A8', size = 30}) => {
     )
 }
 
-export const GmailHistory = ({ history = defaultHistory }) => {
+export const GmailHistory = ({ history = [], leadData = {} }) => {
+
+    console.log({history})
+
     return (
         <section className={styles.mainsection}>
             <header className={styles.mainHeader}>
@@ -60,30 +30,47 @@ export const GmailHistory = ({ history = defaultHistory }) => {
                 <ul className={styles.messageList}>
                     {
                         history.map((item, index) => {
+
+                            let messageName = 'Surfcast'
+                            if (!item.reply) {
+                                messageName = leadData.full_name
+                            }
+
+                            let messageMail = 'mail@surfcast'
+                            if (!item.reply) {
+                                messageMail = leadData.mail
+                            }
+
+                            const date = new Date(item.updated_at)
+                            const messageDate = date.toLocaleString('en-GB', {
+                                minimumIntegerDigits: 2
+                            })
+
                             return (
                                 <li
                                     key={`history-message-gmail-${index}`}
                                     className={styles.messageItem}
                                 >
                                     <img
-                                        src={item.user.icon}
-                                        alt={item.user.name}
+                                        src={profileImg}
+                                        alt={messageName}
                                         className={styles.messageIcon}
                                     />
                                     <article className={styles.messageInfoContainer}>
                                         <div className={styles.messageHeader}>
                                             <div className={styles.messageUserInfo}>
                                                 <h2>
-                                                    {item.user.name}
-                                                    <span>{`<${item.user.mail}>`}</span>
+                                                    {messageName}
+                                                    <span>{`<${messageMail}>`}</span>
                                                 </h2>
                                                 <div>
-                                                    Para {item.for}
+                                                    Para 
+                                                    {/* {item.for} */}
                                                 </div>
                                             </div>
                                             <div className={styles.messageActions}>
                                                 <p>
-                                                    {item.date}
+                                                    {messageDate}
                                                 </p>
                                                 <button>
                                                     <img
@@ -102,9 +89,11 @@ export const GmailHistory = ({ history = defaultHistory }) => {
                                                 </button>
                                             </div>
                                         </div>
-                                        <p className={styles.messageText}>
-                                            {item.message}
-                                        </p>
+                                        <div>
+                                            <ReactMarkdown>
+                                                {item.message}
+                                            </ReactMarkdown>
+                                        </div>
                                     </article>
                                 </li>
                             )
