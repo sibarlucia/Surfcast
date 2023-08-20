@@ -27,14 +27,13 @@ const Campaign = () => {
     }
 
     const handleCreateCampaign = async (campaingName) => {
-        let campaingId = 4 // TODO: eliminar el id 4 por defecto
         try {
             const response = createCampaign({ name: campaingName })
-            campaingId = response.data.id
+            const campaingId = response.data.id
+            navigate(`/campaign/${campaingId}/importacion/1`)
         } catch (error) {
             console.error('algo fallo al crear la campaña')
         }
-        navigate(`/campaign/${campaingId}/importacion/1`)
     }
 
     // maneja el boton de active
