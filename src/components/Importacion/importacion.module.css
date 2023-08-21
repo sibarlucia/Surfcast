@@ -41,6 +41,7 @@ body{
     flex-direction: column;
     flex-grow: 1;
     margin: 50px;
+    max-width: 100%;
 }
 
 

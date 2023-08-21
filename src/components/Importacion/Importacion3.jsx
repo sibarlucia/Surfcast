@@ -66,15 +66,16 @@ const Importacion3 = ({defaultResponse = [], campaignId}) => {
                     </h2>
                 </div>
 
-                <div>
+                <div className={styles.placeHolderImageContainer}>
                     <img src="/src/assets/propuesta.png" />
                 </div>
 
                 <div>
-                    <Link to={`/campaign/${campaignId}/importacion/2/`} />
+                    <Link to={`/campaign/${campaignId}/importacion/2/`}/>
                     <button type="button" className={styles.editar}>
                       Editar mis respuestas
                     </button>
+
                     <Link to={`/campaign/${campaignId}/importacion/4/`}>
                         <button type="submit" className={styles.aceptar}>
                             Aceptar estos ejemplos

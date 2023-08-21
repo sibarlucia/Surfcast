@@ -126,7 +126,7 @@ const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-dis
                     <ProgressBar data={progressData} />
                 </div>
 
-                <article>
+                <article className={styles.articleMain}>
                     <section>
                         <h1>¿Cuándo estará activa tu campaña?</h1>
                         <h2>
