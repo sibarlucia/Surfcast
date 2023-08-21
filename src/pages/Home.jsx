@@ -110,9 +110,9 @@ const Home = () => {
     const [info, setInfo] = useState();
 
     useEffect (()=> {
-        let actividad = []
         async function fetchAndProcessData() {
             try {
+                let actividad = []
                 let data = await getMetrics(); 
                 // console.log("API Data:", data);
                 for (let i = 0; i < 7; i++) {
@@ -122,6 +122,7 @@ const Home = () => {
                     
                 }
                    
+                setInfo(actividad)
                 
             } catch (error) {
                 console.error("API Request Error:", error);
@@ -130,9 +131,8 @@ const Home = () => {
         
         fetchAndProcessData();
         // console.log(actividad);
-        setInfo(actividad)
     },[])
-    console.log(info[0]?.event);
+    console.log(actividad);
     
 
 
