@@ -34,34 +34,34 @@ const ActividadReciente = ({ data }) => {
     return (
         <ul className={styles.list}>
             {
-                info.map((item, index) => {
-                    return (
-                        <li
-                            key={`Activiti-Item-${index}`}
-                            className={styles.listItem}
-                        >
-                            <div className={styles.iconContainer}>
-                                {
-                                    ICONS[item.type] && (
-                                        <img
-                                            src={ICONS[item.type]}
-                                            className={styles.icon}
-                                        />
-                                    )
-                                }
-                                {
-                                    index < info.length -1 && (
-                                        <div className={styles.divisor}></div>
-                                    )
-                                }
-                            </div>
-                            <p className={styles.text}>
-                                {item.text}
-                            </p>
+                // info.map((item, index) => {
+                //     return (
+                //         <li
+                //             key={`Activiti-Item-${index}`}
+                //             className={styles.listItem}
+                //         >
+                //             <div className={styles.iconContainer}>
+                //                 {
+                //                     ICONS[item.type] && (
+                //                         <img
+                //                             src={ICONS[item.type]}
+                //                             className={styles.icon}
+                //                         />
+                //                     )
+                //                 }
+                //                 {
+                //                     index < info.length -1 && (
+                //                         <div className={styles.divisor}></div>
+                //                     )
+                //                 }
+                //             </div>
+                //             <p className={styles.text}>
+                //                 {item.text}
+                //             </p>
                             
-                        </li>
-                    )
-                })
+                //         </li>
+                //     )
+                // })
             }
         </ul>
     )

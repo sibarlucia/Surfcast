@@ -49,45 +49,40 @@ const DefaultData = [
 ]    
 
 
-async function fetchAndProcessData() {
-    try {
-        let data = await getMetrics(); 
-        // console.log("API Data:", data);
-        let actividad = []
-        for (let i = 0; i < 7; i++) {
-            actividad.push(data.latest_audits[i])
+// async function fetchAndProcessData() {
+//     try {
+//         let data = await getMetrics(); 
+//         let actividad = []
+//         for (let i = 0; i < 7; i++) {
+//             actividad.push(data.latest_audits[i])
             
             
             
-        }
-        // console.log(actividad);
-        // console.log(actividad[0].comment);
-        // console.log(DefaultData[0]);
-        // console.log(DefaultData[0].text);
+//         }
+        
 
 
-        for (let j = 0; j < actividad.length; j++) {
-            DefaultData[j].id = actividad[j].id
+//         for (let j = 0; j < actividad.length; j++) {
+//             DefaultData[j].id = actividad[j].id
 
-            DefaultData[j].text = actividad[j].comment
+//             DefaultData[j].text = actividad[j].comment
 
-            DefaultData[j].type = actividad[j].event
+//             DefaultData[j].type = actividad[j].event
 
 
 
-            // console.log(DefaultData[j]);
-        }
+//         }
 
         
-    } catch (error) {
-        console.error("API Request Error:", error);
-    }
-}
+//     } catch (error) {
+//         console.error("API Request Error:", error);
+//     }
+// }
 
-fetchAndProcessData();
+// fetchAndProcessData();
 
 // console.log(DefaultData);
-const Datos = DefaultData
+// const Datos = DefaultData
 
 // console.log(Datos);
 
@@ -108,20 +103,37 @@ const ICONS = {
 
 }
 
-const Home = ({ Data = Datos }) => {
+const Home = () => {
     const dispatch = useDispatch()
     const [userData, setUserData] = useState({ name: 'Javier' }) // eslint-disable-line
     
+    const [info, setInfo] = useState();
 
-    const [info, setInfo] = useState(Data);
     useEffect (()=> {
-        if (info[1].text != Data[1].text) {
-            
-            setInfo(Data)
+        let actividad = []
+        async function fetchAndProcessData() {
+            try {
+                let data = await getMetrics(); 
+                // console.log("API Data:", data);
+                for (let i = 0; i < 7; i++) {
+                    actividad.push(data.latest_audits[i])
+                    
+                    
+                    
+                }
+                   
+                
+            } catch (error) {
+                console.error("API Request Error:", error);
+            }
         }
-
-    },[Data])
-    console.log(info);
+        
+        fetchAndProcessData();
+        // console.log(actividad);
+        setInfo(actividad)
+    },[])
+    console.log(info[0]?.event);
+    
 
 
     const handleLogOut = () => { // eslint-disable-line
