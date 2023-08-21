@@ -1,4 +1,6 @@
+import { useSearchParams } from 'react-router-dom'
 import styles from './index.module.css'
+import { useEffect, useState } from 'react'
 
 const default_maxValue = 500
 const defaultData = [
@@ -115,8 +117,21 @@ const FunnelItem = ({color, number = 1}) => {
     }
 }
 
-export const Funnel = ({ data = defaultData, maxValue = default_maxValue }) => {
+export const Funnel = ({ data = defaultData, maxValue = default_maxValue, info }) => {
 
+    const [values, setValues] = useState([])
+
+    useEffect(() => {
+        setValues(info)
+    })
+    console.log(info);
+    // console.log(values);
+    data[0].value = values.total_connections_sent
+    data[1].value = values.total_leads_processed
+    data[2].value = values.total_responses_received
+    data[3].value = values.total_leads
+
+    console.log(data);
     return (
         <section className='pageSection'>
             <header className={styles.header}>

@@ -15,10 +15,12 @@ const Home = () => {
     const dispatch = useDispatch()
     const [userData, setUserData] = useState({ name: 'Javier' }) // eslint-disable-line
     const [info, setInfo] = useState([])
+    const [data, setData] = useState([])
 
     useEffect (()=> {
         async function fetchAndProcessData() {
             try {
+                
                 let actividad = []
                 let data = await getMetrics(); 
                 // console.log("API Data:", data);
@@ -27,6 +29,7 @@ const Home = () => {
                 }
                    
                 setInfo(actividad)
+                setData(data)
                 
             } catch (error) {
                 console.error("API Request Error:", error);
@@ -62,7 +65,7 @@ const Home = () => {
             </header>
             <section className={styles.grid}>
                 <article className={styles.funnelContainer}>
-                    <Funnel></Funnel>
+                    <Funnel info={data}></Funnel>
                 </article>
 
                 <Circular
