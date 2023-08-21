@@ -23,45 +23,39 @@ const ICONS = {
 
 
 const ActividadReciente = ({ data }) => {
-    const [info, setInfo] = useState(data);
 
-
-    // useEffect (()=> {
-    //     setInfo(data)
-    // },[])
-    // console.log(info);
     
     return (
         <ul className={styles.list}>
             {
-                // info.map((item, index) => {
-                //     return (
-                //         <li
-                //             key={`Activiti-Item-${index}`}
-                //             className={styles.listItem}
-                //         >
-                //             <div className={styles.iconContainer}>
-                //                 {
-                //                     ICONS[item.type] && (
-                //                         <img
-                //                             src={ICONS[item.type]}
-                //                             className={styles.icon}
-                //                         />
-                //                     )
-                //                 }
-                //                 {
-                //                     index < info.length -1 && (
-                //                         <div className={styles.divisor}></div>
-                //                     )
-                //                 }
-                //             </div>
-                //             <p className={styles.text}>
-                //                 {item.text}
-                //             </p>
+                data.map((item, index) => {
+                    return (
+                        <li
+                            key={`Activiti-Item-${index}`}
+                            className={styles.listItem}
+                        >
+                            <div className={styles.iconContainer}>
+                                {
+                                    ICONS[item.type] && (
+                                        <img
+                                            src={ICONS[item.type]}
+                                            className={styles.icon}
+                                        />
+                                    )
+                                }
+                                {
+                                    index < data.length -1 && (
+                                        <div className={styles.divisor}></div>
+                                    )
+                                }
+                            </div>
+                            <p className={styles.text}>
+                                {item.text}
+                            </p>
                             
-                //         </li>
-                //     )
-                // })
+                        </li>
+                    )
+                })
             }
         </ul>
     )
