@@ -26,6 +26,7 @@ const Home = () => {
                     actividad.push(data.latest_audits[i])
                 }
                    
+                setInfo(actividad)
                 
             } catch (error) {
                 console.error("API Request Error:", error);
@@ -33,7 +34,6 @@ const Home = () => {
         }
         fetchAndProcessData();
         // console.log(actividad);
-        setInfo(actividad)
     },[])
     console.log(info[0]?.event);
     

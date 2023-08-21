@@ -3,8 +3,7 @@ import vistoIcon from '../../../assets/icons/visto.svg'
 import invitationIcon from '../../../assets/icons/invitation.svg'
 import responseIcon from '../../../assets/icons/response.svg'
 import styles from './index.module.css'
-import { getMetrics } from '../../../services/campaign/getCampaignActividad'
-import { useEffect, useState } from 'react'
+
 
 
 const ICONS = {
@@ -23,8 +22,8 @@ const ICONS = {
 
 
 const ActividadReciente = ({ data }) => {
-
     
+    console.log(data);
     return (
         <ul className={styles.list}>
             {
@@ -36,9 +35,9 @@ const ActividadReciente = ({ data }) => {
                         >
                             <div className={styles.iconContainer}>
                                 {
-                                    ICONS[item.type] && (
+                                    ICONS[item.event] && (
                                         <img
-                                            src={ICONS[item.type]}
+                                            src={ICONS[item.event]}
                                             className={styles.icon}
                                         />
                                     )
@@ -50,7 +49,7 @@ const ActividadReciente = ({ data }) => {
                                 }
                             </div>
                             <p className={styles.text}>
-                                {item.text}
+                                {item.comment}
                             </p>
                             
                         </li>
