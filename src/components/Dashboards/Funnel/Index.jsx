@@ -129,7 +129,7 @@ export const Funnel = ({ data = defaultData, maxValue = default_maxValue, info }
     data[0].value = values.total_connections_sent
     data[1].value = values.total_leads_processed
     data[2].value = values.total_responses_received
-    data[3].value = values.total_leads
+    data[3].value = values.total_leads  
 
     console.log(data);
     return (
