@@ -61,12 +61,11 @@ const RESPONSE_NAMES = {
 
 const Importacion = ({ defaultResponse = [], campaignId}) => {
     const [dataForm, setDataForm] = useState(DEFAULT_DATA_FORM)
-    const [boton, setBoton] = useState("");
+    const [boton, setBoton] = useState("buscar")
     const navigate = useNavigate()
 
     const estiloBoton = styles.button3;
     const botonSeleccionado = styles.selected;
-    console.log(dataForm)
 
     useEffect(() => {
         if (defaultResponse) {
@@ -78,7 +77,7 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
                 importType,
                 importValue
             })
-            setBoton(importType)
+            setBoton(importType || 'buscar')
         }
     }, [defaultResponse])
 
@@ -136,8 +135,6 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
             Así podremos conocer, clasificar y desarrollar adecuadamente a tu
             público objetivo.
                     </h2>
-                    <section></section>
-
                     <section>
                         <p>¿Cómo se llamará tu lista?</p>
                         <input
@@ -167,13 +164,13 @@ const Importacion = ({ defaultResponse = [], campaignId}) => {
                         >
                           Cargar Archivo CSV
                         </button>
-                        <button
+                        {/* <button
                             type='button'
                             className={boton === 'usar' ? botonSeleccionado : estiloBoton}
                             onClick={() => handleButtonClick("usar")}
                         >
                           Usando AI
-                        </button>
+                        </button> */}
                     </section>
                     <section>
                         {boton === "buscar" && (

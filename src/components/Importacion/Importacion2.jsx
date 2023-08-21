@@ -5,8 +5,6 @@ import { ProgressBar } from "../General/ProgressBar";
 import { createResponse } from "../../services/responses/createResponse";
 import { useNavigate } from "react-router-dom";
 
-
-
 const progressData = [
     {
         node: {
