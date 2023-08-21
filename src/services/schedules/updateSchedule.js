@@ -2,7 +2,7 @@ import axios from 'axios'
 import { routeGenerator } from '../routegenerator'
 import { getToken } from '../getToken'
 
-const baseUrl = routeGenerator('schedules/update')
+const baseUrl = routeGenerator('/schedules/update/by-campaign')
 
 // actualiza un schedule
 export const updateSchedules = async ({
@@ -25,7 +25,7 @@ export const updateSchedules = async ({
     id
 }) => {
 
-    const url = `${baseUrl}/${id}`
+    const url = `${baseUrl}/${campain_id}`
     const response = await axios.put(url, {
         campain_id,
         monday_bool,

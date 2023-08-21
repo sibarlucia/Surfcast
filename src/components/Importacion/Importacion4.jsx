@@ -4,29 +4,12 @@ import styles from "./importacion4y5.module.css";
 import { ProgressBar } from "../General/ProgressBar";
 import { WeekSchedule } from "../General/WeekSchedule";
 import alert from 'sweetalert2'
-import { getSchedules } from "../../services/schedules/getSchedules";
+// import { getSchedules } from "../../services/schedules/getSchedules";
 import { addSchedules } from "../../services/schedules/addSchedule";
 import { updateSchedules } from "../../services/schedules/updateSchedule";
 import { getIANATimeZone } from "../../utils/getIANATimeZone";
+import { getScheduleByCampaign } from "../../services/schedules/getScheduleByCampaign";
 
-const defaultData = {
-    campain_id: 0,
-    monday_bool: true,
-    tuesday_bool: true,
-    wednesday_bool: true,
-    thursday_bool: true,
-    friday_bool: true,
-    saturday_bool: false,
-    sunday_bool: false,
-    monday_time: "09:00-18:00",
-    tuesday_time: "09:00-18:00",
-    wednesday_time: "09:00-18:00",
-    thursday_time: "09:00-18:00",
-    friday_time: "09:00-18:00",
-    saturday_time: "",
-    sunday_time: "",
-    timezone: "America/Santiago",
-}
 
 const progressData = [
     {
@@ -75,17 +58,16 @@ const progressData = [
 ];
  
 const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-disable-line
-    const [scheduleData, setScheduleData] = useState(defaultData)
+    const [scheduleData, setScheduleData] = useState({})
     const navigate = useNavigate()
 
     useEffect(() => {
-        getSchedules()
+        getScheduleByCampaign({ campaignId })
             .then(response => {
                 const { data } = response
-                // TODO: api fallando
                 setScheduleData(data)
             })
-    }, [])
+    }, [campaignId])
 
 
     const handleChangeScheduleData = async (updatedData) => {
@@ -98,7 +80,6 @@ const Importacion4 = ({ defaultResponse = null, campaignId }) => { // eslint-dis
 
         } else {
             // debe crarlo
-            // TODO: api fallando
             const { data } = await addSchedules({...updatedData, campain_id: parseInt(campaignId) })
             console.log(data)
         }
