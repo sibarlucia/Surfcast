@@ -13,7 +13,7 @@ import { getUserData } from '../services/auth/getUserData'
 
 const Home = () => {
     const dispatch = useDispatch()
-    const [userData, setUserData] = useState({ name: 'Javier' }) // eslint-disable-line
+    const [userData, setUserData] = useState({})
     const [info, setInfo] = useState([])
     const [data, setData] = useState([])
 
@@ -38,8 +38,13 @@ const Home = () => {
         fetchAndProcessData();
         // console.log(actividad);
     },[])
-    console.log(info[0]?.event);
     
+    useEffect(() => {
+        getUserData()
+            .then(response => {
+                setUserData(response.data)
+            })
+    }, [])    
 
 
     const handleLogOut = () => { // eslint-disable-line
@@ -53,7 +58,7 @@ const Home = () => {
             <header className={styles.homeHeader}>
                 <div className={styles.homeHeaderInfo}>
                     <h1>
-                        Hola, {userData.name}!
+                        Hola, {userData.full_name}!
                     </h1>
                     <p>
                         Esto es lo que está pasando con tu cuenta de LinkedIn hoy
