@@ -8,7 +8,6 @@ import gmailLogo from '../assets/gmail.png'
 import { LinkedInHistory } from "../components/campaign/LinkedInHistory/LinkedInHistory" 
 import { GmailHistory } from "../components/campaign/GmailHistory/GmailHistory"
 import { getMessagesOfLead } from "../services/messages/getMessagesOfLead"
-import { getLeadsByCampaign } from "../services/leads/getLeadsByCampaign"
 import { getLeadById } from "../services/leads/getLeadById"
 
 const channelsOptions = {

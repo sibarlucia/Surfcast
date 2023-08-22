@@ -251,6 +251,7 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
 
             <LeadInfoModal
                 campaignName={campaignName}
+                campaignId={campaignId}
                 leadData={selectedLead}
                 onClose={cleanSelectedLead}
                 onDone={(() => {cleanSelectedLead()})}
