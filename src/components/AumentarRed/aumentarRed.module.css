@@ -41,7 +41,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 2.5%;
+    padding: 2.5% 0;
 }
 
 
@@ -55,8 +55,10 @@ body{
     background: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;    
+    padding: 3em 0;
+    gap: 3em;
 }
 .mainDiv div, select, option{
     align-items: center;
@@ -115,12 +117,12 @@ body{
 
 
 
-.mainDiv select {
+.mainDiv  select:not(:last-child) {
     margin-bottom: 30px;
 }
-.mainDiv div{
-    margin-bottom: 70px;
-}
+/* .mainDiv div{ */
+    /* margin-bottom: 70px; */
+/* } */
 
 .mainDiv h1{
     font-family: PlexBold;

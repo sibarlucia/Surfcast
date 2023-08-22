@@ -56,8 +56,8 @@ const Webinar4 = ({ defaultResponse = null, campaignId }) => {
     return (
         <div className={styles.mainDiv}>
             <form onSubmit={handleSubmit}>
+                <section className={styles.etapa}>4/6</section>
                 <article className={styles.mainArticle}>
-                    <section className={styles.etapa}>4/6</section>
                     <section>
                         <h1>¡Concretemos una reunión!</h1>
                         <p>Es hora de personalizar tu campaña</p>
@@ -89,10 +89,10 @@ const Webinar4 = ({ defaultResponse = null, campaignId }) => {
                             onChange={handleChangeSelectValue}
                         ></input>
                     </section>
-                    <section>
-                        <button className={styles.botonSiguiente}>Siguiente</button>
-                    </section>
                 </article>
+                <section>
+                    <button className={styles.botonSiguiente}>Siguiente</button>
+                </section>
 
                 <Link className={styles.volver} to={`/campaign/${campaignId}/webinar/3/`}>
                     <img src="/src/assets/volvernegro.png" />

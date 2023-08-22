@@ -47,12 +47,14 @@ body {
     box-shadow: 0px 4px 4px 0px #00000040;
   border-radius: 51px;
   background: white;
-  
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  padding: 3em 0;
+  gap: 3em;
 }
+
 .mainDiv div,
 select,
 option {
@@ -94,7 +96,7 @@ option {
   background: #001b8d;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.786);
   color: white;
-  margin: 75px;
+  /* margin: 75px; */
 }
 
 .mainDiv p {
@@ -103,12 +105,13 @@ option {
   color: black;
 }
 
-.mainDiv select {
-  margin-bottom: 30px;
-}
-.mainDiv div {
-  margin-bottom: 70px;
-}
+/* .mainDiv select { */
+  /* margin-bottom: 30px; */
+/* } */
+
+/* .mainDiv div { */
+  /* margin-bottom: 70px; */
+/* } */
 
 h1 {
   font-family: PlexBold;

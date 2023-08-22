@@ -54,8 +54,8 @@ const Producto3 = ({defaultResponse = null, campaignId}) => {
     return (
         <div className={styles.mainDiv}>
             <form onSubmit={handleSubmit}>
+                <section className={styles.etapa}>3/5</section>
                 <article className={styles.mainArticle}>
-                    <section className={styles.etapa}>3/5</section>
                     <section>
                         <h1>¡Promocionemos tu producto o servicio!</h1>
                         <p>Es hora de personalizar tu campaña</p>
@@ -85,17 +85,12 @@ const Producto3 = ({defaultResponse = null, campaignId}) => {
                             className={styles.input}
                         ></input>
                     </section>
-                    <section>
-                        
-                        <button className={styles.botonSiguiente}>Siguiente</button>
-                        
-                    </section>
                 </article>
 
-                <div></div>
-
-                <div></div>
-
+                <section>
+                    <button className={styles.botonSiguiente}>Siguiente</button>
+                </section>
+       
                 <Link className={styles.volver} to={`/campaign/${campaignId}/producto/2/`}>
                     <img src="/src/assets/volvernegro.png" />
                 </Link>

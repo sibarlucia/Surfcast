@@ -64,13 +64,15 @@ const Webinar = ({ defaultResponse = null, campaignId }) => {
                             className={styles.input2}
                         ></input>
                     </section>
-                    <section>
-                        {/* <Link to="/webinar/2"> */}
-                        <button className={styles.botonSiguiente}>Siguiente</button>
-                        {/* </Link> */}
-                    </section>
+                    
                 </article>
-        
+
+                <section>
+                    {/* <Link to="/webinar/2"> */}
+                    <button className={styles.botonSiguiente}>Siguiente</button>
+                    {/* </Link> */}
+                </section>
+
                 <Link className={styles.volver} to={`/campaign/${campaignId}/importacion/2/`} >
                     <img src="/src/assets/volvernegro.png" />
                 </Link>

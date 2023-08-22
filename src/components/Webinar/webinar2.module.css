@@ -53,7 +53,7 @@ body{
     align-items: center;
     justify-content: center;
     /* color: rgb(237, 226, 226); */
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     flex-grow: 1;
 
 }
@@ -70,8 +70,10 @@ body{
     background: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;    
+    justify-content: space-around;
+    align-items: center;
+    padding: 3em 0;
+    gap: 3em;
     /* flex-grow: 1; */
 }
 .mainDiv select, option{
@@ -113,7 +115,7 @@ body{
     background: #001B8D;
     box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.786);
     color: white;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     /* margin: 75px; */
 }
 
@@ -126,9 +128,9 @@ body{
 
 
 
-.mainDiv select {
-    margin-bottom: 30px;
-}
+/* .mainDiv select {
+    margin-bottom: 30px; */
+/* } */
 
 
 .mainDiv h1{

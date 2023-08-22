@@ -60,8 +60,8 @@ const Webinar6 = ({ defaultResponse = null, campaignId }) => {
                         />
                     </section>
                 )}
+                <section className={styles.etapa}>6/6</section>
                 <article className={styles.mainArticle}>
-                    <section className={styles.etapa}>6/6</section>
 
                     <section>
                         <h1>¡Concretemos una reunión!</h1>
@@ -81,23 +81,19 @@ const Webinar6 = ({ defaultResponse = null, campaignId }) => {
                             ) 
                         }
                     </section>
-                    <section>
-                        {/* <Link to="/webinar/6"> */}
-                        <button
-                            className={styles.botonSiguiente}
-                            // onClick={() => handleFinalizar()}
-                        >
-                            Finalizar
-                        </button>
-                        {/* </Link> */}
-                    </section>
+                    
                 </article>
+                <section>
+                    {/* <Link to="/webinar/6"> */}
+                    <button
+                        className={styles.botonSiguiente}
+                        // onClick={() => handleFinalizar()}
+                    >
+                            Finalizar
+                    </button>
+                    {/* </Link> */}
+                </section>
 
-                <div className={styles.etapa}></div>
-
-                <div></div>
-
-                <div></div>
 
                 <Link className={styles.volver} to={`/campaign/${campaignId}/webinar/5/`}>
                     <img src="/src/assets/volvernegro.png" />

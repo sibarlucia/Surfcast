@@ -107,7 +107,7 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
                         </h2>
                     </div>
                     <ActividadReciente
-                        listData={DefaultActivity}
+                        data={[]}
                     />
                 </article>
                 <article className={styles.leadinfoArticle}>

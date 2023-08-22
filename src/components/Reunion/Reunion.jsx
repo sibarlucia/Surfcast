@@ -1,6 +1,4 @@
-import React from "react";
 import { useEffect, useState } from "react";
-
 import styles from "./reunion.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { getListOfCountries } from "../../utils/getListOfCountries";
