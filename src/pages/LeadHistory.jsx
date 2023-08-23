@@ -8,7 +8,7 @@ import gmailLogo from '../assets/gmail.png'
 import { LinkedInHistory } from "../components/campaign/LinkedInHistory/LinkedInHistory" 
 import { GmailHistory } from "../components/campaign/GmailHistory/GmailHistory"
 import { getMessagesOfLead } from "../services/messages/getMessagesOfLead"
-import { getLeadsByCampaign } from "../services/leads/getLeadsByCampaign"
+import { getLeadById } from "../services/leads/getLeadById"
 
 const channelsOptions = {
     linkedIn: 'linkedIn',
@@ -39,24 +39,19 @@ const LeadHistory = () => {
                         linkedInMessages.push(item)
                     }
                 })
-
                 setLinkedInHistory(linkedInMessages)
                 setGmailHistory(gmailMessages)
             })
-
-        
     }, [leadId])
 
     useEffect(() => {
-        getLeadsByCampaign(campaignId)
+        getLeadById(leadId)
             .then(response => {
-                const { data: allLeads } = response 
-                console.log(leadId)
-                const selectedLead = allLeads.find(lead => lead.id === parseInt(leadId))
-                setLead(selectedLead)
+                const { data } = response
+                setLead(data) 
             })
             
-    }, [campaignId, leadId])
+    }, [leadId])
 
 
     const handelSelectChannel = (newChannel) => () => {

@@ -4,38 +4,26 @@ import ReactMarkdown from 'react-markdown'
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { getLeadNotes } from "../../../services/notes/getLeadNotes"
-// import checkIcon from '../../../assets/icons/checkIcon.svg'
-// import trashIcon from '../../../assets/trash_icon.svg'
-// import editIcon from '../../../assets/icons/editIcon.svg'
+import { updateLeadNote } from '../../../services/notes/UpdateLeadNote';
+import { addLeadNote } from '../../../services/notes/addLeadNote';
 
 const editorOptions = {
     spellChecker: false,
     autofocus: true
 } 
 
-const testNote = {
-    "markdown_note": "# Nota de Actualización 📝\n\n> Propietario y editor: Usuario con ID 14\n\n**Asociaciones**:\n- Lead ID: 3\n- Campaña ID: 14\n\n---\n\nPor favor, añadir el contenido relevante aquí.",
-    "owner_id": 2,
-    "editor_id": 2,
-    "lead_id": 3,
-    "campaign_id": 14,
-    "id": 1
-}
-
 // nota con markdown 
-export const MarkDownNote = ({ leadId = null })  => {
+export const MarkDownNote = ({ leadId = null, campaignId })  => {
     const [isEditing, setIsEditing] = useState(false)
     const [noteData, setNoteData] = useState({})
     const [editText, setEditText] = useState('')
 
     useEffect(() => {
         if (leadId) {
-            getLeadNotes({ leadId})
+            getLeadNotes({leadId})
                 .then(response => {
                     const { data } = response
-                    console.log(data) 
-                    // setNoteData(data) // TODO: descomentar
-                    setNoteData(testNote) // TODO: eliminar datos de prueba
+                    setNoteData(data)
                 })
         }
     }, [leadId])
@@ -48,10 +36,30 @@ export const MarkDownNote = ({ leadId = null })  => {
         setIsEditing(!isEditing)
     }
 
-    const handleSaveNote = () => {
+    const handleSaveNote = async () => {
         // guardar nota
-        // TODO: consumir api para guardar nota
-        setNoteData({ ...noteData, markdown_note: editText })
+        let newNoteData = {}
+        if (noteData.id) {
+            // actualizar nota
+            const { data } = await updateLeadNote({
+                leadId,
+                updateText: editText
+            })
+            newNoteData = data
+        } else {
+            // crea nota
+            // FIXME: fallando por el owner id 
+            const { data } = await addLeadNote({
+                campaignId,
+                leadId,
+                updateText: editText
+            })
+            console.log(data)
+            newNoteData = { ...noteData, markdown_note: editText }
+        }
+
+        setNoteData(newNoteData)
+        // setNoteData({ ...noteData, markdown_note: editText })
     }
 
     const handleChangeNote = (newText) => {

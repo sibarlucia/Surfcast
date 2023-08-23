@@ -93,7 +93,7 @@ const Producto5 = ({ defaultResponse = null, campaignId }) => {
                     className={styles.botonSiguiente}
                         
                 >
-            Finalizar
+                    Finalizar
                 </button>
                 
 

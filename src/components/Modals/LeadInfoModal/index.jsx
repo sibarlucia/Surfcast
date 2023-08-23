@@ -7,23 +7,8 @@ import alert from 'sweetalert2'
 import ActividadReciente from "../../campaign/ActividadReciente/ActividadReciente"
 import { MarkDownNote } from "../../campaign/MarkDownNote"
 
-const DefaultActivity = [
-    {
-        text: 'Aceptó la solicitud y se envió mensaje',
-        type: 'response'
-    },
-    {
-        text: 'Se envió solicitud de contacto',
-        type: 'invitation' //event
-    },
-    {
-        text: 'Se vió el perfil de Javier Mansilla',
-        type: 'view'
-    },
-]
 
-
-export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignName = '', onDeleteLead = () => {} }) => {
+export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignName = '', onDeleteLead = () => {}, campaignId }) => {
 
     const handleDeleteLead = async () => { // eslint-disable-line
         const { isConfirmed } = await alert.fire({
@@ -117,6 +102,7 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
                         </h2>
                     </div>
                     <MarkDownNote
+                        campaignId={campaignId}
                         leadId={leadData.id}
                     />
                 </article>

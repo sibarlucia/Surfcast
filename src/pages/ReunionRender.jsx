@@ -1,5 +1,4 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Reunion from "../components/Reunion/Reunion";
 import Reunion2 from "../components/Reunion/Reunion2";
 import Reunion3 from "../components/Reunion/Reunion3";

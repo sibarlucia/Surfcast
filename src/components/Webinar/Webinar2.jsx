@@ -154,15 +154,16 @@ const Webinar2 = ({ defaultResponse = null, campaignId }) => {
                             }
                         </select>
                     </section>
-                    <section>
-                        <button className={styles.botonSiguiente}>Siguiente</button>
-                    </section>
                 </article>
 
-                <Link className={styles.volver} to="/webinar/1">
+                <section>
+                    <button className={styles.botonSiguiente}>Siguiente</button>
+                </section>
+
+                <Link className={styles.volver} to={`/campaign/${campaignId}/webinar/1/`}>
                     <img src="/src/assets/volvernegro.png" />
                 </Link>
-                <Link className={styles.continuar} to="/webinar/3">
+                <Link className={styles.continuar} to={`/campaign/${campaignId}/webinar/3/`}>
                     <img src="/src/assets/continuardespues.png" />
                 </Link>
             </form>

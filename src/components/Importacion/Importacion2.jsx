@@ -169,15 +169,15 @@ const Importacion2 = ({defaultResponse = [], campaignId}) => {
                         >
               Promocionar un producto
                         </button>
-                        <button
+                        {/* <button
                             type="button"
                             className={
                                 route === "/importacion/1" ? botonSeleccionado : estiloBoton
                             }
                             onClick={() => [handleButtonClick("/importacion/1")]}
                         >
-              Otros
-                        </button>
+                            Otros
+                        </button> */}
                     </section>
                     <section>
                         {/* <Link to={route}> */}

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Producto from '../components/Productos/Producto'
 import Producto2 from '../components/Productos/Producto2'
 import Producto3 from '../components/Productos/Producto3'

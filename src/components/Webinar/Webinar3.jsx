@@ -60,10 +60,11 @@ const Webinar3 = ({ defaultResponse = null, campaignId }) => {
     return (
         <div className={styles.mainDiv}>
             <form onSubmit={handleSubmit}>
+                <section>
+                    <div className={styles.etapa}>3/6</div>
+                </section>
                 <article className={styles.mainArticle}>
-                    <section>
-                        <div className={styles.etapa}>3/6</div>
-                    </section>
+                    
                     <section>
                         <h1>¡Invitemos a un webinar!</h1>
                         <p>Es hora de personalizar tu campaña</p>
@@ -103,10 +104,11 @@ const Webinar3 = ({ defaultResponse = null, campaignId }) => {
                             className={styles.input}
                         ></input>
                     </section>
-                    <section>
-                        <button className={styles.botonSiguiente}>Siguiente</button>
-                    </section>
+                    
                 </article>
+                <section>
+                    <button className={styles.botonSiguiente}>Siguiente</button>
+                </section>
 
                 <Link className={styles.volver} to={`/campaign/${campaignId}/webinar/2/`}>
                     <img src="/src/assets/volvernegro.png" />
