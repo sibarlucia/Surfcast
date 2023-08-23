@@ -7,7 +7,7 @@ import styles from '../styles/pages/campaignHome.module.css'
 import {Funnel} from '../components/Dashboards/Funnel/Index'
 import ActividadReciente from '../components/campaign/ActividadReciente/ActividadReciente'
 import { Circular } from '../components/Dashboards/Circular'
-import { getMetrics } from '../services/campaign/getCampaignActividad'
+import { getActividad } from '../services/campaign/getCampaignActividad'
 import { getUserData } from '../services/auth/getUserData'
 // import rutas from '../Routes/routes'
 
@@ -22,7 +22,7 @@ const Home = () => {
             try {
                 
                 let actividad = []
-                let data = await getMetrics(); 
+                let data = await getActividad(); 
                 // console.log("API Data:", data);
                 for (let i = 0; i < 7; i++) {
                     actividad.push(data.latest_audits[i])

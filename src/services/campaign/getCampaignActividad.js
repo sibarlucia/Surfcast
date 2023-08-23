@@ -5,7 +5,7 @@ import { getToken } from '../getToken'
 const baseUrl = routeGenerator('/dashboard/general-metrics/')
 
 
-export const getMetrics = async () => {
+export const getActividad = async () => {
     const response = await axios.get(baseUrl, {
         headers: {
             access_token: getToken(),

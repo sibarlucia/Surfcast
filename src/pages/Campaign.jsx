@@ -9,11 +9,32 @@ import { NewCampaingModal } from "../components/Modals/NewCampaignModal"
 import { createCampaign } from "../services/campaign/createCampaign" 
 import { useNavigate } from "react-router-dom"
 import { updateCampaign } from "../services/campaign/updateCampaign"
+import { getMetrics } from '../services/campaign/getCampaignMetrics'
+
 
 const Campaign = () => {
     const [campaigns, setCampaigns] = useState([])
     const [showNewCampaignModal, setShowNewCampaignModal] = useState(false)
     const navigate = useNavigate()
+    const [metricas, setMetricas] = useState([])
+
+
+    useEffect(() =>{
+        async function fetchMetricas() {
+            try {
+                let dataMetricas = await getMetrics()
+
+               
+                setMetricas(dataMetricas)
+            }
+
+            catch (error) {
+                console.error("API Request Error:", error);
+            }
+
+        }
+        fetchMetricas()
+    },[])
 
     useEffect(() => {
         getCampaign({})
@@ -56,11 +77,11 @@ const Campaign = () => {
         <PageLayout>
             <section className={styles.mainSection}>
                 <CampaignGeneralInformation
-                    invitations={200}
-                    unreadMessages={8}
-                    views={20}
+                    invitations={metricas.pending_invitations}
+                    unreadMessages={8} //otra API
+                    views={20} //otra API
                 />
-                <CampaignStatistics/>
+                <CampaignStatistics metricas={metricas}/>
                 <div className={styles.campaignList}>
                     <header className={styles.campaignListHeader}>
                         <div>

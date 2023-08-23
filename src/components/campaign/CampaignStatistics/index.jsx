@@ -1,31 +1,40 @@
+import { useEffect, useState } from 'react';
 import styles from './index.module.css'
 
-export const CampaignStatistics = () => {
+export const CampaignStatistics = ({metricas}) => {
+    const [stats, setStats] = useState([])
 
+    useEffect(() => {
+        setStats(metricas)
+
+    },[])
+    console.log(stats);
+
+    console.log(metricas);
     const defaultData = [
         {
             name: 'Solicitudes enviadas',
-            value: 50,
+            value: stats.sent_invitations,
             max: 100,
         },
         {
             name: 'Visitas a la página web',
-            value: 50,
+            value: 50, //otra API
             max: 100,
         },
         {
             name: 'Solicitudes enviadas por correo',
-            value: 15,
+            value: 15, //otra API
             max: 100,
         },
         {
             name: 'Visitas al perfil',
-            value: 15,
+            value: stats.profile_visits,
             max: 100,
         },
         {
             name: 'Mensajes enviados',
-            value: 12,
+            value: stats.sent_messages,
             max: 100,
         }
     ]
