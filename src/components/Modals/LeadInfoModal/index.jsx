@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { GenericModal } from "../GenericModal" 
 import defaultProfile from '../../../assets/campaign/defaultProfile.svg'
 import styles from './index.module.css'
@@ -6,9 +6,29 @@ import styles from './index.module.css'
 import alert from 'sweetalert2'
 import ActividadReciente from "../../campaign/ActividadReciente/ActividadReciente"
 import { MarkDownNote } from "../../campaign/MarkDownNote"
+import { getActividadLead } from "../../../services/campaign/getActividadLeads"
 
 
 export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignName = '', onDeleteLead = () => {}, campaignId }) => {
+    
+    const [actividadLead, setActividadLead] = useState([])
+    useEffect(() => {
+        async function fetchActividadLead() {
+            try {
+                let actividad = []
+                actividad = await getActividadLead(leadData?.id)
+                setActividadLead(actividad)
+            
+                console.log(actividad);
+            }
+            catch (error) {
+                console.error("API Request Error:", error);
+            }
+        }
+        fetchActividadLead()
+    },[leadData]) 
+
+    console.log(actividadLead);
 
     const handleDeleteLead = async () => { // eslint-disable-line
         const { isConfirmed } = await alert.fire({
@@ -31,8 +51,9 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
         return false
     }, [leadData])
 
-    console.log(leadData)
+    // console.log(leadData)
     if (!isOpen) return null
+
 
     return (
         <GenericModal isOpen={isOpen} onClose={onClose}>
@@ -92,7 +113,7 @@ export const LeadInfoModal = ({leadData, onClose, onDone = () => {}, campaignNam
                         </h2>
                     </div>
                     <ActividadReciente
-                        data={[]}
+                        data={actividadLead}
                     />
                 </article>
                 <article className={styles.leadinfoArticle}>

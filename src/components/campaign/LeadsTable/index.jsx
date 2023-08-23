@@ -104,6 +104,7 @@ export const LeadsTable = ({ filter = '', campaignId = null, campaignName  = ''}
         }
     }
 
+    console.log(selectedLead);
     return (
         <section className="pageSection">
             <div className={styles.tableContainer}>

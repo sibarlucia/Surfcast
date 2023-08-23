@@ -7,7 +7,7 @@ export const CampaignStatistics = ({metricas}) => {
     useEffect(() => {
         setStats(metricas)
 
-    },[])
+    },[metricas])
     console.log(stats);
 
     console.log(metricas);
@@ -15,29 +15,31 @@ export const CampaignStatistics = ({metricas}) => {
         {
             name: 'Solicitudes enviadas',
             value: stats.sent_invitations,
-            max: 100,
+            max: stats.total_leads_in_active_campaigns,
         },
-        {
-            name: 'Visitas a la página web',
-            value: 50, //otra API
-            max: 100,
-        },
-        {
-            name: 'Solicitudes enviadas por correo',
-            value: 15, //otra API
-            max: 100,
-        },
+        // {
+        //     name: 'Visitas a la página web',
+        //     value: 50, 
+        //     max: 100,
+        // },
+        // {
+        //     name: 'Solicitudes enviadas por correo',
+        //     value: 15, 
+        //     max: 100,
+        // },
         {
             name: 'Visitas al perfil',
             value: stats.profile_visits,
-            max: 100,
+            max: stats.total_leads_in_active_campaigns,
         },
         {
             name: 'Mensajes enviados',
             value: stats.sent_messages,
-            max: 100,
+            max: stats.total_leads_in_active_campaigns,
         }
     ]
+
+    console.log(defaultData);
 
     return (
         <section className={`pageSection ${styles.mainSection}`}>
