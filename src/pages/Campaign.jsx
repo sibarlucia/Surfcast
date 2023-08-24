@@ -36,6 +36,8 @@ const Campaign = () => {
         fetchMetricas()
     },[])
 
+    console.log(metricas);
+
     useEffect(() => {
         getCampaign({})
             .then(response => {
@@ -78,10 +80,10 @@ const Campaign = () => {
             <section className={styles.mainSection}>
                 <CampaignGeneralInformation
                     invitations={metricas.pending_invitations}
-                    unreadMessages={8} //otra API
-                    views={20} //otra API
+                    unreadMessages={metricas.sent_messages} 
+                    views={metricas.profile_visits} 
                 />
-                <CampaignStatistics metricas={metricas}/>
+                {/* <CampaignStatistics metricas={metricas}/> */}
                 <div className={styles.campaignList}>
                     <header className={styles.campaignListHeader}>
                         <div>

@@ -21,24 +21,24 @@ export const CampaignGeneralInformation = ({ invitations = 0, unreadMessages = 0
                 </h1>
                 <p>
           Mensajes <br />
-          sin leer
+          enviados
                 </p>
             </div>
             <span className={styles.separator} />
             <div className={styles.infoItem}>
                 <img
                     className={`${styles.arrowIcon} ${views < 0 ? styles.arrowIconDown : ''}`}
-                    src={ArrowIcon}
-                    alt="flecha"
+                    // src={ArrowIcon}
+                    // alt="flecha"
                 />
                 <h1>
                     {
-                        Math.abs(views) + '%'
+                        views
                     }
                 </h1>
                 <p>
           Vistas al perfil <br />
-          desde el mes pasado
+          
                 </p>
             </div>
         </section>
